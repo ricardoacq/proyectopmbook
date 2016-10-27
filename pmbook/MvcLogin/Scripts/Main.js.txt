@@ -1,0 +1,44 @@
+function Login() {
+            debugger
+      var usr = $("#Login_cLogin").val();
+      var pass = $("#Login_cPassword").val();
+
+   if (usr == "") {
+    swal("Usuario incorrecto");
+    return
+   }
+   if (pass == "") {
+    swal("Falta tu contraseña");
+    return
+   }
+
+   var params = {
+    Usuario: usr,
+    Password: pass
+   };
+
+   $.ajax({
+       type: "POST",
+       url: "/Account/LogOn",
+       dataType: "json",
+       data: {
+           Usuario: usr,
+           Password: pass
+       }
+   }).done(function(response){
+       debugger
+       if (!response.bExito) {
+           //$("#js-mensajes").html('Usuario o contraseña incorrectos');
+           //$('#js-Error-Text').html(response.cError);
+           //$('#js-Error-Container').show();
+
+           swal("Error",response.Msg,"error");
+           //$.unblockUI();
+
+       }
+       else {
+           window.location.href = response.cUrl;
+       }
+   });
+
+  }

@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="pmbook" Class="PMBookDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=pmbook;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="SalutisLiteConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Adsum_Usuarios_X_Perfil" Member="Adsum_Usuarios_X_Perfils">
+    <Type Name="Adsum_Usuarios_X_Perfil">
+      <Column Name="cLogin" Type="System.String" DbType="VarChar(150) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nPerfil" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Adsum_Perfiles" Member="Adsum_Perfiles">
+    <Type Name="Adsum_Perfiles">
+      <Column Name="nPerfil" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cDescripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ADSUM_Derechos_X_Perfil" Member="ADSUM_Derechos_X_Perfils">
+    <Type Name="ADSUM_Derechos_X_Perfil">
+      <Column Name="nPerfil" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nRama" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="bGuardar" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bBorrar" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bEjecutar" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bImprimir" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bTienePermiso" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="bNoMostrar" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ADSUM_Navegador" Member="ADSUM_Navegadors">
+    <Type Name="ADSUM_Navegador">
+      <Column Name="nRama" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nRamaPadre" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cForma" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
+      <Column Name="cContexto" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="cNombre_Rama" Type="System.String" DbType="VarChar(70) NOT NULL" CanBeNull="false" />
+      <Column Name="cEstatus_Rama" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="nIcono_Normal" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="nIcono_Expandido" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="nIcono_Seleccionado" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="bInstanciasMultiple" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="cNameSpace" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="cNombreDLL" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="nOrden" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="cArea" Type="System.String" DbType="VarChar(70)" CanBeNull="true" />
+      <Column Name="bVisible" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ADSUM_Formas" Member="ADSUM_Formas">
+    <Type Name="ADSUM_Forma">
+      <Column Name="cForma" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="cDescripcion" Type="System.String" DbType="VarChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="cEstatus" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="bInstanciar_Desde_Navegador" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bMetodo_Nuevo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bMetodo_Guardar" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bMetodo_Borrar" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bMetodo_Imprimir" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bMetodo_Ejecutar" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bMetodo_Autorizar" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bMetodo_Archivos" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bMetodo_Herramientas" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bMetodo_Enviar_Excel" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bMetodo_Graficar" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bMetodo_Invertir" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bMetodo_WorkAbout_Subir" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="bMetodo_WorkAbout_Bajar" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="nEstilo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cContexto_Primario" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="cCatAut_titulo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="bMetodo_Correo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cControlador" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="cAccion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="nOrden" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ADSUM_Usuarios" Member="ADSUM_Usuarios">
+    <Type Name="ADSUM_Usuario">
+      <Column Name="nAdsumUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cLogin" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="nPersonal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cNombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="cPassword" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="cMail" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ext" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="nEmisor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="bMostrarOpcionesNoPermitidas" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="nAdsumUsuarioLider" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nTester" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nAdsumUsuarioTester" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="ADSUM_Usuario_ADSUM_Usuario" Member="ADSUM_Usuarios" ThisKey="nAdsumUsuario" OtherKey="nAdsumUsuarioTester" Type="ADSUM_Usuario" />
+      <Association Name="ADSUM_Usuario_ADSUM_Usuario1" Member="ADSUM_Usuarios1" ThisKey="nAdsumUsuario" OtherKey="nAdsumUsuarioLider" Type="ADSUM_Usuario" />
+      <Association Name="ADSUM_Usuario_PMB_Actividade" Member="PMB_Actividades" ThisKey="nAdsumUsuario" OtherKey="nAdsumUsuarioResponsable" Type="PMB_Actividade" />
+      <Association Name="ADSUM_Usuario_PMB_Proyecto" Member="PMB_Proyectos" ThisKey="nAdsumUsuario" OtherKey="nAdsumUsuarioLider" Type="PMB_Proyecto" />
+      <Association Name="ADSUM_Usuario_PMB_ProyectosAsignacione" Member="PMB_ProyectosAsignaciones" ThisKey="nAdsumUsuario" OtherKey="nAdsumUsuario" Type="PMB_ProyectosAsignacione" />
+      <Association Name="ADSUM_Usuario_PMB_ProyectosAsignacione1" Member="PMB_ProyectosAsignaciones1" ThisKey="nAdsumUsuario" OtherKey="nAdsumUsuarioAyudante" Type="PMB_ProyectosAsignacione" />
+      <Association Name="ADSUM_Usuario_PMB_ProyectosConsultore" Member="PMB_ProyectosConsultores" ThisKey="nAdsumUsuario" OtherKey="nAdsumUsuario" Type="PMB_ProyectosConsultore" />
+      <Association Name="ADSUM_Usuario_PMB_ProyectosConsultore1" Member="PMB_ProyectosConsultore1s" ThisKey="nAdsumUsuario" OtherKey="nAdsumUsuario" Type="PMB_ProyectosConsultore1" />
+      <Association Name="ADSUM_Usuario_ADSUM_Usuario" Member="ADSUM_Usuario1" ThisKey="nAdsumUsuarioTester" OtherKey="nAdsumUsuario" Type="ADSUM_Usuario" IsForeignKey="true" />
+      <Association Name="ADSUM_Usuario_ADSUM_Usuario1" Member="ADSUM_Usuario2" ThisKey="nAdsumUsuarioLider" OtherKey="nAdsumUsuario" Type="ADSUM_Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PMB_Actividades" Member="PMB_Actividades">
+    <Type Name="PMB_Actividade">
+      <Column Name="nEmisor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nCliente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProyecto" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nProyectoModulo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nProyectoComponente" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nProyectoProceso" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nProyectoHistoriaUsuario" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nActividad" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nActvidadForward" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nNivelAsociacion" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="nTipoComponenteActividad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cClaveERP" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="cDescripcion" Type="System.String" DbType="VarChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="nEstimacionBaseUE" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="nEstimacionSolicitadaUE" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="nEstimacionAutorizadaUE" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="nEstimacionAutorizadaHoras" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="nTrabajoRealizadoHoras" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="nTrabajoRestanteHoras" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="nAvancePorcentualEstimado" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="nAdsumUsuarioResponsable" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="dFecha_Registro" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cMaquina_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_UltimaModificacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="cUsuario_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_Eliminacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="bFavorito" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bTerminado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="tDescripcion" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="nProducto" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nProductoVersion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nProductoModulo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nProductoComponente" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nTipoIncidentes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="bIncidenteCobrable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bIncidente" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bRequiereQC" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="nEstimacionAutorizadaAdicionalHoras" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="nTrabajoRealizadoAdicionalHoras" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="nEstatus" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="nVuelta" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="bSprintFavorito" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="dFechaCierre" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="PMB_Actividade_PMB_ProyectosAsignacione" Member="PMB_ProyectosAsignaciones" ThisKey="nActividad" OtherKey="nProyectoActividad" Type="PMB_ProyectosAsignacione" />
+      <Association Name="ADSUM_Usuario_PMB_Actividade" Member="ADSUM_Usuario" ThisKey="nAdsumUsuarioResponsable" OtherKey="nAdsumUsuario" Type="ADSUM_Usuario" IsForeignKey="true" />
+      <Association Name="PMB_Proyecto_PMB_Actividade" Member="PMB_Proyecto" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_Proyecto" IsForeignKey="true" />
+      <Association Name="PMB_ProyectosComponente_PMB_Actividade" Member="PMB_ProyectosComponente" ThisKey="nProyectoComponente" OtherKey="nProyectoComponente" Type="PMB_ProyectosComponente" IsForeignKey="true" />
+      <Association Name="PMB_ProyectosModulo_PMB_Actividade" Member="PMB_ProyectosModulo" ThisKey="nProyectoModulo" OtherKey="nProyectoModulo" Type="PMB_ProyectosModulo" IsForeignKey="true" />
+      <Association Name="PMB_ProyectosProceso_PMB_Actividade" Member="PMB_ProyectosProceso" ThisKey="nProyectoProceso" OtherKey="nProyectoProceso" Type="PMB_ProyectosProceso" IsForeignKey="true" />
+      <Association Name="PMB_ProyectosComponente1_PMB_Actividade" Member="PMB_ProyectosComponente1" ThisKey="nProyectoComponente" OtherKey="nProyectoComponente" Type="PMB_ProyectosComponente1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PMB_Proyectos" Member="PMB_Proyectos">
+    <Type Name="PMB_Proyecto">
+      <Column Name="nEmisor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProyecto" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nCliente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nTipoProyecto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cClaveERP" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="cDescripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="tDescripcion" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="cUrlRepositorio" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="nEstatus" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="dFecha_Registro" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cMaquina_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_UltimaModificacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="cUsuario_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_Eliminacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="nFechaFin" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="nAdsumUsuarioLider" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nFechaInicio" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="bProyectoSoporte" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="nProyectoSoporte" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tAdaptaciones" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Association Name="PMB_Proyecto_PMB_Actividade" Member="PMB_Actividades" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_Actividade" />
+      <Association Name="PMB_Proyecto_PMB_Proyecto" Member="PMB_Proyectos" ThisKey="nProyecto" OtherKey="nProyectoSoporte" Type="PMB_Proyecto" />
+      <Association Name="PMB_Proyecto_PMB_ProyectosComponente" Member="PMB_ProyectosComponentes" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_ProyectosComponente" />
+      <Association Name="PMB_Proyecto_PMB_ProyectosConsultore" Member="PMB_ProyectosConsultores" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_ProyectosConsultore" />
+      <Association Name="PMB_Proyecto_PMB_ProyectosModulo" Member="PMB_ProyectosModulos" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_ProyectosModulo" />
+      <Association Name="PMB_Proyecto_PMB_ProyectosProceso" Member="PMB_ProyectosProcesos" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_ProyectosProceso" />
+      <Association Name="PMB_Proyecto_PMB_ProyectosComponente1" Member="PMB_ProyectosComponente1s" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_ProyectosComponente1" />
+      <Association Name="PMB_Proyecto_PMB_ProyectosConsultore1" Member="PMB_ProyectosConsultore1s" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_ProyectosConsultore1" />
+      <Association Name="PMB_Proyecto_PMB_ProyectosEstatus" Member="PMB_ProyectosEstatus" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_ProyectosEstatus" />
+      <Association Name="PMB_Proyecto_PMB_Proyecto" Member="PMB_Proyecto1" ThisKey="nProyectoSoporte" OtherKey="nProyecto" Type="PMB_Proyecto" IsForeignKey="true" />
+      <Association Name="ADSUM_Usuario_PMB_Proyecto" Member="ADSUM_Usuario" ThisKey="nAdsumUsuarioLider" OtherKey="nAdsumUsuario" Type="ADSUM_Usuario" IsForeignKey="true" />
+      <Association Name="CTL_EmisoresPMBook_PMB_Proyecto" Member="CTL_EmisoresPMBook" ThisKey="nEmisor" OtherKey="nEmisor" Type="CTL_EmisoresPMBook" IsForeignKey="true" />
+      <Association Name="PMB_TiposProyecto_PMB_Proyecto" Member="PMB_TiposProyecto" ThisKey="nTipoProyecto" OtherKey="nTipoProyecto" Type="PMB_TiposProyecto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PMB_ProyectosAsignaciones" Member="PMB_ProyectosAsignaciones">
+    <Type Name="PMB_ProyectosAsignacione">
+      <Column Name="nEmisor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProyectoActividad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProyectoAsignacion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nProyectoConsultor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nAdsumUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nTrabajoRealizadoHoras" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="dFecha_Registro" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cMaquina_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_UltimaModificacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="cUsuario_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_Eliminacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="nTiempoTrabajoAsignadoHoras" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="nTrabajoRestanteHoras" Type="System.Decimal" DbType="Decimal(10,2) NOT NULL" CanBeNull="false" />
+      <Column Name="bAyudante" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="nAdsumUsuarioAyudante" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ADSUM_Usuario_PMB_ProyectosAsignacione" Member="ADSUM_Usuario" ThisKey="nAdsumUsuario" OtherKey="nAdsumUsuario" Type="ADSUM_Usuario" IsForeignKey="true" />
+      <Association Name="PMB_Actividade_PMB_ProyectosAsignacione" Member="PMB_Actividade" ThisKey="nProyectoActividad" OtherKey="nActividad" Type="PMB_Actividade" IsForeignKey="true" />
+      <Association Name="ADSUM_Usuario_PMB_ProyectosAsignacione1" Member="ADSUM_Usuario1" ThisKey="nAdsumUsuarioAyudante" OtherKey="nAdsumUsuario" Type="ADSUM_Usuario" IsForeignKey="true" />
+      <Association Name="PMB_ProyectosConsultore_PMB_ProyectosAsignacione" Member="PMB_ProyectosConsultore" ThisKey="nProyectoConsultor" OtherKey="nProyectoConsultor" Type="PMB_ProyectosConsultore" IsForeignKey="true" />
+      <Association Name="CTL_EmisoresPMBook_PMB_ProyectosAsignacione" Member="CTL_EmisoresPMBook" ThisKey="nEmisor" OtherKey="nEmisor" Type="CTL_EmisoresPMBook" IsForeignKey="true" />
+      <Association Name="PMB_ProyectosConsultore1_PMB_ProyectosAsignacione" Member="PMB_ProyectosConsultore1" ThisKey="nProyectoConsultor" OtherKey="nProyectoConsultor" Type="PMB_ProyectosConsultore1" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PMB_ProyectosComponentes" Member="PMB_ProyectosComponentes">
+    <Type Name="PMB_ProyectosComponente">
+      <Column Name="nEmisor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProyecto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProyectoModulo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProyectoComponente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nTipoComponente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nNivelComplejidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cDescripcion" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="dFecha_Registro" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cMaquina_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_UltimaModificacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="cUsuario_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_Eliminacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="bTieneActividades" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="tDescripcion" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="nProducto" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nProductoModulo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nProductoComponente" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PMB_ProyectosComponente_PMB_Actividade" Member="PMB_Actividades" ThisKey="nProyectoComponente" OtherKey="nProyectoComponente" Type="PMB_Actividade" />
+      <Association Name="PMB_Proyecto_PMB_ProyectosComponente" Member="PMB_Proyecto" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_Proyecto" IsForeignKey="true" />
+      <Association Name="PMB_ProyectosModulo_PMB_ProyectosComponente" Member="PMB_ProyectosModulo" ThisKey="nProyectoModulo" OtherKey="nProyectoModulo" Type="PMB_ProyectosModulo" IsForeignKey="true" />
+      <Association Name="CTL_EmisoresPMBook_PMB_ProyectosComponente" Member="CTL_EmisoresPMBook" ThisKey="nEmisor" OtherKey="nEmisor" Type="CTL_EmisoresPMBook" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PMB_ProyectosConsultores" Member="PMB_ProyectosConsultores">
+    <Type Name="PMB_ProyectosConsultore">
+      <Column Name="nEmisor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProyecto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProyectoConsultor" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nAdsumUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="bLider" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bAnalista" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="dFecha_Registro" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cMaquina_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_Eliminacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="bTester" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bGerenteTecnologico" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bGerenteConsultoria" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bIngPruebas" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bConsultorTecnologico" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bArquitecto" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bDesarrolladorSoftware" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bAuditor" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bRevisorCod" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bRevisorArq" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bAdmonProcesos" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bAceptacion" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="dFechaAceptacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="PMB_ProyectosConsultore_PMB_ProyectosAsignacione" Member="PMB_ProyectosAsignaciones" ThisKey="nProyectoConsultor" OtherKey="nProyectoConsultor" Type="PMB_ProyectosAsignacione" />
+      <Association Name="ADSUM_Usuario_PMB_ProyectosConsultore" Member="ADSUM_Usuario" ThisKey="nAdsumUsuario" OtherKey="nAdsumUsuario" Type="ADSUM_Usuario" IsForeignKey="true" />
+      <Association Name="PMB_Proyecto_PMB_ProyectosConsultore" Member="PMB_Proyecto" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_Proyecto" IsForeignKey="true" />
+      <Association Name="CTL_EmisoresPMBook_PMB_ProyectosConsultore" Member="CTL_EmisoresPMBook" ThisKey="nEmisor" OtherKey="nEmisor" Type="CTL_EmisoresPMBook" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PMB_ProyectosModulos" Member="PMB_ProyectosModulos">
+    <Type Name="PMB_ProyectosModulo">
+      <Column Name="nEmisor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProyecto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProyectoModulo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cClaveERP" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="cDescripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="dFecha_Registro" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cMaquina_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_UltimaModificacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="cUsuario_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_Eliminacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="nEstatusModulo" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="dFechaAutorizado" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="PMB_ProyectosModulo_PMB_Actividade" Member="PMB_Actividades" ThisKey="nProyectoModulo" OtherKey="nProyectoModulo" Type="PMB_Actividade" />
+      <Association Name="PMB_ProyectosModulo_PMB_ProyectosComponente" Member="PMB_ProyectosComponentes" ThisKey="nProyectoModulo" OtherKey="nProyectoModulo" Type="PMB_ProyectosComponente" />
+      <Association Name="PMB_ProyectosModulo_PMB_ProyectosComponente1" Member="PMB_ProyectosComponente1s" ThisKey="nProyectoModulo" OtherKey="nProyectoModulo" Type="PMB_ProyectosComponente1" />
+      <Association Name="PMB_Proyecto_PMB_ProyectosModulo" Member="PMB_Proyecto" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_Proyecto" IsForeignKey="true" />
+      <Association Name="CTL_EmisoresPMBook_PMB_ProyectosModulo" Member="CTL_EmisoresPMBook" ThisKey="nEmisor" OtherKey="nEmisor" Type="CTL_EmisoresPMBook" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PMB_ProyectosProcesos" Member="PMB_ProyectosProcesos">
+    <Type Name="PMB_ProyectosProceso">
+      <Column Name="nEmisor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProyecto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProyectoProceso" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cDescripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="tDescripcion" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="dFecha_Registro" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cMaquina_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_UltimaModificacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="cUsuario_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_Eliminacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Association Name="PMB_ProyectosProceso_PMB_Actividade" Member="PMB_Actividades" ThisKey="nProyectoProceso" OtherKey="nProyectoProceso" Type="PMB_Actividade" />
+      <Association Name="PMB_Proyecto_PMB_ProyectosProceso" Member="PMB_Proyecto" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_Proyecto" IsForeignKey="true" />
+      <Association Name="CTL_EmisoresPMBook_PMB_ProyectosProceso" Member="CTL_EmisoresPMBook" ThisKey="nEmisor" OtherKey="nEmisor" Type="CTL_EmisoresPMBook" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTL_EmisoresPMBook" Member="CTL_EmisoresPMBooks">
+    <Type Name="CTL_EmisoresPMBook">
+      <Column Name="nEmisor" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cTerminoSingular_Proyecto" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cTerminoPlural_Proyecto" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cTerminoSingular_Modulo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cTerminoPlural_Modulo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cTerminoSingular_Cliente" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cTerminoPlural_Cliente" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cTerminoSingular_Componente" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cTerminoPlural_Componente" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cTerminoSingular_Sprint" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cTerminoPlural_Sprint" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cTerminoSingular_Consultor" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cTerminoPlural_Consultor" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cTerminoSingular_Lider" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cTerminoPlural_Lider" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cTerminoSingular_HistoriaDeUsuario" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cTerminoPlural_HistoriaDeUsuario" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="dFecha_Registro" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cMaquina_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_UltimaModificacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="cUsuario_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_Eliminacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="nHorasLaborales" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CTL_EmisoresPMBook_PMB_Proyecto" Member="PMB_Proyectos" ThisKey="nEmisor" OtherKey="nEmisor" Type="PMB_Proyecto" />
+      <Association Name="CTL_EmisoresPMBook_PMB_ProyectosAsignacione" Member="PMB_ProyectosAsignaciones" ThisKey="nEmisor" OtherKey="nEmisor" Type="PMB_ProyectosAsignacione" />
+      <Association Name="CTL_EmisoresPMBook_PMB_ProyectosComponente" Member="PMB_ProyectosComponentes" ThisKey="nEmisor" OtherKey="nEmisor" Type="PMB_ProyectosComponente" />
+      <Association Name="CTL_EmisoresPMBook_PMB_ProyectosConsultore" Member="PMB_ProyectosConsultores" ThisKey="nEmisor" OtherKey="nEmisor" Type="PMB_ProyectosConsultore" />
+      <Association Name="CTL_EmisoresPMBook_PMB_ProyectosModulo" Member="PMB_ProyectosModulos" ThisKey="nEmisor" OtherKey="nEmisor" Type="PMB_ProyectosModulo" />
+      <Association Name="CTL_EmisoresPMBook_PMB_ProyectosProceso" Member="PMB_ProyectosProcesos" ThisKey="nEmisor" OtherKey="nEmisor" Type="PMB_ProyectosProceso" />
+      <Association Name="CTL_EmisoresPMBook_PMB_TiposProyecto" Member="PMB_TiposProyectos" ThisKey="nEmisor" OtherKey="nEmisor" Type="PMB_TiposProyecto" />
+      <Association Name="CTL_EmisoresPMBook_PMB_ProyectosComponente1" Member="PMB_ProyectosComponente1s" ThisKey="nEmisor" OtherKey="nEmisor" Type="PMB_ProyectosComponente1" />
+      <Association Name="CTL_EmisoresPMBook_PMB_ProyectosConsultore1" Member="PMB_ProyectosConsultore1s" ThisKey="nEmisor" OtherKey="nEmisor" Type="PMB_ProyectosConsultore1" />
+      <Association Name="CTL_EmisoresPMBook_PMB_ProyectosEstatus" Member="PMB_ProyectosEstatus" ThisKey="nEmisor" OtherKey="nEmisor" Type="PMB_ProyectosEstatus" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PMB_TiposProyecto" Member="PMB_TiposProyectos">
+    <Type Name="PMB_TiposProyecto">
+      <Column Name="nEmisor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nTipoProyecto" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cDescripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="dFecha_Registro" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cMaquina_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_UltimaModificacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="cUsuario_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_Eliminacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="bTipoSoporte" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="PMB_TiposProyecto_PMB_Proyecto" Member="PMB_Proyectos" ThisKey="nTipoProyecto" OtherKey="nTipoProyecto" Type="PMB_Proyecto" />
+      <Association Name="CTL_EmisoresPMBook_PMB_TiposProyecto" Member="CTL_EmisoresPMBook" ThisKey="nEmisor" OtherKey="nEmisor" Type="CTL_EmisoresPMBook" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PMB_ProyectosComponentes" Member="PMB_ProyectosComponente1s">
+    <Type Name="PMB_ProyectosComponente1">
+      <Column Name="nEmisor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProyecto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProyectoModulo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProyectoComponente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nTipoComponente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nNivelComplejidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cDescripcion" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="dFecha_Registro" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cMaquina_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_UltimaModificacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="cUsuario_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_Eliminacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="bTieneActividades" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="tDescripcion" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="nProducto" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nProductoModulo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nProductoComponente" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PMB_ProyectosComponente1_PMB_Actividade" Member="PMB_Actividades" ThisKey="nProyectoComponente" OtherKey="nProyectoComponente" Type="PMB_Actividade" />
+      <Association Name="CTL_EmisoresPMBook_PMB_ProyectosComponente1" Member="CTL_EmisoresPMBook" ThisKey="nEmisor" OtherKey="nEmisor" Type="CTL_EmisoresPMBook" IsForeignKey="true" />
+      <Association Name="PMB_Proyecto_PMB_ProyectosComponente1" Member="PMB_Proyecto" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_Proyecto" IsForeignKey="true" />
+      <Association Name="PMB_ProyectosModulo_PMB_ProyectosComponente1" Member="PMB_ProyectosModulo" ThisKey="nProyectoModulo" OtherKey="nProyectoModulo" Type="PMB_ProyectosModulo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PMB_ProyectosConsultores" Member="PMB_ProyectosConsultore1s">
+    <Type Name="PMB_ProyectosConsultore1">
+      <Column Name="nEmisor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProyecto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProyectoConsultor" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nAdsumUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="bLider" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bAnalista" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="dFecha_Registro" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cMaquina_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_Eliminacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="bTester" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bGerenteTecnologico" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bGerenteConsultoria" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bIngPruebas" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bConsultorTecnologico" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bArquitecto" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bDesarrolladorSoftware" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bAuditor" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bRevisorCod" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bRevisorArq" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bAdmonProcesos" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bAceptacion" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="dFechaAceptacion" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="PMB_ProyectosConsultore1_PMB_ProyectosAsignacione" Member="PMB_ProyectosAsignaciones" ThisKey="nProyectoConsultor" OtherKey="nProyectoConsultor" Type="PMB_ProyectosAsignacione" />
+      <Association Name="ADSUM_Usuario_PMB_ProyectosConsultore1" Member="ADSUM_Usuario" ThisKey="nAdsumUsuario" OtherKey="nAdsumUsuario" Type="ADSUM_Usuario" IsForeignKey="true" />
+      <Association Name="CTL_EmisoresPMBook_PMB_ProyectosConsultore1" Member="CTL_EmisoresPMBook" ThisKey="nEmisor" OtherKey="nEmisor" Type="CTL_EmisoresPMBook" IsForeignKey="true" />
+      <Association Name="PMB_Proyecto_PMB_ProyectosConsultore1" Member="PMB_Proyecto" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_Proyecto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PMB_ProyectosEstatus" Member="PMB_ProyectosEstatus">
+    <Type Name="PMB_ProyectosEstatus">
+      <Column Name="nEmisor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProyecto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProyectoEstatus" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nEstatus" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="cComentarios" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="dFecha_Registro" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cMaquina_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="CTL_EmisoresPMBook_PMB_ProyectosEstatus" Member="CTL_EmisoresPMBook" ThisKey="nEmisor" OtherKey="nEmisor" Type="CTL_EmisoresPMBook" IsForeignKey="true" />
+      <Association Name="PMB_Proyecto_PMB_ProyectosEstatus" Member="PMB_Proyecto" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_Proyecto" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,44 @@
+﻿@model MvcLogin.Models.CargaInicial
+@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>@ViewBag.Title</title>
+    
+   @* @Styles.Render("~/Content/Login")*@
+    @Styles.Render("~/Content/MaterialIcons")
+    @Scripts.Render("~/bundles/jquery")<!-- jQuery-->
+    @Styles.Render("~/Content/Angularcss")<!-- Angular Material && Bootstrap CSS-->
+    @Scripts.Render("~/bundles/Angular")<!-- Angular-->
+    @Scripts.Render("~/bundles/bootstrapJS")<!-- Bootstrap JS-->
+</head>
+<body>
+    @Html.Partial("_Nav", Model)
+   
+    <div id="content">
+        <div style="width:12%;float:left" class="affix">
+            <div class="row contenedor">
+                <div style="left:0">
+                    <h4 style="text-align:center;">  Configuración</h4>
+                    <hr />
+                    <div class="SideNav">
+                        <div class="list-group">
+                            @*@foreach (var s in Model.DataNav[0].lstModulos)
+                            {
+                                <a class="list-group-item manita @(ViewContext.RouteData.Values["Controller"].ToString() == s.cModulo ? "Active2" : "")">@s.cModulo</a>
+                            }*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="width:88%;float:right">
+            @RenderBody()
+            @RenderSection("scripts", required: false)
+        </div>
+    </div>  
+</body>
+</html>

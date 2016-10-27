@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="34px" height="25px" viewBox="0 0 34 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
+    <title>Page 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path id="path-1" d="M0,0 L33.9971231,0 L33.9971231,25 L0,25 L0,0 Z"></path>
+        <path id="path-3" d="M0,0 L33.9971231,0 L33.9971231,25 L0,25 L0,0 Z"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Desktop-Landscape-Copy" sketch:type="MSArtboardGroup" transform="translate(-794.000000, -105.000000)">
+            <g id="Page-1" sketch:type="MSLayerGroup" transform="translate(794.000000, 105.000000)">
+                <g id="Group-3">
+                    <mask id="mask-2" sketch:name="Clip 2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-2"></g>
+                    <path d="M29.3804462,2.04180723 L29.3804462,1.89331325 C29.3804462,0.847831325 28.6850154,-6.02409639e-05 27.8274308,-6.02409639e-05 L17.4935231,-6.02409639e-05 C16.6359385,-6.02409639e-05 15.9405077,0.847831325 15.9405077,1.89331325 L15.9405077,2.04180723 L0,2.04180723 L0,24.9999398 L29.3916923,24.9999398 L29.3916923,2.04180723 L29.3804462,2.04180723 Z" id="Fill-1" fill="#F6A623" sketch:type="MSShapeGroup" mask="url(#mask-2)"></path>
+                </g>
+                <path d="M28.5728938,23.5061747 L0.703878462,23.5760542 L3.35509385,4.6688253 L33.29314,4.6688253 L28.5728938,23.5061747 Z" id="Fill-4" fill="#FFA819" sketch:type="MSShapeGroup"></path>
+                <path d="M28.5728938,23.5061747 L0.703878462,23.5760542 L3.35509385,4.6688253 L33.29314,4.6688253 L28.5728938,23.5061747 L28.5728938,23.5061747 Z" id="Stroke-6" stroke="#E49B22" stroke-width="0.932000041" fill="#FFFDFD" sketch:type="MSShapeGroup"></path>
+                <g id="Group-10">
+                    <mask id="mask-4" sketch:name="Clip 9" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <g id="Clip-9"></g>
+                    <path d="M5.12989385,9.78674699 L5.12989385,9.68855422 C5.12989385,8.99548193 5.81303231,8.43373494 6.65570923,8.43373494 L16.8091554,8.43373494 C17.6518323,8.43373494 18.3349708,8.99548193 18.3349708,9.68855422 L18.3349708,9.78674699 L33.9972015,9.78674699 L29.3917708,25 L7.84615386e-05,25 L5.11864769,9.78674699 L5.12989385,9.78674699 Z" id="Fill-8" fill="#F6A623" sketch:type="MSShapeGroup" mask="url(#mask-4)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

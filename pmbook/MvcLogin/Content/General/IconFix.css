@@ -1,0 +1,98 @@
+﻿.iconFix{
+        padding: 0 !important;
+        margin-top: 50% !important;
+}
+
+.content {
+              position: absolute;
+              top: 15px;
+              right: 0;
+              bottom: 0;
+              width: 100%;
+              left: 0;
+              overflow-y: auto;
+              -webkit-overflow-scrolling: touch;
+              -webkit-overflow-scrolling: -blackberry-touch;
+              -webkit-transition: none;
+              -moz-transition: none;
+              -o-transition: none;
+              transition: none;
+            }
+
+html{
+            background-color:#f3f3f3 !important;
+        }
+        body{
+            background-color:#f3f3f3 !important;
+        }
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, x-ng-cloak, .ng-hide {
+            display: none !important;
+        }
+
+
+        .Active2 {
+            background-color: #B0B7BF;
+        }
+
+        .BackButton {
+            margin: 0px !important;
+            width: 35px !important;
+            height: 35px !important;
+        }
+
+        .normalIcon {
+            line-height: 5 !important;
+            color: white;
+        }
+
+        .transparente {
+            color: rgba(0, 0, 0, 0) !important;
+            z-index: 999 !important;
+        }
+
+        .SideNav {
+            font-size: 12px;
+            margin-left: 7%;
+            margin-right: 7%;
+            margin-top: 20%;
+            border-left: thick solid #8D9399;
+        }
+
+        .linea {
+            margin-top: 25px;
+            height: 550px;
+            border-right: thick solid #8D9399;
+            border-width: 2px;
+        }
+
+        .manita {
+            cursor: pointer;
+        }
+
+        .disabled2 {
+            color: #777 !important;
+            cursor: not-allowed !important;
+            background-color: #eee !important;
+        }
+
+        .contenedor {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        .margintop {
+            margin-top: 36px !important;
+        }
+
+        html, html * {
+          font-family: 'Roboto', sans-serif;
+        }
+
+       a {
+          color: initial !important;
+        }
+
+.IconoNavUser {
+color: #e8141b !important;
+}
+

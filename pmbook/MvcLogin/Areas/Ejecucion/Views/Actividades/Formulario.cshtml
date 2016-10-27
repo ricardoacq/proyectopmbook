@@ -1,0 +1,55 @@
+﻿<div style="color:#00788F" class="modal fade" id="RegistroDiagnosticoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cerrarModalDiagnostico()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Registro de Diagnostico <i class="fa fa-pencil" aria-hidden="true"></i></h4>
+            </div>
+            <div class="modal-body">
+                <div ng-hide="OnServer">
+                    <div class="row" style="padding-top:10px;">
+                        <div class='col-md-3' style="text-align:right"><h4>Descripción: </h4></div>
+                        <div class="col-md-7">
+                            <input class="form-control" placeholder="Descripción..." maxlength="50" ng-model="DIAGNOSTICO.cDiagnostico" ng-class="Obligatorio(DIAGNOSTICO.cDiagnostico)" />
+                        </div>
+                        <div class="col-md-1">
+                            <span style="color:red">*</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class='col-md-3' style="text-align:right"><h4>Dispara alerta sanitaria: </h4></div>
+                        <div class="col-md-7">
+                            <md-switch ng-model="DIAGNOSTICO.bDisparaAlertaSanitaria" aria-label="Switch 1">
+                            </md-switch>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="DIAGNOSTICO.bDisparaAlertaSanitaria">
+                        <div class='col-md-3' style="text-align:right"><h4>Factor de activación: </h4></div>
+                        <div class="col-md-7">
+                            <input class="form-control" placeholder="Factor de activación..." type="number" min="0" ng-model="DIAGNOSTICO.nFactorActivacion" ng-class="Obligatorio(DIAGNOSTICO.nFactorActivacion)" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class='col-md-3' style="text-align:right"><h4>Activo: </h4></div>
+                        <div class="col-md-7">
+                            <md-switch ng-model="DIAGNOSTICO.bActivo" aria-label="Switch 1">
+                            </md-switch>
+                        </div>
+                    </div>
+                    <div style="padding-top:20px" id="Diagnostico_msgerr" class="row">
+
+                    </div>
+                </div>
+                <div ng-show="OnServer">
+                    <div layout="row" layout-sm="column" layout-align="space-around">
+                        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <md-button class="md-raised md-primary" style="color:white" ng-click="ValidaGuardaDiagnostico()" ng-disabled="OnServer">Guardar <i class="fa fa-floppy-o" aria-hidden="true" style="color: white;"></i></md-button>
+                <md-button class="md-raised md-warn" style="color:white" data-dismiss="modal" ng-disabled="OnServer">Cancelar <i class="fa fa-times" aria-hidden="true"></i></md-button>
+            </div>
+        </div>
+    </div>
+</div>

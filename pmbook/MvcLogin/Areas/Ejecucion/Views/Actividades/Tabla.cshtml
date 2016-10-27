@@ -1,0 +1,83 @@
+﻿<script>
+    $(document).ready(function () {
+            $('#datetimepicker11').datepicker();
+       });
+    $(document).ready(function () {
+        $('#datetimepicker12').datepicker();
+    });
+</script>
+<div class="panel-group screen">
+ <div class="panel-heading"><h3>Actividades</h3> </div>
+
+ <div class="panel-collapse in">
+  <div class="panel-body md-10">
+      @* Seleccionar Proyectos *@
+    <div class="col-md-4">
+        <div class="col-md-4"><h4>Filtro: </h4></div>
+        <div class="col-md-8">
+            <input  class="form-control" type="text" placeholder="Buscar..." ng-model="FILTROACTIVIDADES.filtro"/>
+        </div>
+    </div>
+      @* Seleccionar Fecha desde *@
+    <div class="col-md-4">
+        <div class="col-md-4"><h4>Desde: </h4> </div>
+        <div class="col-md-8">
+            <div class='input-group'>
+                <input id="dFechaInicioActividades" class="datepickerInicio form-control" data-date-today-btn="linked" 
+                    data-date-format="dd/mm/yyyy" data-date-language="es" data-date-autoclose="true" type="text" 
+                    ng-model="FILTROACTIVIDADES.dFechaInicio" aria-describedby="basic-addon2">
+                <span onclick="$('#dFechaInicioActividades').focus()" class="input-group-addon" id="basic-addon2" 
+                style="background-color:#337AB7; color:white"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+            </div>
+        </div>
+    </div>
+      @* Seleccionar Fecha hasta *@
+    <div class="col-md-4">
+        <div class="col-md-4"><h4>Hasta: </h4></div>
+        <div class="col-md-8">
+             <div class='input-group'>
+                <input id="dFechaFinActividades" class="datepickerFin form-control" data-date-today-btn="linked" 
+                    data-date-format="dd/mm/yyyy" data-date-language="es" data-date-autoclose="true" type="text" 
+                    ng-model="FILTROACTIVIDADES.dFechaFin" aria-describedby="basic-addon2">
+                <span onclick="$('#dFechaFinActividades').focus()" class="input-group-addon" id="basic-addon2" 
+                style="background-color:#337AB7; color:white"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+            </div>
+        </div>
+    </div>
+      @* Botones buscar, pendientes y exportar *@
+    <div class="col-md-12">
+    <div class="pull-left">
+     <div class="checkbox" style="display: inline-block; margin-right: 10px;">
+         @* Mostrar Control de calidad *@
+       <label>
+        <input type="checkbox" @*ng-model="Ctrl.bMostrarQC"*@ style="height:20px;width: 10%;margin-top: 0px;margin-left:-25px;" class="ng-pristine ng-untouched ng-valid">
+         Mostrar Control de Calidad
+        </label>
+    </div>
+        @* Buscar *@
+    <span class="btn btn-primary"ng-click="LoadActividades()" @*ng-click="Ctrl.ObtenerActividadesFiltradas()*@><i class="fa fa-search"></i> Buscar</span>
+    @* Filtar pendientes *@
+    <span class="btn btn-warning" @*ng-click="actividadesPendientes()"*@><i class="fa fa-exclamation-circle"></i> Solo Pendientes</span>
+    @* Exportar archivos a excel *@
+    <button class="btn btn-info" type="submit"><i class="fa fa-file-excel-o"></i> Exportar a Excel</button>
+     </div>
+    </div>
+      @* Tabla de Actividades *@
+    <div class=" col-md-12" >
+        <div class="row">
+          <div class="gridStyle" ng-grid="gridActividades">
+
+          </div>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            var scope = $('#V_Catalogos').scope();
+            scope.LimpiarFiltroActividades();
+        }, 1000);
+    });
+</script>

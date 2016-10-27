@@ -1,0 +1,230 @@
+﻿@model MvcLogin.Models.UserModel
+@{
+    ViewBag.Title = "Inicio de sesión";
+}
+<link href="../../../../Content/General/style.css" rel="stylesheet" />
+
+
+<section style="margin-top:-50px" ng-app="app" ng-controller="LoginCtrl">
+
+    <div class="form" style="margin-top:110px">
+        <div class="form-toggle"></div>
+        <div class="form-panel one" id="js-section">
+            <div class="form-header-SK">
+				<h1>PMBOOK</h1>
+                <div style="vertical-align: bottom;font-size: 18px;display:inline-block; color:#00B0B3">v0.0.15</div>
+                <h1 class="text-center">Bienvenido</h1>
+            </div>
+            <div class="form-content">
+                <form>
+                    <div class="form-group">
+                        <label for="username">Usuario</label>
+                        <input type="text" id="UserName" name="username" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="Password" name="password" required="required" onkeydown="if (event.keyCode == 13){ document.getElementById('js-btn-LogIn').click();}" />
+                    </div>
+                    <div class="form-group">
+                    </div>
+                    <div class="form-group-SK pull-right">
+                        <button type="submit" class="btn btn-primary-SK" ng-click="Login()">Iniciar sesión</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="form-panel two-SK">
+        </div>
+    </div>
+</section>
+
+
+
+<script>
+
+    var app = angular.module('app', ['ngMaterial']);
+
+    app.config(function ($mdThemingProvider) {
+        var PrimarySK = {
+        	'50': '#29dcff',
+        	'100': '#10d7ff',
+        	'200': '#00cdf5',
+        	'300': '#00b8dc',
+        	'400': '#00a2c2',
+        	'500': '#008DA9',
+        	'600': '#00788f',
+        	'700': '#006276',
+        	'800': '#004d5c',
+        	'900': '#003843',
+        	'A100': '#43e0ff',
+        	'A200': '#5ce4ff',
+        	'A400': '#76e8ff',
+        	'A700': '#002329',
+            'contrastDefaultColor': 'light',
+        };
+        $mdThemingProvider.definePalette('PrimarySK', PrimarySK);
+
+        var WarnSK = {
+            '50': '#f5de96',
+            '100': '#f2d77f',
+            '200': '#f0d068',
+            '300': '#eec850',
+            '400': '#ebc139',
+            '500': '#E9BA22',
+            '600': '#dcad16',
+            '700': '#c49b14',
+            '800': '#ad8811',
+            '900': '#96760f',
+            'A100': '#f7e5ad',
+            'A200': '#f9edc4',
+            'A400': '#fbf4dc',
+            'A700': '#7f640d',
+            'contrastDefaultColor': 'light',
+        };
+
+        $mdThemingProvider.definePalette('WarnSK', WarnSK);
+
+        $mdThemingProvider.theme('default')
+            .primaryPalette('PrimarySK')
+            .warnPalette('WarnSK')
+        
+    });
+
+    app.controller('LoginCtrl', ['$http', '$scope', '$filter', '$q', '$timeout', '$log', '$mdDialog', '$mdMedia', '$mdToast', function ($http, $scope, $filter, $q, $timeout, $log, $mdDialog, $mdMedia, $mdToast) {
+        $scope.Login = function () {
+            $http({
+                url: "/User/LogIn",
+                method: "POST",
+                dataType: "json",
+                params: {
+                    'cLogin': $("#UserName").val(),
+                    'Password': $("#Password").val()
+                },
+            }).success(function (response) {
+                debugger
+                if (!response.bError) {
+                    window.location.href = response.url;
+                }
+                else {
+                    $scope.MensajeGenerico("Alerta!", "Usuario o contraseña incorrecta");
+                }
+
+            }).error(function (error) {
+                $scope.MensajeGenerico("Alerta!", "Usuario o contraseña incorrecta");
+            });
+        }
+
+        $scope.Registro = function (ev) {
+            var confirm = $mdDialog.prompt()
+               .parent(angular.element(document.querySelector('#Body_Layout')))
+              .title('Registro para el portal de servicios')
+              .textContent('Ingresa tu clave ERP para enviarte un correo de confirmacion.')
+              .placeholder('Clave ERP')
+              .ariaLabel('Clave ERP')
+              .ok('Registrar!')
+              .cancel('Cancelar');
+            $mdDialog.show(confirm).then(function (result) {
+                debugger
+                $scope.RegistroERP(result);
+            }, function () {
+
+            });
+
+
+        }
+
+        $scope.CambioPassword = function () {
+            var confirm = $mdDialog.prompt()
+                .parent(angular.element(document.querySelector('#Body_Layout')))
+              .title('Olvidaste tu password?')
+              .textContent('Ingresa tu clave ERP o tu Email para enviarte un correo de recuperacion.')
+              .placeholder('Clave ERP o Email')
+              .ariaLabel('Clave ERP o Email')
+              .ok('Recuperar!')
+              .cancel('Cancelar');
+            $mdDialog.show(confirm).then(function (result) {
+                debugger
+                $scope.Cambio(result);
+
+
+            }, function () {
+
+            });
+
+
+        }
+
+        $scope.MensajeGenerico = function (Encabezado, Texto) {
+            $mdDialog.show(
+                  $mdDialog.alert()
+                    .parent(angular.element(document.querySelector('#Body_Layout')))
+                    .clickOutsideToClose(true)
+                    .title(Encabezado)
+                    .textContent(Texto)
+                    .ariaLabel('Alert Dialog Demo')
+                    .ok('Entendido')
+                );
+
+        }
+
+        $scope.RegistroERP = function (clave) {
+            debugger
+            $http({
+                url: "/User/RegistroERP",
+                method: "POST",
+                dataType: "json",
+                params: {
+                    'cClaveERP': clave
+                },
+            }).success(function (response) {
+                debugger
+                if (!response.bError) {
+                    $scope.MensajeGenerico(response.cNombre, response.cMensaje);
+                }
+                else {
+                    $scope.MensajeGenerico("Alerta!", response.cMensaje);
+                }
+
+            }).error(function (error) {
+                $scope.MensajeGenerico("Alerta!", "Usuario o contraseña incorrecta");
+            });
+        }
+
+        $scope.Cambio = function (clave) {
+            debugger
+            $http({
+                url: "/User/CambioPassword",
+                method: "POST",
+                dataType: "json",
+                params: {
+                    'cClaveERP': clave
+                },
+            }).success(function (response) {
+                debugger
+                if (!response.bError) {
+                    $scope.MensajeGenerico(response.cNombre, response.cMensaje);
+                }
+                else {
+                    $scope.MensajeGenerico("Alerta!", response.cMensaje);
+                }
+
+            }).error(function (error) {
+                $scope.MensajeGenerico("Alerta!", "Usuario o contraseña incorrecta");
+            });
+
+        }
+
+        $scope.showActionToast = function (mensaje) {
+            var pinTo = "left bottom right";
+            var toast = $mdToast.simple()
+              .parent(angular.element(document.querySelector('#js-section')))
+              .textContent(mensaje)
+              .action('Ok')
+              .highlightAction(true)
+              .highlightClass('md-primary')
+              .position(pinTo);
+            $mdToast.show(toast).then(function (response) {
+            });
+        };
+    }]);
+</script>

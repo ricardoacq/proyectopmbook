@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div id="wrapper">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper" style="background-color:#324eed;">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand" style="color:white">
+                <a style="color:white !important">
+                    Menu
+                </a>
+            </li>
+            <li>
+                <a  onclick="CambiarVista(1)" style="color:white !important">Actividades</a>
+            </li>
+            <li>
+                <a  onclick="CambiarVista(2)" style="color:white !important">Incidentes</a>
+            </li>
+            <li>
+                <a   style="color:white !important">Tablero de Reporte</a>
+            </li>
+            <li>
+                <a   style="color:white !important">DashBord-Resumen</a>
+            </li>
+            <li>
+                <a   style="color:white !important">DashBord-Detallado</a>
+            </li>
+            <li>
+                <a   style="color:white !important">DashBord-Registro</a>
+            </li>
+            <li>
+                <a   style="color:white !important">Bitacora</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <a href="#menu-toggle" style="color:white !important; background-color: #324eed !important" onclick="ChangeMenuAside()" class="btn" id="menu-toggle"><i id="menuHide" class="fa fa-arrow-circle-left" aria-hidden="true"></i><i id="menuShow" class="fa fa-arrow-circle-right" aria-hidden="true" style="display:none"></i></a>
+            </div>
+            <div class="row">
+                <div class="container" style="padding-bottom:20px;" ng-app="App" id="V_Catalogos" ng-controller="MainCtrl as CC" ng-cloak>
+                    <div ng-show="MENU == MENUS.ACTIVIDADES">
+                        @Html.Partial("~/Areas/Ejecucion/Views/Actividades/Tabla.cshtml")
+                    </div>
+                    <div ng-show="MENU == MENUS.INCIDENTES">
+                        @Html.Partial("~/Areas/Ejecucion/Views/Incidentes/Tabla.cshtml")
+                    </div>
+                    @*Modales*@
+                    @Html.Partial("~/Areas/Ejecucion/Views/Actividades/Formulario.cshtml")
+                    @Html.Partial("~/Areas/Ejecucion/Views/Incidentes/Formulario.cshtml")
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+<script>
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>

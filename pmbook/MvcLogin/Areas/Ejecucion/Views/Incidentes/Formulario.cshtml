@@ -1,0 +1,132 @@
+﻿<div style="color:#00788F" class="modal fade" id="RegistroIncidenteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document" style="width: 80%; left: 0 !important">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cerrarModalIncidente()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Alta de Incidente <i class="fa fa-pencil" aria-hidden="true"></i></h4>
+            </div>
+            <div class="modal-body">
+                <div ng-hide="OnServer">
+                    <div class="row" style="padding-top:10px;">
+                        <div class='col-md-2' style="text-align:right"><h4>Cliente: </h4></div>
+                        <div class="col-md-4">
+                            <select class="form-control"><option value="" ng-hide="true" class="ng-hide">Seleccione</option></select>
+                        </div>
+                       <div class='col-md-2' style="text-align:right"><h4>Producto: </h4></div>
+                        <div class="col-md-4">
+                            <select class="form-control"><option value="" ng-hide="true" class="ng-hide">Seleccione</option></select>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class='col-md-2' style="text-align:right"><h4>Fecha Registro: </h4></div>
+                        <div class="col-md-4">
+                            <input class="form-control" placeholder="" type="number" min="0" />
+                        </div>
+                        <div class='col-md-2' style="text-align:right"><h4>Version: </h4></div>
+                        <div class="col-md-4">
+                             <select class="form-control"><option value="" ng-hide="true" class="ng-hide">Seleccione</option></select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class='col-md-2' style="text-align:right"></h4></div>
+                        <div class="col-md-4">
+                            
+                        </div>
+                        <div class='col-md-2' style="text-align:right"><h4>Modulo: </h4></div>
+                        <div class="col-md-4">
+                             <select class="form-control"><option value="" ng-hide="true" class="ng-hide">Seleccione</option></select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class='col-md-2' style="text-align:right"><h4></h4></div>
+                        <div class="col-md-4">
+                         
+                        </div>
+                        <div class='col-md-2' style="text-align:right"><h4>Componente: </h4></div>
+                        <div class="col-md-4">
+                             <select class="form-control"><option value="" ng-hide="true" class="ng-hide">Seleccione</option></select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class='col-md-2' style="text-align:right"><h4>Incidente: </h4></div>
+                        <div class="col-md-10">
+                             <input class="form-control" placeholder="Nombre de Incidente" type="number" min="0" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class='col-md-2' style="text-align:right"><h4>Tipo Incidente: </h4></div>
+                        <div class="col-md-4">
+                             <select class="form-control"><option value="" ng-hide="true" class="ng-hide">Seleccione</option></select>
+                        </div>
+                        <div class="col-md-3"><input type="checkbox"/><label>Pasa Control de Calidad</label></div>
+                        <div class="col-md-3"><input type="checkbox"/><label>Cobrable</label></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2"><h4>Descripcion</h4></div>
+                        <div class="col-md-10"><textarea class="form-control ng-pristine ng-valid ng-touched" 
+                            style="resize:vertical;"  rows="10" name="tDescripcion" 
+                            ></textarea></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="col-md-4"><h4>Tiempo Estimado</h4></div>
+                            <div class="col-md-4"><div class="input-group">
+                                        <input class="form-control text-right ng-pristine ng-untouched ng-valid ng-valid-required"
+                                             only-numbers="" min="0" 
+                                            name="nTiempoHoras"></input>
+                                        <span class="input-group-addon">hrs.</span>
+                                    </div></div>
+                            <div class="col-md-4"><div class="input-group">
+                                        <input class="form-control text-right ng-pristine ng-untouched ng-valid ng-valid-required"
+                                             only-numbers="" min="0" 
+                                            name="nTiempoMinutos"></input>
+                                        <span class="input-group-addon">hrs.</span>
+                                    </div></div>
+                        </div>
+                         <div class="col-md-6">
+                            <div class="col-md-4"><h4>Asignar a</h4></div>
+                            <div class="col-md-8"><select class="form-control">
+                                <option value="" ng-hide="true" class="ng-hide">Seleccione</option></select>
+                            </div>
+                        </div>
+                        </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                         <div class="form-group ng-scope">
+                            <div class="col-md-4 text-right">
+                                <label class="control-label">Anexar archivos</label>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="input-group ng-pristine ng-untouched ng-valid" ng-file-select="" ng-multiple="true">
+                                    <input class="form-control" placeholder="Examinar..." style="cursor:pointer !important;">
+                                    <span class="input-group-btn">
+                                       <button class="btn btn-default" style="height:34px;border: 1px solid #cbd5dd;">
+                                          <i class="fa fa-cloud-upload" style="font-size:20px;"></i>
+                                       </button>
+                                    </span>
+                                </div>
+                                <ul style="margin-top:5px;padding-left:0px !important;">
+            
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
+
+                    </div>
+
+                    </div>
+                 <div ng-show="OnServer">
+                    <div layout="row" layout-sm="column" layout-align="space-around">
+                        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+                    </div>
+                </div>
+                </div>
+            <div class="modal-footer">
+                <md-button class="md-raised md-primary" style="color:white"  ng-disabled="OnServer">Guardar <i class="fa fa-floppy-o" aria-hidden="true" style="color: white;"></i></md-button>
+                <md-button class="md-raised md-warn" style="color:white" data-dismiss="modal" ng-disabled="OnServer">Cancelar <i class="fa fa-times" aria-hidden="true"></i></md-button>
+            </div>
+        </div>
+    </div>
+ </div>
