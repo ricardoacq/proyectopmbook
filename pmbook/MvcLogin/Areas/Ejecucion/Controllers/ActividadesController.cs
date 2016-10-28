@@ -7,7 +7,7 @@ namespace MvcLogin.Areas.Ejecucion.Controllers
     public class ActividadesController : Controller
     {
         //
-        // GET: /Configuracion/Actividades/
+        // GET: /Ejecucion/Actividades/
 
         public ActionResult Index()
         {
@@ -37,9 +37,22 @@ namespace MvcLogin.Areas.Ejecucion.Controllers
 
             return Json(new
             {
-                Actividad = Result.Actividad,
+                Actividades = Result.Actividades,
                 bError    = Result.bError,
                 msgErr    = Result.msgErr
+            }, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult ObtenerActividades_Grid(int nFechaInicial, int nFechaFinal)
+        {
+            PMBookDataContext DB = new PMBookDataContext();
+            ActividadesModel model = new ActividadesModel();
+            DTO_Actividad_Result Result = model.ObtenerActividades_Grid(DB, nFechaInicial, nFechaFinal);
+
+            return Json(new
+            {
+                Actividades_Grid = Result.Actividades_Grid,
+                bError = Result.bError,
+                msgErr = Result.msgErr
             }, JsonRequestBehavior.AllowGet);
         }
 

@@ -1,5 +1,5 @@
 ﻿var BaseMVC = angular.module('BaseMVC');
-BaseMVC.controller('MainCtrl', ['$http', '$scope', '$timeout', '$mdDialog', 'Upload', function ($http, $scope, $timeout, $mdDialog, $upload) {
+BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog', 'Upload', function ($http, $scope, $timeout, $mdDialog, $upload) {
 
     //VARIABLES GLOBALES
     
@@ -61,7 +61,12 @@ BaseMVC.controller('MainCtrl', ['$http', '$scope', '$timeout', '$mdDialog', 'Upl
 
     var HOY = new Date(); //Hoy
     var OLDMONTH = new Date(new Date(HOY).setMonth(HOY.getMonth() - 1)); // un mes atras
-
+    $scope.FILTROACTIVIDADES = { //Inicializamos la fecha de las actividades
+        dFechaInicio: OLDMONTH,
+        dFechaFin: HOY,
+        filtro: ''
+    };
+    $scope.lstActividades = [];
     //Actividades
     $scope.LimpiarFiltroActividades = function () {
         $scope.FILTROACTIVIDADES = {
@@ -72,6 +77,7 @@ BaseMVC.controller('MainCtrl', ['$http', '$scope', '$timeout', '$mdDialog', 'Upl
         $('.datepickerFin').datepicker('update', HOY);
         $('.datepickerInicio').datepicker('update', OLDMONTH);
     }; $scope.LimpiarFiltroActividades();
+
     $scope.ActividadesSum = function (row) {
         var res = 0;
 
@@ -94,10 +100,21 @@ BaseMVC.controller('MainCtrl', ['$http', '$scope', '$timeout', '$mdDialog', 'Upl
 
         return (calculateAggChildren(row));
     };
+
+    //Declaracion de parametros de grid
+    $scope.gridActividades = {
+        data: 'lstActividades',
+        filterOptions: $scope.FILTROACTIVIDADES,
+        showGroupPanel: true,
+        jqueryUIDraggable: true,
+        showFooter: true,
+        aggregateTemplate: '<div ng-click="row.toggleExpand()" " ng-style="rowStyle(row)" class="ngAggregate"> <span class="ngAggregateText">{{row.label CUSTOM_FILTERS}} (Total Consultas: {{ActividadesSum(row)}})</span> <div class="{{row.aggClass()}}"></div> </div>',
+    };
+
     $scope.LoadActividades = function () {
         $http({
             method: 'POST',
-            url: '/Ejecucion/Actividades/ObtenerActividades',
+            url: '/Ejecucion/Actividades/ObtenerActividades_Grid',
             data: {
                 nFechaInicial: FechaJuliana($scope.FILTROACTIVIDADES.dFechaInicio),
                 nFechaFinal: FechaJuliana($scope.FILTROACTIVIDADES.dFechaFin)
@@ -107,18 +124,13 @@ BaseMVC.controller('MainCtrl', ['$http', '$scope', '$timeout', '$mdDialog', 'Upl
                 swal('Error', response.msgErr, 'error');
             }
             else {
-                $scope.lstActividades = response.Actividades;
-                $scope.gridActividades = {
-                    data: 'lstActividades',
-                    showGroupPanel: true,
-                    jqueryUIDraggable: true,
-                    showFooter: true,
-                    aggregateTemplate: '<div ng-click="row.toggleExpand()" ng-style="rowStyle(row)" class="ngAggregate"> <span class="ngAggregateText">{{row.label CUSTOM_FILTERS}} (Total Consultas: {{ActividadesSum(row)}})</span> <div class="{{row.aggClass()}}"></div> </div>',
-                };
+                $scope.lstActividades = response.Actividades_Grid;
             }
         }).error(function (response, status, header, config) {
         });
     };
+
+
     //*******************************************************************************************************************
     $scope.ObtenerActividad = function (nActividad) {
         $http({
@@ -161,11 +173,7 @@ BaseMVC.controller('MainCtrl', ['$http', '$scope', '$timeout', '$mdDialog', 'Upl
    
     //*******************************************************************************************************************
 
-    //buscar
-    $scope.vertabla = false;
-    $scope.buscaract = function () {//aqui utilizare la funcion buscar actividad
-        $scope.vertabla = true;
-    }
+
 
 }]);
 

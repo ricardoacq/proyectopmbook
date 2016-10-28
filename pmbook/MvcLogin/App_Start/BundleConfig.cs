@@ -85,7 +85,7 @@ namespace MvcLogin
                    "~/Scripts/fileinput.js",
                    "~/Scripts/canvasjs.js",
                    "~/Scripts/ui-grid.js",
-                   "~/Scripts/ng-grid.js",
+                   //"~/Scripts/ng-grid.js",
                    "~/Scripts/moment.js"
                    ));
             //Areas

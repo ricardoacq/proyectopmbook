@@ -82,6 +82,6 @@ C:\proyecto\pmbook\MvcLogin\bin\es\System.Web.Razor.resources.dll
 C:\proyecto\pmbook\MvcLogin\bin\es\System.Web.WebPages.resources.dll
 C:\proyecto\pmbook\MvcLogin\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\proyecto\pmbook\MvcLogin\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\proyecto\pmbook\MvcLogin\obj\Debug\MvcLogin.csprojResolveAssemblyReference.cache
 C:\proyecto\pmbook\MvcLogin\obj\Debug\MvcLogin.dll
 C:\proyecto\pmbook\MvcLogin\obj\Debug\MvcLogin.pdb
+C:\proyecto\pmbook\MvcLogin\obj\Debug\MvcLogin.csprojResolveAssemblyReference.cache

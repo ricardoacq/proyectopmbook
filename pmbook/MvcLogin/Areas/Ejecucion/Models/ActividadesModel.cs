@@ -28,32 +28,32 @@ namespace MvcLogin.Areas.Ejecucion.Models
                                       && c.nEmisor == DataSesion.nEmisor
                                       select new DTO_Actividad()
                                       {
-                                          bActivo                             = c.bActivo,
-                                          bFavorito                           = c.bFavorito,
-                                          bIncidenteCobrable                  = c.bIncidenteCobrable,
-                                          bIncidente                          = c.bIncidente,
-                                          bRequiereQC                         = (bool)c.bRequiereQC,
-                                          bSprintFavorito                     = c.bSprintFavorito,
-                                          bTerminado                          = c.bTerminado,
-                                          cClaveERP                           = c.cClaveERP,
-                                          cDescripcion                        = c.cDescripcion,
-                                          dFechaCierre                        = (DateTime)c.dFechaCierre,
-                                          nActividad                          = c.nActividad,
-                                          nActividadForward                   = (int)c.nActvidadForward,
-                                          nEmisor                             = (int)c.nEmisor,
-                                          nAvancePorcentualEstimado           = (double)c.nAvancePorcentualEstimado,
-                                          nEstatus                            = c.nEstatus,
+                                          bActivo = c.bActivo,
+                                          bFavorito = c.bFavorito,
+                                          bIncidenteCobrable = c.bIncidenteCobrable,
+                                          bIncidente = c.bIncidente,
+                                          bRequiereQC = (bool)c.bRequiereQC,
+                                          bSprintFavorito = c.bSprintFavorito,
+                                          bTerminado = c.bTerminado,
+                                          cClaveERP = c.cClaveERP ?? string.Empty,
+                                          cDescripcion = c.cDescripcion,
+                                          cFechaCierre = (c.dFechaCierre != null) ? ((DateTime)c.dFechaCierre).ToShortDateString() : "Sin fecha de cierre",
+                                          nActividad = c.nActividad,
+                                          nActividadForward = c.nActvidadForward ?? 0,
+                                          nEmisor = (int)c.nEmisor,
+                                          nAvancePorcentualEstimado = (double)c.nAvancePorcentualEstimado,
+                                          nEstatus = c.nEstatus,
                                           nEstimacionAutorizadaAdicionalHoras = (double)c.nEstimacionAutorizadaAdicionalHoras,
-                                          nEstimacionAutorizadaHoras          = (double)c.nEstimacionAutorizadaHoras,
-                                          nEstimacionAutorizadaUE             = (double)c.nEstimacionAutorizadaUE,
-                                          nEstimacionBaseUE                   = (double)c.nEstimacionBaseUE,
-                                          nEstimacionSolicitadaUE             = (double)c.nEstimacionSolicitadaUE,
-                                          nNivelAsociacion                    = c.nNivelAsociacion,
-                                          nTrabajoRealizadoAdicionalHoras     = (double)c.nTrabajoRealizadoAdicionalHoras,
-                                          nTrabajoRealizadoHoras              = (double)c.nTrabajoRealizadoHoras,
-                                          nTrabajoRestanteHoras               = (double)c.nTrabajoRestanteHoras,
-                                          nVuelta                             = c.nVuelta,
-                                          tDescripcion                        = c.tDescripcion 
+                                          nEstimacionAutorizadaHoras = (double)c.nEstimacionAutorizadaHoras,
+                                          nEstimacionAutorizadaUE = (double)c.nEstimacionAutorizadaUE,
+                                          nEstimacionBaseUE = (double)c.nEstimacionBaseUE,
+                                          nEstimacionSolicitadaUE = (double)c.nEstimacionSolicitadaUE,
+                                          nNivelAsociacion = c.nNivelAsociacion,
+                                          nTrabajoRealizadoAdicionalHoras = (double)c.nTrabajoRealizadoAdicionalHoras,
+                                          nTrabajoRealizadoHoras = (double)c.nTrabajoRealizadoHoras,
+                                          nTrabajoRestanteHoras = (double)c.nTrabajoRestanteHoras,
+                                          nVuelta = c.nVuelta,
+                                          tDescripcion = c.tDescripcion   
                                       }).SingleOrDefault();
             }
             catch (Exception e)
@@ -86,14 +86,14 @@ namespace MvcLogin.Areas.Ejecucion.Models
                                            bFavorito                           = c.bFavorito,
                                            bIncidenteCobrable                  = c.bIncidenteCobrable,
                                            bIncidente                          = c.bIncidente,
-                                           bRequiereQC                         = (bool)c.bRequiereQC,
+                                           bRequiereQC                         = c.bRequiereQC ?? false,
                                            bSprintFavorito                     = c.bSprintFavorito,
                                            bTerminado                          = c.bTerminado,   
-                                           cClaveERP                           = c.cClaveERP,
+                                           cClaveERP                           = c.cClaveERP ?? string.Empty,
                                            cDescripcion                        = c.cDescripcion,
-                                           dFechaCierre                        = (DateTime)c.dFechaCierre, 
+                                           cFechaCierre                        = (c.dFechaCierre != null) ? ((DateTime) c.dFechaCierre).ToShortDateString() : "Sin fecha de cierre", 
                                            nActividad                          = c.nActividad,
-                                           nActividadForward                   = (int)c.nActvidadForward,
+                                           nActividadForward                   = c.nActvidadForward ?? 0,
                                            nEmisor                             = (int)c.nEmisor,
                                            nAvancePorcentualEstimado           = (double)c.nAvancePorcentualEstimado,
                                            nEstatus                            = c.nEstatus,
@@ -207,44 +207,110 @@ namespace MvcLogin.Areas.Ejecucion.Models
             }
             return Result;
         }
-    }
 
+        public DTO_Actividad_Result ObtenerActividades_Grid(PMBookDataContext DB, int nFechaInicial, int nFechaFinal)
+        {
+            DTO_Actividad_Result Result = new DTO_Actividad_Result()
+            {
+                bError = false,
+                msgErr = string.Empty
+            };
+
+            try
+            {
+                Result.Actividades_Grid = (from a  in DB.PMB_Actividades
+                                           join p  in DB.PMB_Proyectos
+                                           on a.nProyecto equals p.nProyecto
+                                           join m  in DB.PMB_ProyectosModulos
+                                           on a.nProyectoModulo equals m.nProyectoModulo
+                                           join c  in DB.PMB_ProyectosComponentes
+                                           on a.nProyectoComponente equals c.nProyectoComponente
+                                           join pc in DB.PMB_ProyectosConsultores 
+                                           on p.nProyecto equals pc.nProyecto
+                                           join u  in DB.ADSUM_Usuarios 
+                                           on pc.nAdsumUsuario equals u.nAdsumUsuario
+                                           where a.nEmisor == DataSesion.nEmisor
+                                            && (a.bActivo)
+                                           select new DTO_Actividad_Grid()
+                                            {
+                                            ID               =p.cClaveERP,
+                                            Proyecto         =p.cDescripcion,
+                                            Modulo           =m.cDescripcion,
+                                            Componente       =c.cDescripcion,
+                                            Actividad        =a.cDescripcion,
+                                            Tiempoautorizado = (double)a.nEstimacionAutorizadaUE,
+                                            TrabajoRestante  = (double)a.nTrabajoRestanteHoras,
+                                            Avance           = (double)a.nAvancePorcentualEstimado,
+                                            Vuelta           =a.nVuelta,
+                                            Estatus          =a.nEstatus,
+                                            Consultor        =u.cNombre,
+                                            FechaRegistro    =a.dFecha_Registro.ToString()
+                                            }).OrderBy(x => x.Proyecto).ToList();
+            }
+            catch (Exception e)
+            {
+                Result.bError = true;
+                Result.msgErr = e.ToString();
+            }
+
+            return Result;
+        }
+    }
+    public class DTO_Actividad_Grid
+    {
+        public string ID  { get; set; }
+        public string Proyecto { get; set; }
+        public string Modulo { get; set; }
+        public string Componente { get; set; }
+        public string Actividad { get; set; }
+        public double Tiempoautorizado { get; set; }
+        public double TrabajoRestante { get; set; }
+        public double Avance { get; set; }
+        public int Vuelta { get; set; }
+        public byte Estatus { get; set; }
+        public string Consultor { get; set; }
+        public string FechaRegistro { get; set; }
+
+
+    }
     public class DTO_Actividad
     {
         
-        public bool bActivo                               { get; set; }
-        public bool bFavorito                             { get; set; }
-        public bool bIncidenteCobrable                    { get; set; }
-        public bool bIncidente                            { get; set; }
-        public bool bRequiereQC                           { get; set; }
-        public bool bSprintFavorito                       { get; set; }
-        public bool bTerminado                            { get; set; }
-        public byte nEstatus                              { get; set; }
-        public byte nNivelAsociacion                      { get; set; }
-        public int nActividad                             { get; set; }
-        public int nActividadForward                      { get; set; }
-        public int nEmisor                                { get; set; }
-        public int nVuelta                                { get; set; }
-        public double nAvancePorcentualEstimado           { get; set; }
+        public bool bActivo { get; set; }
+        public bool bFavorito{ get; set; }
+        public bool bIncidenteCobrable{ get; set; }
+        public bool bIncidente { get; set; }
+        public bool bRequiereQC { get; set; }
+        public bool bSprintFavorito { get; set; }
+        public bool bTerminado { get; set; }
+        public byte nEstatus { get; set; }
+        public byte nNivelAsociacion { get; set; }
+        public int nActividad { get; set; }
+        public int nActividadForward { get; set; }
+        public int nEmisor { get; set; }
+        public int nVuelta { get; set; }
+        public double nAvancePorcentualEstimado { get; set; }
         public double nEstimacionAutorizadaAdicionalHoras { get; set; }
-        public double nEstimacionAutorizadaHoras          { get; set; }
-        public double nEstimacionAutorizadaUE             { get; set; }
-        public double nEstimacionBaseUE                   { get; set; }
-        public double nEstimacionSolicitadaUE             { get; set; }
-        public double nTrabajoRealizadoAdicionalHoras     { get; set; }
-        public double nTrabajoRealizadoHoras              { get; set; }
-        public double nTrabajoRestanteHoras               { get; set; }
-        public string cClaveERP                           { get; set; }
-        public string cDescripcion                        { get; set; }
-        public string tDescripcion                        { get; set; }
-        public DateTime dFechaCierre                      { get; set; }
+        public double nEstimacionAutorizadaHoras { get; set; }
+        public double nEstimacionAutorizadaUE { get; set; }
+        public double nEstimacionBaseUE { get; set; }
+        public double nEstimacionSolicitadaUE { get; set; }
+        public double nTrabajoRealizadoAdicionalHoras { get; set; }
+        public double nTrabajoRealizadoHoras { get; set; }
+        public double nTrabajoRestanteHoras{ get; set; }
+        public string cClaveERP { get; set; }
+        public string cDescripcion { get; set; }
+        public string tDescripcion { get; set; }
+        public DateTime dFechaCierre { get; set; }
+        public string cFechaCierre{ get; set; }
 
     }
     public class DTO_Actividad_Result
     {
-        public bool bError                     { get; set; }
-        public string msgErr                   { get; set; }
-        public DTO_Actividad Actividad         { get; set; }
+        public bool bError { get; set; }
+        public string msgErr { get; set; }
+        public DTO_Actividad Actividad { get; set; }
         public List<DTO_Actividad> Actividades { get; set; }
+        public List<DTO_Actividad_Grid> Actividades_Grid { get; set; }
     }
 }

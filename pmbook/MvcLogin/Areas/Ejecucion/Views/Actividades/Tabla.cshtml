@@ -1,12 +1,4 @@
-﻿<script>
-    $(document).ready(function () {
-            $('#datetimepicker11').datepicker();
-       });
-    $(document).ready(function () {
-        $('#datetimepicker12').datepicker();
-    });
-</script>
-<div class="panel-group screen">
+﻿<div class="panel-group screen">
  <div class="panel-heading"><h3>Actividades</h3> </div>
 
  <div class="panel-collapse in">
@@ -15,7 +7,7 @@
     <div class="col-md-4">
         <div class="col-md-4"><h4>Filtro: </h4></div>
         <div class="col-md-8">
-            <input  class="form-control" type="text" placeholder="Buscar..." ng-model="FILTROACTIVIDADES.filtro"/>
+            <input  class="form-control" type="text" ng-model="FILTROACTIVIDADES.filtro"/>
         </div>
     </div>
       @* Seleccionar Fecha desde *@
@@ -55,15 +47,15 @@
         </label>
     </div>
         @* Buscar *@
-    <span class="btn btn-primary"ng-click="LoadActividades()" @*ng-click="Ctrl.ObtenerActividadesFiltradas()*@><i class="fa fa-search"></i> Buscar</span>
+    <span class="btn btn-primary" ng-click="LoadActividades()"><i class="fa fa-search"></i> Buscar</span>
     @* Filtar pendientes *@
-    <span class="btn btn-warning" @*ng-click="actividadesPendientes()"*@><i class="fa fa-exclamation-circle"></i> Solo Pendientes</span>
+    <span class="btn btn-warning"><i class="fa fa-exclamation-circle"></i> Solo Pendientes</span>
     @* Exportar archivos a excel *@
     <button class="btn btn-info" type="submit"><i class="fa fa-file-excel-o"></i> Exportar a Excel</button>
      </div>
     </div>
       @* Tabla de Actividades *@
-    <div class=" col-md-12" >
+    <div class="col-md-12" >
         <div class="row">
           <div class="gridStyle" ng-grid="gridActividades">
 
