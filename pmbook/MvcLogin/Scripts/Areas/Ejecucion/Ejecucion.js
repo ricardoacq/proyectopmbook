@@ -56,9 +56,6 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
 
     //**********************************************************************************************************************************************************************
     //METODOS ACTIVIDADES//Altas, bajas y cambios ACTIVIDADES
-    
-    
-
     var HOY = new Date(); //Hoy
     var OLDMONTH = new Date(new Date(HOY).setMonth(HOY.getMonth() - 1)); // un mes atras
     $scope.FILTROACTIVIDADES = { //Inicializamos la fecha de las actividades
@@ -101,13 +98,17 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
         return (calculateAggChildren(row));
     };
 
+
+    //opciones de Grid
+
     //Declaracion de parametros de grid
     $scope.gridActividades = {
         data: 'lstActividades',
-        filterOptions: $scope.FILTROACTIVIDADES,
         showGroupPanel: true,
         jqueryUIDraggable: true,
-        showFooter: true,
+       // showFooter: true,
+        showFilter: true,
+        showColumnMenu:true,
         aggregateTemplate: '<div ng-click="row.toggleExpand()" " ng-style="rowStyle(row)" class="ngAggregate"> <span class="ngAggregateText">{{row.label CUSTOM_FILTERS}} (Total Consultas: {{ActividadesSum(row)}})</span> <div class="{{row.aggClass()}}"></div> </div>',
     };
 
@@ -130,6 +131,24 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
         });
     };
 
+    $scope.LoadActividadesInActivas = function () {
+        $http({
+            method: 'POST',
+            url: '/Ejecucion/Actividades/ObtenerActividadesInActivas_Grid',
+            data: {
+                nFechaInicial: FechaJuliana($scope.FILTROACTIVIDADES.dFechaInicio),
+                nFechaFinal: FechaJuliana($scope.FILTROACTIVIDADES.dFechaFin)
+            }
+        }).success(function (response, status, header, config) {
+            if (response.bError) {
+                swal('Error', response.msgErr, 'error');
+            }
+            else {
+                $scope.lstActividades = response.Actividades_Grid;
+            }
+        }).error(function (response, status, header, config) {
+        });
+    };
 
     //*******************************************************************************************************************
     $scope.ObtenerActividad = function (nActividad) {

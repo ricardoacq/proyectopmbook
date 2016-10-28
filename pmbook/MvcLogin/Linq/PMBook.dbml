@@ -194,6 +194,7 @@
       <Association Name="PMB_Proyecto_PMB_ProyectosComponente1" Member="PMB_ProyectosComponente1s" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_ProyectosComponente1" />
       <Association Name="PMB_Proyecto_PMB_ProyectosConsultore1" Member="PMB_ProyectosConsultore1s" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_ProyectosConsultore1" />
       <Association Name="PMB_Proyecto_PMB_ProyectosEstatus" Member="PMB_ProyectosEstatus" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_ProyectosEstatus" />
+      <Association Name="PMB_Proyecto_PMB_ProyectosSprint" Member="PMB_ProyectosSprints" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_ProyectosSprint" />
       <Association Name="PMB_Proyecto_PMB_Proyecto" Member="PMB_Proyecto1" ThisKey="nProyectoSoporte" OtherKey="nProyecto" Type="PMB_Proyecto" IsForeignKey="true" />
       <Association Name="ADSUM_Usuario_PMB_Proyecto" Member="ADSUM_Usuario" ThisKey="nAdsumUsuarioLider" OtherKey="nAdsumUsuario" Type="ADSUM_Usuario" IsForeignKey="true" />
       <Association Name="CTL_EmisoresPMBook_PMB_Proyecto" Member="CTL_EmisoresPMBook" ThisKey="nEmisor" OtherKey="nEmisor" Type="CTL_EmisoresPMBook" IsForeignKey="true" />
@@ -481,6 +482,29 @@
       <Column Name="cMaquina_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
       <Association Name="CTL_EmisoresPMBook_PMB_ProyectosEstatus" Member="CTL_EmisoresPMBook" ThisKey="nEmisor" OtherKey="nEmisor" Type="CTL_EmisoresPMBook" IsForeignKey="true" />
       <Association Name="PMB_Proyecto_PMB_ProyectosEstatus" Member="PMB_Proyecto" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_Proyecto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PMB_ProyectosSprints" Member="PMB_ProyectosSprints">
+    <Type Name="PMB_ProyectosSprint">
+      <Column Name="nEmisor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nSprint" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nProyecto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cNombre" Type="System.String" DbType="VarChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="cDescripcion" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="dFechaInicio" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="dFechaMeta" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="nEstatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="dFecha_Registro" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cMaquina_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_UltimaModificacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="cUsuario_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_Eliminacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Association Name="PMB_Proyecto_PMB_ProyectosSprint" Member="PMB_Proyecto" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_Proyecto" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

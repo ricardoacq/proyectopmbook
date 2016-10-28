@@ -56,6 +56,20 @@ namespace MvcLogin.Areas.Ejecucion.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult ObtenerActividadesInActivas_Grid(int nFechaInicial, int nFechaFinal)
+        {
+            PMBookDataContext DB = new PMBookDataContext();
+            ActividadesModel model = new ActividadesModel();
+            DTO_Actividad_Result Result = model.ObtenerActividadesInActivas_Grid(DB, nFechaInicial, nFechaFinal);
+
+            return Json(new
+            {
+                Actividades_Grid = Result.Actividades_Grid,
+                bError = Result.bError,
+                msgErr = Result.msgErr
+            }, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult EliminarActividad(int nActividad)
         {
             PMBookDataContext DB        = new PMBookDataContext();

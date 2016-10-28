@@ -218,34 +218,82 @@ namespace MvcLogin.Areas.Ejecucion.Models
 
             try
             {
-                Result.Actividades_Grid = (from a  in DB.PMB_Actividades
-                                           join p  in DB.PMB_Proyectos
+                Result.Actividades_Grid = (from a in DB.PMB_Actividades
+                                           join p in DB.PMB_Proyectos
                                            on a.nProyecto equals p.nProyecto
-                                           join m  in DB.PMB_ProyectosModulos
+                                           join m in DB.PMB_ProyectosModulos
                                            on a.nProyectoModulo equals m.nProyectoModulo
-                                           join c  in DB.PMB_ProyectosComponentes
+                                           join c in DB.PMB_ProyectosComponentes
                                            on a.nProyectoComponente equals c.nProyectoComponente
-                                           join pc in DB.PMB_ProyectosConsultores 
+                                           join pc in DB.PMB_ProyectosConsultores
                                            on p.nProyecto equals pc.nProyecto
-                                           join u  in DB.ADSUM_Usuarios 
+                                           join u in DB.ADSUM_Usuarios
                                            on pc.nAdsumUsuario equals u.nAdsumUsuario
                                            where a.nEmisor == DataSesion.nEmisor
                                             && (a.bActivo)
                                            select new DTO_Actividad_Grid()
-                                            {
-                                            ID               =p.cClaveERP,
-                                            Proyecto         =p.cDescripcion,
-                                            Modulo           =m.cDescripcion,
-                                            Componente       =c.cDescripcion,
-                                            Actividad        =a.cDescripcion,
-                                            Tiempoautorizado = (double)a.nEstimacionAutorizadaUE,
-                                            TrabajoRestante  = (double)a.nTrabajoRestanteHoras,
-                                            Avance           = (double)a.nAvancePorcentualEstimado,
-                                            Vuelta           =a.nVuelta,
-                                            Estatus          =a.nEstatus,
-                                            Consultor        =u.cNombre,
-                                            FechaRegistro    =a.dFecha_Registro.ToString()
-                                            }).OrderBy(x => x.Proyecto).ToList();
+                                           {
+                                               ID = p.cClaveERP,
+                                               Proyecto = p.cDescripcion,
+                                               Modulo = m.cDescripcion,
+                                               Componente = c.cDescripcion,
+                                               Actividad = a.cDescripcion,
+                                               Tiempoautorizado = (double)a.nEstimacionAutorizadaUE,
+                                               TrabajoRestante = (double)a.nTrabajoRestanteHoras,
+                                               Avance = (double)a.nAvancePorcentualEstimado,
+                                               Vuelta = a.nVuelta,
+                                               Estatus = a.nEstatus,
+                                               Consultor = u.cNombre,
+                                               FechaRegistro = a.dFecha_Registro.ToString()
+                                           }).OrderBy(x => x.Actividad).ToList();
+            }
+            catch (Exception e)
+            {
+                Result.bError = true;
+                Result.msgErr = e.ToString();
+            }
+
+            return Result;
+        }
+
+        public DTO_Actividad_Result ObtenerActividadesInActivas_Grid(PMBookDataContext DB, int nFechaInicial, int nFechaFinal)
+        {
+            DTO_Actividad_Result Result = new DTO_Actividad_Result()
+            {
+                bError = false,
+                msgErr = string.Empty
+            };
+
+            try
+            {
+                Result.Actividades_Grid = (from a in DB.PMB_Actividades
+                                           join p in DB.PMB_Proyectos
+                                           on a.nProyecto equals p.nProyecto
+                                           join m in DB.PMB_ProyectosModulos
+                                           on a.nProyectoModulo equals m.nProyectoModulo
+                                           join c in DB.PMB_ProyectosComponentes
+                                           on a.nProyectoComponente equals c.nProyectoComponente
+                                           join pc in DB.PMB_ProyectosConsultores
+                                           on p.nProyecto equals pc.nProyecto
+                                           join u in DB.ADSUM_Usuarios
+                                           on pc.nAdsumUsuario equals u.nAdsumUsuario
+                                           where a.nEmisor == DataSesion.nEmisor
+                                            && !(a.bActivo)
+                                           select new DTO_Actividad_Grid()
+                                           {
+                                               ID = p.cClaveERP,
+                                               Proyecto = p.cDescripcion,
+                                               Modulo = m.cDescripcion,
+                                               Componente = c.cDescripcion,
+                                               Actividad = a.cDescripcion,
+                                               Tiempoautorizado = (double)a.nEstimacionAutorizadaUE,
+                                               TrabajoRestante = (double)a.nTrabajoRestanteHoras,
+                                               Avance = (double)a.nAvancePorcentualEstimado,
+                                               Vuelta = a.nVuelta,
+                                               Estatus = a.nEstatus,
+                                               Consultor = u.cNombre,
+                                               FechaRegistro = a.dFecha_Registro.ToString()
+                                           }).OrderBy(x => x.Actividad).ToList();
             }
             catch (Exception e)
             {
