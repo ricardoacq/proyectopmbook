@@ -156,6 +156,10 @@
       <Association Name="PMB_ProyectosModulo_PMB_Actividade" Member="PMB_ProyectosModulo" ThisKey="nProyectoModulo" OtherKey="nProyectoModulo" Type="PMB_ProyectosModulo" IsForeignKey="true" />
       <Association Name="PMB_ProyectosProceso_PMB_Actividade" Member="PMB_ProyectosProceso" ThisKey="nProyectoProceso" OtherKey="nProyectoProceso" Type="PMB_ProyectosProceso" IsForeignKey="true" />
       <Association Name="PMB_ProyectosComponente1_PMB_Actividade" Member="PMB_ProyectosComponente1" ThisKey="nProyectoComponente" OtherKey="nProyectoComponente" Type="PMB_ProyectosComponente1" IsForeignKey="true" />
+      <Association Name="CTM_Cliente_PMB_Actividade" Member="CTM_Cliente" ThisKey="nCliente" OtherKey="nCliente" Type="CTM_Cliente" IsForeignKey="true" />
+      <Association Name="Ctl_Producto_PMB_Actividade" Member="Ctl_Producto" ThisKey="nProducto" OtherKey="nProducto" Type="Ctl_Producto" IsForeignKey="true" />
+      <Association Name="Ctl_ProductosModulo_PMB_Actividade" Member="Ctl_ProductosModulo" ThisKey="nProductoModulo" OtherKey="nProductoModulo" Type="Ctl_ProductosModulo" IsForeignKey="true" />
+      <Association Name="Ctl_ProductosComponente_PMB_Actividade" Member="Ctl_ProductosComponente" ThisKey="nProductoComponente" OtherKey="nProductoComponente" Type="Ctl_ProductosComponente" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.PMB_Proyectos" Member="PMB_Proyectos">
@@ -199,6 +203,7 @@
       <Association Name="ADSUM_Usuario_PMB_Proyecto" Member="ADSUM_Usuario" ThisKey="nAdsumUsuarioLider" OtherKey="nAdsumUsuario" Type="ADSUM_Usuario" IsForeignKey="true" />
       <Association Name="CTL_EmisoresPMBook_PMB_Proyecto" Member="CTL_EmisoresPMBook" ThisKey="nEmisor" OtherKey="nEmisor" Type="CTL_EmisoresPMBook" IsForeignKey="true" />
       <Association Name="PMB_TiposProyecto_PMB_Proyecto" Member="PMB_TiposProyecto" ThisKey="nTipoProyecto" OtherKey="nTipoProyecto" Type="PMB_TiposProyecto" IsForeignKey="true" />
+      <Association Name="CTM_Cliente_PMB_Proyecto" Member="CTM_Cliente" ThisKey="nCliente" OtherKey="nCliente" Type="CTM_Cliente" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.PMB_ProyectosAsignaciones" Member="PMB_ProyectosAsignaciones">
@@ -259,6 +264,9 @@
       <Association Name="PMB_Proyecto_PMB_ProyectosComponente" Member="PMB_Proyecto" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_Proyecto" IsForeignKey="true" />
       <Association Name="PMB_ProyectosModulo_PMB_ProyectosComponente" Member="PMB_ProyectosModulo" ThisKey="nProyectoModulo" OtherKey="nProyectoModulo" Type="PMB_ProyectosModulo" IsForeignKey="true" />
       <Association Name="CTL_EmisoresPMBook_PMB_ProyectosComponente" Member="CTL_EmisoresPMBook" ThisKey="nEmisor" OtherKey="nEmisor" Type="CTL_EmisoresPMBook" IsForeignKey="true" />
+      <Association Name="Ctl_Producto_PMB_ProyectosComponente" Member="Ctl_Producto" ThisKey="nProducto" OtherKey="nProducto" Type="Ctl_Producto" IsForeignKey="true" />
+      <Association Name="Ctl_ProductosModulo_PMB_ProyectosComponente" Member="Ctl_ProductosModulo" ThisKey="nProductoModulo" OtherKey="nProductoModulo" Type="Ctl_ProductosModulo" IsForeignKey="true" />
+      <Association Name="Ctl_ProductosComponente_PMB_ProyectosComponente" Member="Ctl_ProductosComponente" ThisKey="nProductoComponente" OtherKey="nProductoComponente" Type="Ctl_ProductosComponente" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.PMB_ProyectosConsultores" Member="PMB_ProyectosConsultores">
@@ -383,6 +391,7 @@
       <Association Name="CTL_EmisoresPMBook_PMB_ProyectosComponente1" Member="PMB_ProyectosComponente1s" ThisKey="nEmisor" OtherKey="nEmisor" Type="PMB_ProyectosComponente1" />
       <Association Name="CTL_EmisoresPMBook_PMB_ProyectosConsultore1" Member="PMB_ProyectosConsultore1s" ThisKey="nEmisor" OtherKey="nEmisor" Type="PMB_ProyectosConsultore1" />
       <Association Name="CTL_EmisoresPMBook_PMB_ProyectosEstatus" Member="PMB_ProyectosEstatus" ThisKey="nEmisor" OtherKey="nEmisor" Type="PMB_ProyectosEstatus" />
+      <Association Name="CTL_EmisoresPMBook_Ctl_Producto" Member="Ctl_Productos" ThisKey="nEmisor" OtherKey="nEmisor" Type="Ctl_Producto" />
     </Type>
   </Table>
   <Table Name="dbo.PMB_TiposProyecto" Member="PMB_TiposProyectos">
@@ -433,6 +442,9 @@
       <Association Name="CTL_EmisoresPMBook_PMB_ProyectosComponente1" Member="CTL_EmisoresPMBook" ThisKey="nEmisor" OtherKey="nEmisor" Type="CTL_EmisoresPMBook" IsForeignKey="true" />
       <Association Name="PMB_Proyecto_PMB_ProyectosComponente1" Member="PMB_Proyecto" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_Proyecto" IsForeignKey="true" />
       <Association Name="PMB_ProyectosModulo_PMB_ProyectosComponente1" Member="PMB_ProyectosModulo" ThisKey="nProyectoModulo" OtherKey="nProyectoModulo" Type="PMB_ProyectosModulo" IsForeignKey="true" />
+      <Association Name="Ctl_Producto_PMB_ProyectosComponente1" Member="Ctl_Producto" ThisKey="nProducto" OtherKey="nProducto" Type="Ctl_Producto" IsForeignKey="true" />
+      <Association Name="Ctl_ProductosModulo_PMB_ProyectosComponente1" Member="Ctl_ProductosModulo" ThisKey="nProductoModulo" OtherKey="nProductoModulo" Type="Ctl_ProductosModulo" IsForeignKey="true" />
+      <Association Name="Ctl_ProductosComponente_PMB_ProyectosComponente1" Member="Ctl_ProductosComponente" ThisKey="nProductoComponente" OtherKey="nProductoComponente" Type="Ctl_ProductosComponente" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.PMB_ProyectosConsultores" Member="PMB_ProyectosConsultore1s">
@@ -505,6 +517,93 @@
       <Column Name="dFecha_Eliminacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
       <Column Name="cMaquina_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Association Name="PMB_Proyecto_PMB_ProyectosSprint" Member="PMB_Proyecto" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_Proyecto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTM_Clientes" Member="CTM_Clientes">
+    <Type Name="CTM_Cliente">
+      <Column Name="nEmisor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nCliente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cClaveERP" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="cDescripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="dFecha_Registro" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cMaquina_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_UltimaModificacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="cUsuario_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_Eliminacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Association Name="CTM_Cliente_PMB_Actividade" Member="PMB_Actividades" ThisKey="nCliente" OtherKey="nCliente" Type="PMB_Actividade" />
+      <Association Name="CTM_Cliente_PMB_Proyecto" Member="PMB_Proyectos" ThisKey="nCliente" OtherKey="nCliente" Type="PMB_Proyecto" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Ctl_Productos" Member="Ctl_Productos">
+    <Type Name="Ctl_Producto">
+      <Column Name="nEmisor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProducto" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cDescripcion" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="dFecha_Registro" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cMaquina_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_UltimaModificacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="cUsuario_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_Eliminacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Association Name="Ctl_Producto_PMB_Actividade" Member="PMB_Actividades" ThisKey="nProducto" OtherKey="nProducto" Type="PMB_Actividade" />
+      <Association Name="Ctl_Producto_PMB_ProyectosComponente" Member="PMB_ProyectosComponentes" ThisKey="nProducto" OtherKey="nProducto" Type="PMB_ProyectosComponente" />
+      <Association Name="Ctl_Producto_PMB_ProyectosComponente1" Member="PMB_ProyectosComponente1s" ThisKey="nProducto" OtherKey="nProducto" Type="PMB_ProyectosComponente1" />
+      <Association Name="Ctl_Producto_Ctl_ProductosModulo" Member="Ctl_ProductosModulos" ThisKey="nProducto" OtherKey="nProducto" Type="Ctl_ProductosModulo" />
+      <Association Name="CTL_EmisoresPMBook_Ctl_Producto" Member="CTL_EmisoresPMBook" ThisKey="nEmisor" OtherKey="nEmisor" Type="CTL_EmisoresPMBook" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Ctl_ProductosModulos" Member="Ctl_ProductosModulos">
+    <Type Name="Ctl_ProductosModulo">
+      <Column Name="nEmisor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProductoModulo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cDescripcion" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="dFecha_Registro" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cMaquina_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_UltimaModificacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="cUsuario_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_Eliminacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Association Name="Ctl_ProductosModulo_PMB_Actividade" Member="PMB_Actividades" ThisKey="nProductoModulo" OtherKey="nProductoModulo" Type="PMB_Actividade" />
+      <Association Name="Ctl_ProductosModulo_PMB_ProyectosComponente" Member="PMB_ProyectosComponentes" ThisKey="nProductoModulo" OtherKey="nProductoModulo" Type="PMB_ProyectosComponente" />
+      <Association Name="Ctl_ProductosModulo_PMB_ProyectosComponente1" Member="PMB_ProyectosComponente1s" ThisKey="nProductoModulo" OtherKey="nProductoModulo" Type="PMB_ProyectosComponente1" />
+      <Association Name="Ctl_ProductosModulo_Ctl_ProductosComponente" Member="Ctl_ProductosComponentes" ThisKey="nProductoModulo" OtherKey="nProductoModulo" Type="Ctl_ProductosComponente" />
+      <Association Name="Ctl_Producto_Ctl_ProductosModulo" Member="Ctl_Producto" ThisKey="nProducto" OtherKey="nProducto" Type="Ctl_Producto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Ctl_ProductosComponentes" Member="Ctl_ProductosComponentes">
+    <Type Name="Ctl_ProductosComponente">
+      <Column Name="nEmisor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProductoModulo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nProductoComponente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cDescripcion" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="dFecha_Registro" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cMaquina_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_UltimaModificacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="cUsuario_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_Eliminacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Association Name="Ctl_ProductosComponente_PMB_Actividade" Member="PMB_Actividades" ThisKey="nProductoComponente" OtherKey="nProductoComponente" Type="PMB_Actividade" />
+      <Association Name="Ctl_ProductosComponente_PMB_ProyectosComponente" Member="PMB_ProyectosComponentes" ThisKey="nProductoComponente" OtherKey="nProductoComponente" Type="PMB_ProyectosComponente" />
+      <Association Name="Ctl_ProductosComponente_PMB_ProyectosComponente1" Member="PMB_ProyectosComponente1s" ThisKey="nProductoComponente" OtherKey="nProductoComponente" Type="PMB_ProyectosComponente1" />
+      <Association Name="Ctl_ProductosModulo_Ctl_ProductosComponente" Member="Ctl_ProductosModulo" ThisKey="nProductoModulo" OtherKey="nProductoModulo" Type="Ctl_ProductosModulo" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

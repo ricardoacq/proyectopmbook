@@ -160,11 +160,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Ejecucion\Controllers\EjecucionController.cs" />
     <Compile Include="Areas\Ejecucion\Controllers\ActividadesController.cs" />
-    <Compile Include="Areas\Ejecucion\Controllers\ProyectosController.cs" />
+    <Compile Include="Areas\Ejecucion\Controllers\IncidentesController.cs" />
     <Compile Include="Areas\Ejecucion\Models\EjecucionModel.cs" />
     <Compile Include="Areas\Ejecucion\Models\ActividadesModel.cs" />
     <Compile Include="Areas\Ejecucion\EjecucionAreaRegistration.cs" />
-    <Compile Include="Areas\Ejecucion\Models\ProyectosModel.cs" />
+    <Compile Include="Areas\Ejecucion\Models\IncidentesModel.cs" />
     <Compile Include="Helpers\DTO\DTO_BuquedaSalidas.cs" />
     <Compile Include="Helpers\DTO\DTO_CargaInicialInventarios.cs" />
     <Compile Include="Helpers\DTO\DTO_CentroLogistico.cs" />
@@ -1036,7 +1036,22 @@
     <Content Include="Scripts\Main.js.txt" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\ng-csv-0.3.6\.gitignore" />
+    <Content Include="Scripts\ng-csv-0.3.6\build\ng-csv.js" />
+    <Content Include="Scripts\ng-csv-0.3.6\build\ng-csv.min.js" />
+    <Content Include="Scripts\ng-csv-0.3.6\example\index.html" />
+    <Content Include="Scripts\ng-csv-0.3.6\example\lazy_load.html" />
+    <Content Include="Scripts\ng-csv-0.3.6\Gruntfile.js" />
+    <Content Include="Scripts\ng-csv-0.3.6\karma.conf.js" />
+    <Content Include="Scripts\ng-csv-0.3.6\src\ng-csv\directives\ng-csv.js" />
+    <Content Include="Scripts\ng-csv-0.3.6\src\ng-csv\ng-csv.js" />
+    <Content Include="Scripts\ng-csv-0.3.6\src\ng-csv\services\csv-service.js" />
+    <Content Include="Scripts\ng-csv-0.3.6\test\unit\helper\blobOverwriteForTest.js" />
+    <Content Include="Scripts\ng-csv-0.3.6\test\unit\ngCsv\directives\ngCsv.js" />
+    <Content Include="Scripts\ng-csv-0.3.6\test\unit\ngCsv\ngCsv.js" />
+    <Content Include="Scripts\ng-csv-0.3.6\test\unit\ngCsv\services\csv-service.js" />
     <Content Include="Scripts\ng-file-upload.js" />
+    <Content Include="Scripts\ng-grid-csv-export.js" />
     <Content Include="Scripts\ng-grid.js" />
     <Content Include="Scripts\ng-table.js" />
     <Content Include="Scripts\ng-tags-input.js" />
@@ -1068,6 +1083,16 @@
     <Content Include="Views\Shared\_Nav.cshtml" />
     <Content Include="Views\Shared\_MenuLayout .cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Scripts\ng-csv-0.3.6\.editorconfig" />
+    <Content Include="Scripts\ng-csv-0.3.6\.jshintrc" />
+    <Content Include="Scripts\ng-csv-0.3.6\.travis.yml" />
+    <Content Include="Scripts\ng-csv-0.3.6\bower.json" />
+    <Content Include="Scripts\ng-csv-0.3.6\LICENSE" />
+    <Content Include="Scripts\ng-csv-0.3.6\npm-debug.log" />
+    <Content Include="Scripts\ng-csv-0.3.6\package.json" />
+    <Content Include="Scripts\ng-csv-0.3.6\README.md" />
+    <Content Include="Scripts\ng-csv-0.3.6\src\ng-csv\ng-csv.prefix" />
+    <Content Include="Scripts\ng-csv-0.3.6\src\ng-csv\ng-csv.suffix" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helpers\CrystalReports\" />

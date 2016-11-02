@@ -233,7 +233,7 @@ namespace MvcLogin.Areas.Ejecucion.Models
                                             && (a.bActivo)
                                            select new DTO_Actividad_Grid()
                                            {
-                                               ID = p.cClaveERP,
+                                               ID = a.cClaveERP ?? string.Empty,
                                                Proyecto = p.cDescripcion,
                                                Modulo = m.cDescripcion,
                                                Componente = c.cDescripcion,
@@ -281,7 +281,7 @@ namespace MvcLogin.Areas.Ejecucion.Models
                                             && !(a.bActivo)
                                            select new DTO_Actividad_Grid()
                                            {
-                                               ID = p.cClaveERP,
+                                               ID = a.cClaveERP ?? string.Empty,
                                                Proyecto = p.cDescripcion,
                                                Modulo = m.cDescripcion,
                                                Componente = c.cDescripcion,

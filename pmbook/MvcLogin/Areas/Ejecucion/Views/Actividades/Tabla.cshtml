@@ -7,7 +7,7 @@
     <div class="col-md-4">
         <div class="col-md-4"><h4>Filtro: </h4></div>
         <div class="col-md-8">
-            <input  class="form-control" type="text" ng-model="FILTROACTIVIDADES.filtro"/>
+            <input  class="form-control" type="text" ng-model="nfiltro"/>
         </div>
     </div>
       @* Seleccionar Fecha desde *@
@@ -47,11 +47,11 @@
         </label>
     </div>
         @* Buscar *@
-    <span class="btn btn-primary" ng-click="LoadActividades()"><i class="fa fa-search"></i> Buscar</span>
+    <span class="btn btn-primary" ng-click="LoadActividades();filterOptions.filterText=nfiltro;"><i class="fa fa-search"></i> Buscar</span>
     @* Filtar pendientes *@
-    <span class="btn btn-warning" ng-click="LoadActividadesInActivas()"><i class="fa fa-exclamation-circle"></i> Solo Pendientes</span>
+    <span class="btn btn-warning" ng-click="LoadActividadesInActivas();filterOptions.filterText=nfiltro"><i class="fa fa-exclamation-circle"></i>Buscar Solo Pendientes</span>
     @* Exportar archivos a excel *@
-    <button class="btn btn-info" type="submit"><i class="fa fa-file-excel-o"></i> Exportar a Excel</button>
+    <button class="btn btn-info" ng-csv="lstActividades" lazy-load="true"  filename="reporte {{FILTROACTIVIDADES.dFechaFin}}.csv" type="submit"><i class="fa fa-file-excel-o"></i> Exportar a Excel</button>
      </div>
     </div>
       @* Tabla de Actividades *@
@@ -70,6 +70,7 @@
         setTimeout(function () {
             var scope = $('#V_Catalogos').scope();
             scope.LimpiarFiltroActividades();
+            scope.LoadActividades();
         }, 1000);
     });
 </script>

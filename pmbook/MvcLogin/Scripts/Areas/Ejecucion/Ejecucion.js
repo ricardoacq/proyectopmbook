@@ -98,19 +98,22 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
         return (calculateAggChildren(row));
     };
 
-
     //opciones de Grid
-
     //Declaracion de parametros de grid
+    $scope.filterOptions= 
+    {filterText: '', 
+        useExternalFilter: false
+    };
     $scope.gridActividades = {
         data: 'lstActividades',
         showGroupPanel: true,
         jqueryUIDraggable: true,
-       // showFooter: true,
-        showFilter: true,
-        showColumnMenu:true,
+        showFooter: true,
+        enableFiltering: false,
+        filterOptions: $scope.filterOptions,
         aggregateTemplate: '<div ng-click="row.toggleExpand()" " ng-style="rowStyle(row)" class="ngAggregate"> <span class="ngAggregateText">{{row.label CUSTOM_FILTERS}} (Total Consultas: {{ActividadesSum(row)}})</span> <div class="{{row.aggClass()}}"></div> </div>',
     };
+
 
     $scope.LoadActividades = function () {
         $http({
@@ -149,6 +152,72 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
         }).error(function (response, status, header, config) {
         });
     };
+
+
+    //////////////////|Productos|//////////////////////////
+    $scope.lstProductos = [];
+    $scope.LoadProductos = function () {
+        $http({
+            method: 'POST',
+            url: '/Ejecucion/Incidentes/ObtenerProductos',
+            data: {}
+        }).success(function (response, status, header, config) {
+            if (response.bError) {
+                swal('Error', response.msgErr, 'error');
+            }
+            else {
+                $scope.lstProductos = response.Productos;
+                $scope.selProductos = $scope.Productos;
+            }
+        }).error(function (response, status, header, config) {
+        });
+    };
+
+    $scope.lstModulos = [];
+    $scope.LoadModulos = function (idProducto) {
+  
+            $http({
+                method: 'POST',
+                url: '/Ejecucion/Incidentes/ObtenerModulos',
+                data: { idProducto: idProducto }
+            }).success(function (response, status, header, config) {
+                if (response.bError) {
+                    swal('Error', response.msgErr, 'error');
+                }
+                else {
+                    $scope.lstModulos = response.Modulos;
+                    $scope.selModulos = $scope.lstModulos;
+                }
+            }).error(function (response, status, header, config) {
+            });
+        
+    };
+    /////////////////////////////////////////////
+    $scope.lstComponentes = [];
+    $scope.LoadComponentes = function (idModulo) {
+
+        $http({
+            method: 'POST',
+            url: '/Ejecucion/Incidentes/ObtenerComponentes',
+            data: { idModulo: idModulo }
+        }).success(function (response, status, header, config) {
+            if (response.bError) {
+                swal('Error', response.msgErr, 'error');
+            }
+            else {
+                $scope.lstComponentes = response.Componentes;
+                $scope.selComponentes = $scope.lstComponentes;
+            }
+        }).error(function (response, status, header, config) {
+        });
+
+    };
+
+    $scope. limpiarForm= function() {
+        $scope.selModulos = '';
+        $scope.selProductos = '';
+        $scope.selComponentes = '';
+    }
 
     //*******************************************************************************************************************
     $scope.ObtenerActividad = function (nActividad) {

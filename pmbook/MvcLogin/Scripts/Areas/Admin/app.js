@@ -1,4 +1,4 @@
-﻿var BaseMVC = angular.module('BaseMVC', ['ngMaterial', 'md.data.table', 'ngMessages', 'ngTagsInput', 'ngFileUpload', 'ui.layout', 'ngAnimate', 'ngGrid', 'ngSanitize']);
+﻿var BaseMVC = angular.module('BaseMVC', ['ngMaterial', 'md.data.table', 'ngMessages', 'ngTagsInput', 'ngFileUpload', 'ui.layout', 'ngAnimate', 'ngGrid', 'ngSanitize', 'ui.grid', 'ngCsv']);
 BaseMVC.controller('MainCtrl', ['$scope', '$http', 'Upload', function ($scope, $http, $upload) {
 }]);
 BaseMVC.config(['$mdThemingProvider', function ($mdThemingProvider) {

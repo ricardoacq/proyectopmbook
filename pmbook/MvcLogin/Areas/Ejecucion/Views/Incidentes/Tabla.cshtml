@@ -24,9 +24,9 @@
             <div class="col-md-12">
                 <label>Productos:&nbsp;</label>
             </div>
-            <button type="button" class="btn btn-default ng-pristine ng-untouched ng-valid" 
-            data-html="1" data-multiple="1" bs-options="" 
-            bs-select>Selecciona un Producto...&nbsp;<span class="caret"></span></button>
+            <select class="form-control" ng-model="selProductos" ng-options="p.idProducto as p.Producto for p in lstProductos"
+               ng-change="LoadModulos(selProductos)" >
+            </select>
         </div>
     </div>
 
@@ -35,9 +35,10 @@
             <div class="col-md-12">
                 <label>Modulos:&nbsp;</label>
             </div>
-            <button type="button" class="btn btn-default ng-pristine ng-untouched ng-valid"  
-            data-html="1" data-multiple="1" bs-options="" 
-            bs-select="">Selecciona un Modulo...&nbsp;<span class="caret"></span></button>
+            <select class="form-control" ng-model="selModulos"
+             ng-options="m.idModulo as m.Modulo for m in lstModulos"
+                 ng-change="LoadComponentes(selModulos)">
+            </select>
         </div>
     </div>
 
@@ -46,9 +47,10 @@
             <div class="col-md-12">
                 <label>Componentes:&nbsp;</label>
             </div>
-            <button type="button" class="btn btn-default ng-pristine ng-untouched ng-valid"  
-            data-html="1" data-multiple="1" bs-options="" 
-            bs-select="">Selecciona un Elemento...&nbsp;<span class="caret"></span></button>
+            <select class="form-control" ng-model="selComponentes"
+             ng-options="c.idComponente as c.Componente for c in lstComponentes"
+                 >
+            </select>
         </div>
     </div>
 
@@ -141,3 +143,11 @@
     </div>
   </div>
 </div>
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            var scope = $('#V_Catalogos').scope();
+            scope.LoadProductos();
+        }, 1000);
+    });
+</script>
