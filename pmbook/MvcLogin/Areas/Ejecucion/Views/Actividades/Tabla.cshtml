@@ -47,11 +47,11 @@
         </label>
     </div>
         @* Buscar *@
-    <span class="btn btn-primary" ng-click="LoadActividades();filterOptions.filterText=nfiltro;"><i class="fa fa-search"></i> Buscar</span>
+    <span  class="btn btn-primary" ng-click="LoadActividades();filterOptions.filterText=nfiltro"><i class="fa fa-search"></i> Buscar</span>
     @* Filtar pendientes *@
     <span class="btn btn-warning" ng-click="LoadActividadesInActivas();filterOptions.filterText=nfiltro"><i class="fa fa-exclamation-circle"></i>Buscar Solo Pendientes</span>
     @* Exportar archivos a excel *@
-    <button class="btn btn-info" ng-csv="lstActividades" lazy-load="true"  filename="reporte {{FILTROACTIVIDADES.dFechaFin}}.csv" type="submit"><i class="fa fa-file-excel-o"></i> Exportar a Excel</button>
+    <button class="btn btn-info" ng-csv="lstActividades | filter : nfiltro" lazy-load="true"  filename="reporte {{FILTROACTIVIDADES.dFechaFin}}.csv" type="submit"><i class="fa fa-file-excel-o"></i> Exportar a Excel</button>
      </div>
     </div>
       @* Tabla de Actividades *@

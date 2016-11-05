@@ -99,11 +99,14 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
     };
 
     //opciones de Grid
+   
     //Declaracion de parametros de grid
-    $scope.filterOptions= 
-    {filterText: '', 
+    $scope.filterOptions =
+    {
+        filterText: '',
         useExternalFilter: false
     };
+ 
     $scope.gridActividades = {
         data: 'lstActividades',
         showGroupPanel: true,
@@ -154,7 +157,17 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
     };
 
 
-    //////////////////|Productos|//////////////////////////
+    //////////////////|Productos|///
+    $scope.Select = {
+        Cliente: 0,
+        Producto: 0,
+        Modulo: 0,
+        Componente: 0,
+        Lider: 0,
+        Tester: 0,
+        Consultor: 0
+    };
+    //
     $scope.lstProductos = [];
     $scope.LoadProductos = function () {
         $http({
@@ -167,12 +180,12 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
             }
             else {
                 $scope.lstProductos = response.Productos;
-                $scope.selProductos = $scope.Productos;
+                $scope.Select.Producto = $scope.Productos;
             }
         }).error(function (response, status, header, config) {
         });
     };
-
+    //modulos
     $scope.lstModulos = [];
     $scope.LoadModulos = function (idProducto) {
   
@@ -186,13 +199,13 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
                 }
                 else {
                     $scope.lstModulos = response.Modulos;
-                    $scope.selModulos = $scope.lstModulos;
+                    $scope.Select.Modulo = $scope.lstModulos;
                 }
             }).error(function (response, status, header, config) {
             });
         
     };
-    /////////////////////////////////////////////
+    //componentes
     $scope.lstComponentes = [];
     $scope.LoadComponentes = function (idModulo) {
 
@@ -206,18 +219,150 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
             }
             else {
                 $scope.lstComponentes = response.Componentes;
-                $scope.selComponentes = $scope.lstComponentes;
+                $scope.Select.Componente = $scope.lstComponentes;
             }
         }).error(function (response, status, header, config) {
         });
 
     };
+    //clientes
+    $scope.lstClientes = [];
+    $scope.LoadClientes = function () {
 
-    $scope. limpiarForm= function() {
-        $scope.selModulos = '';
-        $scope.selProductos = '';
-        $scope.selComponentes = '';
-    }
+        $http({
+            method: 'POST',
+            url: '/Ejecucion/Incidentes/ObtenerClientes',
+            data: {}
+        }).success(function (response, status, header, config) {
+            if (response.bError) {
+                swal('Error', response.msgErr, 'error');
+            }
+            else {
+                $scope.lstClientes = response.Clientes;
+                $scope.Select.Cliente = $scope.lstClientes;
+            }
+        }).error(function (response, status, header, config) {
+        });
+
+    };
+    //Lideres
+    $scope.lstLideres = [];
+    $scope.LoadLideres = function () {
+
+        $http({
+            method: 'POST',
+            url: '/Ejecucion/Incidentes/ObtenerLideres',
+            data: {}
+        }).success(function (response, status, header, config) {
+            if (response.bError) {
+                swal('Error', response.msgErr, 'error');
+            }
+            else {
+                $scope.lstLideres = response.Lideres;
+                $scope.Select.Lider = $scope.lstLideres;
+            }
+        }).error(function (response, status, header, config) {
+        });
+
+    };
+    //Testers
+    $scope.lstTesters = [];
+    $scope.LoadTesters = function () {
+
+        $http({
+            method: 'POST',
+            url: '/Ejecucion/Incidentes/ObtenerTesters',
+            data: {}
+        }).success(function (response, status, header, config) {
+            if (response.bError) {
+                swal('Error', response.msgErr, 'error');
+            }
+            else {
+                $scope.lstTesters = response.Testers;
+                $scope.Select.Tester = $scope.lstTesters;
+            }
+        }).error(function (response, status, header, config) {
+        });
+
+    };
+    //Consultores
+    $scope.lstConsultores = [];
+    $scope.LoadConsultores = function () {
+
+        $http({
+            method: 'POST',
+            url: '/Ejecucion/Incidentes/ObtenerConsultores',
+            data: {}
+        }).success(function (response, status, header, config) {
+            if (response.bError) {
+                swal('Error', response.msgErr, 'error');
+            }
+            else {
+                $scope.lstConsultores = response.Consultores;
+                $scope.Select.Consultor = $scope.lstConsultores;
+            }
+        }).error(function (response, status, header, config) {
+        });
+
+    };
+    $scope.limpiarForm = function () {
+        $scope.Select = {
+            Cliente: 0,
+            Producto: 0,
+            Modulo: 0,
+            Componente: 0,
+            Lider: 0,
+            Tester: 0,
+            Consultor: 0
+        };
+    };
+
+    //Incidentes
+    $scope.lstIncidentes = [];
+    $scope.gridIncidentes = {
+        data: 'lstIncidentes',
+        showGroupPanel: true,
+        jqueryUIDraggable: true,
+        showFooter: true,
+        enableFiltering: false,
+        aggregateTemplate: '<div ng-click="row.toggleExpand()" " ng-style="rowStyle(row)" class="ngAggregate"> <span class="ngAggregateText">{{row.label CUSTOM_FILTERS}} (Total Consultas: {{ActividadesSum(row)}})</span> <div class="{{row.aggClass()}}"></div> </div>',
+    };
+
+    $scope.LoadIncidentes = function (idCliente) {
+        if (idCliente == null) {
+            idCliente = 0;
+        }
+        $http({
+            method: 'POST',
+            url: '/Ejecucion/Incidentes/ObtenerIncidentes',
+            data: {idCliente:idCliente}
+        }).success(function (response, status, header, config) {
+            if (response.bError) {
+                swal('Error', response.msgErr, 'error');
+            }
+            else {
+                $scope.lstIncidentes = response.Incidentes;
+            }
+        }).error(function (response, status, header, config) {
+        });
+
+    };
+    $scope.LoadIncidentesInactivos = function (idCliente) {
+        $http({
+            method: 'POST',
+            url: '/Ejecucion/Incidentes/ObtenerIncidentesInactivos',
+            data: { idCliente: idCliente }
+        }).success(function (response, status, header, config) {
+            if (response.bError) {
+                swal('Error', response.msgErr, 'error');
+            }
+            else {
+                $scope.lstIncidentes = response.Incidentes;
+            }
+        }).error(function (response, status, header, config) {
+        });
+
+    };
 
     //*******************************************************************************************************************
     $scope.ObtenerActividad = function (nActividad) {

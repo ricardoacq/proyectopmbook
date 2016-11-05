@@ -8,146 +8,122 @@
 </div>
 <div class="panel-collapse in">
 <div class="panel-body">
-    <div class="row col-md-10">
+  <div class="row col-md-10">
+        @* Clientes *@
     <div class="col-md-3">
         <div class="form-group">
             <div class="col-md-12">
-                <label>Clientes:&nbsp;</label>
+                <label>Clientes:  &nbsp;<span aria-label="Campo Obligatorio" style="color:red">*</span></label>       
             </div>
-            <button type="button" class="btn btn-default ng-pristine ng-untouched ng-valid" 
-            data-html="1" data-multiple="1" bs-options="" 
-            bs-select>Selecciona un Cliente...&nbsp;<span class="caret"></span></button>
+            <select class="form-control" ng-model="Select.Cliente" 
+                ng-options="c.idCliente as c.Cliente for c in lstClientes">
+            </select>
+            <input type="text" value="{{Select.Cliente}}"/>
         </div>
     </div>
+        @* Productos *@
     <div class="col-md-3">
         <div class="form-group">
             <div class="col-md-12">
-                <label>Productos:&nbsp;</label>
+                <label>Productos: &nbsp;<span aria-label="Campo Obligatorio" style="color:red">*</span></label>
             </div>
-            <select class="form-control" ng-model="selProductos" ng-options="p.idProducto as p.Producto for p in lstProductos"
-               ng-change="LoadModulos(selProductos)" >
+            <select class="form-control" ng-model="Select.Producto" ng-options="p.idProducto as p.Producto for p in lstProductos"
+               ng-change="LoadModulos(Select.Producto)" >
             </select>
         </div>
     </div>
-
+        @* Modulos *@
     <div class="col-md-3">
         <div class="form-group">
             <div class="col-md-12">
-                <label>Modulos:&nbsp;</label>
+                <label>Modulos: &nbsp;</label>
             </div>
-            <select class="form-control" ng-model="selModulos"
+            <select class="form-control" ng-model="Select.Modulo"
              ng-options="m.idModulo as m.Modulo for m in lstModulos"
-                 ng-change="LoadComponentes(selModulos)">
+                 ng-change="LoadComponentes(Select.Modulo)">
             </select>
         </div>
     </div>
-
+        @* Componentes *@
     <div class="col-md-3">
         <div class="form-group">
             <div class="col-md-12">
-                <label>Componentes:&nbsp;</label>
+                <label>Componentes: &nbsp;</label>
             </div>
-            <select class="form-control" ng-model="selComponentes"
-             ng-options="c.idComponente as c.Componente for c in lstComponentes"
-                 >
+            <select class="form-control" ng-model="Select.Componente"
+             ng-options="c.idComponente as c.Componente for c in lstComponentes">
             </select>
         </div>
     </div>
-
+        @* Lideres *@
     <div class="col-md-3">
         <div class="form-group">
             <div class="col-md-12">
-                <label>Lider:&nbsp;</label>
+                <label>Lider: &nbsp;</label>
             </div>
-            <button type="button" class="btn btn-default ng-pristine ng-untouched ng-valid"  
-            data-html="1" data-multiple="1" bs-options="" 
-            bs-select="">Selecciona un Lider...&nbsp;<span class="caret"></span></button>
+            <select class="form-control" ng-model="Select.Lider"
+                ng-options="l.idLider as l.Lider for l in lstLideres">
+            </select>
         </div>
     </div>
-
+        @* Consultores *@
     <div class="col-md-3">
         <div class="form-group">
             <div class="col-md-12">
-                <label>Consultor:&nbsp;</label>
+                <label>Consultor: &nbsp;<span aria-label="Campo Obligatorio" style="color:red">*</span></label>
             </div>
-            <button type="button" class="btn btn-default ng-pristine ng-untouched ng-valid"  
-            data-html="1" data-multiple="1" bs-options="" 
-            bs-select="">Selecciona un Consultor...&nbsp;<span class="caret"></span></button>
+            <select class="form-control" ng-model="Select.Consultor" 
+                ng-options="c.idConsultor as c.Consultor for c in lstConsultores">
+            </select>
         </div>
     </div>
-
-
+        @* Testers *@
      <div class="col-md-3">
         <div class="form-group">
             <div class="col-md-12">
-                <label>Tester:&nbsp;</label>
+                <label>Tester: &nbsp;</label>
             </div>
-            <button type="button" class="btn btn-default ng-pristine ng-untouched ng-valid"  
-            data-html="1" data-multiple="1" bs-options="" 
-            bs-select="">Selecciona un Tester...&nbsp;<span class="caret"></span></button>
+           <select class="form-control" ng-model="Select.Tester"
+                ng-options="t.idTester as t.Tester for t in lstTesters">
+            </select>
         </div>
     </div>
- </div>
-    <div class="row">
-        
   </div>
-    <div class="col-md-10">
+  <div class="row"></div>
+   <div class="col-md-10">
     <div class="pull-center">
      <div class="checkbox" style="display: inline-block; margin-right: 10px;">
        <label>
         <input type="checkbox" @*ng-model="Ctrl.bMostrarQC"*@ style="height:20px;width: 10%;margin-top: 0px;margin-left:-25px;" class="ng-pristine ng-untouched ng-valid">
          Mostrar Control de Calidad
-        </label>
+       </label>
+     </div>
+     <span class="btn btn-primary" ng-click="LoadIncidentes(Select.Cliente)"><i class="fa fa-search"></i> Buscar</span>
+     <span class="btn btn-warning" ng-click="LoadIncidentesInactivos(Select.Cliente)"><i class="fa fa-exclamation-circle"></i> Solo Pendientes</span>
+     <button class="btn btn-info" ng-csv="lstIncidentes" filename="Incidentes {{FILTROACTIVIDADES.dFechaFin}}.csv" type="submit"><i class="fa fa-file-excel-o"></i> Exportar a Excel</button>
     </div>
-    <span class="btn btn-primary" @*ng-click="Ctrl.ObtenerActividadesFiltradas()*@"><i class="fa fa-search"></i> Buscar</span>
-    <span class="btn btn-warning" @*ng-click="actividadesPendientes()"*@><i class="fa fa-exclamation-circle"></i> Solo Pendientes</span>
-    <button class="btn btn-info" type="submit"><i class="fa fa-file-excel-o"></i> Exportar a Excel</button>
+   </div>
+
+   <div class=" col-md-12">
+    <div class="row">
+      <div class="gridStyle" ng-grid="gridIncidentes">
+
+      </div>
+    </div>
+   </div>
   </div>
  </div>
-
-
-<div class=" col-md-12">
-    <div class="row">
-        <md-card>
-            <md-table-container>
-                <table border="1"  aling="center" md-table ng-model="LstActividades" md-progress="promise">
-                    <thead md-head md-order="queryActividad.order">
-                    <tr>
-                    <th  style="color:black;"> Id </th>
-                    <th  style="color:black;"> Incidente</th>
-                    <th  style="color:black;"> Cliente</th>
-                    <th  style="color:black;"> Producto</th>
-                    <th  style="color:black;"> Módulo</th>
-
-                    <th  style="color:black;"> Componente</th>
-                    <th  style="color:black;"> T.Solicitado UE</th>
-                    <th  style="color:black;"> T.Autorizado</th>
-                    <th  style="color:black;"> Tra.Realizado</th>
-                    <th  style="color:black;"> Tra.Restante</th>
-                    <th  style="color:black;"> Dias trans</th>
-                    <th  style="color:black;"> Avance</th>
-                    <th  style="color:black;"> Vuelta</th>
-                    <th  style="color:black;"> Estatus</th>
-                    <th  style="color:black;"> Fecha registro</th>
-                    <th  style="color:black;"> #</th>
-                    </tr>
-                    </thead>
-                    <tbody md-body>
-                 
-                    </tbody>
-                </table>
-                </md-table-container>
-        </md-card>
-    </div>
-</div>
-    </div>
-  </div>
 </div>
 <script>
     $(document).ready(function () {
         setTimeout(function () {
             var scope = $('#V_Catalogos').scope();
             scope.LoadProductos();
+            scope.LoadClientes();
+            scope.LoadLideres();
+            scope.LoadConsultores();
+            scope.LoadTesters();
+
         }, 1000);
     });
 </script>

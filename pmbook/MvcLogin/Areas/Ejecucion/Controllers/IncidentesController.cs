@@ -6,29 +6,44 @@ namespace MvcLogin.Areas.Ejecucion.Controllers
 {
     public class IncidentesController : Controller
     {
-        //
+        
         // GET: /Ejecucion/Actividades/
 
-        //public ActionResult Index()
-        //{
-        //    IncidentesModel model = new IncidentesModel();
-        //    return View("Index", model);
-        //}
+        public ActionResult Index()
+        {
+            IncidentesModel model = new IncidentesModel();
+            return View("Index", model);
+        }
 
-        //public ActionResult ObtenerProductos(int nActividad)
-        //{
-        //    PMBookDataContext DB = new PMBookDataContext();
-        //    ActividadesModel model = new ActividadesModel();
-        //    DTO_Actividad_Result Result = model.ObtenerActividad(DB, nActividad);
+        public ActionResult ObtenerIncidentes(int idCliente)
+        {
+            PMBookDataContext DB = new PMBookDataContext();
+            IncidentesModel model = new IncidentesModel();
+            DTO_Incidente_Result Result = model.ObtenerIncidentes(DB, idCliente);
 
-        //    return Json(new
-        //    {
-        //        Actividad = Result.Actividad,
-        //        bError = Result.bError,
-        //        msgErr = Result.msgErr
-        //    }, JsonRequestBehavior.AllowGet);
-        //}
+            return Json(new
+            {
+                Incidentes = Result.Incidentes,
+                bError = Result.bError,
+                msgErr = Result.msgErr
+            }, JsonRequestBehavior.AllowGet);
+        }
 
+        public ActionResult ObtenerIncidentesInactivos(int idCliente)
+        {
+            PMBookDataContext DB = new PMBookDataContext();
+            IncidentesModel model = new IncidentesModel();
+            DTO_Incidente_Result Result = model.ObtenerIncidentesInactivos(DB, idCliente);
+
+            return Json(new
+            {
+                Incidentes = Result.Incidentes,
+                bError = Result.bError,
+                msgErr = Result.msgErr
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        ///TRAE PRODUCTOS
         public ActionResult ObtenerProductos()
         {
             PMBookDataContext DB = new PMBookDataContext();
@@ -42,7 +57,8 @@ namespace MvcLogin.Areas.Ejecucion.Controllers
                 msgErr = Result.msgErr
             }, JsonRequestBehavior.AllowGet);
         }
-        ///
+
+        ///TRAE MODULOS
         public ActionResult ObtenerModulos(int idProducto)
         {
             PMBookDataContext DB = new PMBookDataContext();
@@ -56,7 +72,8 @@ namespace MvcLogin.Areas.Ejecucion.Controllers
                 msgErr = Result.msgErr
             }, JsonRequestBehavior.AllowGet);
         }
-        ///
+
+        ///TRAE  COMPONENTES
         public ActionResult ObtenerComponentes(int idModulo)
         {
             PMBookDataContext DB = new PMBookDataContext();
@@ -70,34 +87,67 @@ namespace MvcLogin.Areas.Ejecucion.Controllers
                 msgErr = Result.msgErr
             }, JsonRequestBehavior.AllowGet);
         }
-        ///
-        public ActionResult ObtenerActividades_Grid(int nFechaInicial, int nFechaFinal)
+
+        ///TRAE CLIENTES
+        public ActionResult ObtenerClientes()
         {
             PMBookDataContext DB = new PMBookDataContext();
-            ActividadesModel model = new ActividadesModel();
-            DTO_Actividad_Result Result = model.ObtenerActividades_Grid(DB, nFechaInicial, nFechaFinal);
+            IncidentesModel model = new IncidentesModel();
+            DTO_Incidente_Result Result = model.ObtenerClientes(DB);
 
             return Json(new
             {
-                Actividades_Grid = Result.Actividades_Grid,
+                Clientes = Result.Clientes,
                 bError = Result.bError,
                 msgErr = Result.msgErr
             }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult ObtenerActividadesInActivas_Grid(int nFechaInicial, int nFechaFinal)
+        ///TRAE LIDERES
+        public ActionResult ObtenerLideres()
         {
             PMBookDataContext DB = new PMBookDataContext();
-            ActividadesModel model = new ActividadesModel();
-            DTO_Actividad_Result Result = model.ObtenerActividadesInActivas_Grid(DB, nFechaInicial, nFechaFinal);
+            IncidentesModel model = new IncidentesModel();
+            DTO_Incidente_Result Result = model.ObtenerLideres(DB);
 
             return Json(new
             {
-                Actividades_Grid = Result.Actividades_Grid,
+                Lideres = Result.Lideres,
                 bError = Result.bError,
                 msgErr = Result.msgErr
             }, JsonRequestBehavior.AllowGet);
         }
+
+        ///TRAE  TESTERS
+        public ActionResult ObtenerTesters()
+        {
+            PMBookDataContext DB = new PMBookDataContext();
+            IncidentesModel model = new IncidentesModel();
+            DTO_Incidente_Result Result = model.ObtenerTesters(DB);
+
+            return Json(new
+            {
+                Testers = Result.Testers,
+                bError = Result.bError,
+                msgErr = Result.msgErr
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        ///TRAE CONSULTORES
+        public ActionResult ObtenerConsultores()
+        {
+            PMBookDataContext DB = new PMBookDataContext();
+            IncidentesModel model = new IncidentesModel();
+            DTO_Incidente_Result Result = model.ObtenerConsultores(DB);
+
+            return Json(new
+            {
+                Consultores = Result.Consultores,
+                bError = Result.bError,
+                msgErr = Result.msgErr
+            }, JsonRequestBehavior.AllowGet);
+        }
+
 
         public ActionResult EliminarActividad(int nActividad)
         {
