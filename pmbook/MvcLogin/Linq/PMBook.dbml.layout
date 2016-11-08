@@ -58,7 +58,7 @@
         <elementListCompartment Id="e31f8d46-02f4-4ea9-ae80-5061b50851ca" absoluteBounds="0.51500000000000057, 5.085, 1.9700000000000002, 9.4798583984375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6.17927166346154 : 2.45); (6.17927166346154 : 2.71875); (5.27083333333333 : 2.71875 : JumpStart); (5.04166666666667 : 2.71875 : JumpEnd); (2.92708333333333 : 2.71875 : JumpStart); (2.66666666666667 : 2.71875 : JumpEnd); (2.65625 : 2.71875); (2.65625 : 4.818748); (2.5 : 4.818748)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.375 : 2.242969); (4.9375 : 2.242969); (4.9375 : 4.53125); (2.89583333333333 : 4.53125 : JumpStart); (2.44791666666667 : 4.53125 : JumpEnd); (1.5 : 4.53125); (1.5 : 4.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PMBookDataContext/ADSUM_Usuario/ADSUM_Usuario_PMB_Actividade" />
       <nodes>
         <classShapeMoniker Id="84548728-46c4-4aa7-b6f4-79df7211ecb0" />
@@ -78,7 +78,7 @@
         <classShapeMoniker Id="6fffe516-e197-4bcf-b0b2-e2ed93babd1e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.01876923076923 : 2.45); (1.01876923076923 : 2.575); (1.62030769230769 : 2.575); (1.62030769230769 : 2.45)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(1.01876923076923 : 2.45); (1.01876923076923 : 2.575); (1.05834230128205 : 2.575 : JumpStart); (1.22500896794872 : 2.575 : JumpEnd); (1.62030769230769 : 2.575); (1.62030769230769 : 2.45)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PMBookDataContext/PMB_Proyecto/PMB_Proyecto_PMB_Proyecto" />
       <nodes>
         <classShapeMoniker Id="98e99eb4-7e60-4e65-ae9b-3666d6e766a6" />
@@ -112,7 +112,7 @@
         <classShapeMoniker Id="ee88d09e-7854-4512-8196-3c4843a4bc75" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.375 : 2.2742215); (5.0625 : 2.2742215); (5.0625 : 2.54375); (2.92708333333333 : 2.54375 : JumpStart); (2.53385416666667 : 2.54375 : JumpEnd); (2.16542257692308 : 2.54375); (2.16542257692308 : 2.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.375 : 2.2742215); (5.0625 : 2.2742215); (5.0625 : 2.54375); (5.02083333333333 : 2.54375 : JumpStart); (4.85416666666667 : 2.54375 : JumpEnd); (2.92708333333333 : 2.54375 : JumpStart); (2.53385416666667 : 2.54375 : JumpEnd); (2.16542257692308 : 2.54375); (2.16542257692308 : 2.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PMBookDataContext/ADSUM_Usuario/ADSUM_Usuario_PMB_ProyectosAsignacione1" />
       <nodes>
         <classShapeMoniker Id="84548728-46c4-4aa7-b6f4-79df7211ecb0" />
@@ -125,14 +125,14 @@
         <elementListCompartment Id="2dbe1c08-6d83-4ac3-ab74-276767c5d737" absoluteBounds="5.3900000000000006, 3.21, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6.37136538461539 : 3.2); (6.37136538461539 : 3.3125); (5.36458333333333 : 3.3125 : JumpStart); (4.9702380952381 : 3.3125 : JumpEnd); (2.92708333333333 : 3.3125 : JumpStart); (2.65773809523809 : 3.3125 : JumpEnd); (2.59375 : 3.3125); (2.59375 : 4.690622); (2.5 : 4.690622)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.875 : 3.2); (5.875 : 3.3125); (5.36458333333333 : 3.3125 : JumpStart); (4.85416666666667 : 3.3125 : JumpEnd); (2.92708333333333 : 3.3125 : JumpStart); (2.65773809523809 : 3.3125 : JumpEnd); (2.59375 : 3.3125); (2.59375 : 4.818748); (2.5 : 4.818748)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PMBookDataContext/PMB_ProyectosComponente/PMB_ProyectosComponente_PMB_Actividade" />
       <nodes>
         <classShapeMoniker Id="d708103c-945d-4418-b19c-407b31d840a2" />
         <classShapeMoniker Id="6fffe516-e197-4bcf-b0b2-e2ed93babd1e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.5 : 2.225); (2.8125 : 2.225); (2.8125 : 2.48125); (5.10416666666667 : 2.48125 : JumpStart); (5.27083333333333 : 2.48125 : JumpEnd); (5.8750005 : 2.48125); (5.8750005 : 2.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.5 : 2.225); (2.8125 : 2.225); (2.8125 : 2.48125); (4.85416666666667 : 2.48125 : JumpStart); (5.02083333333333 : 2.48125 : JumpEnd); (5.10416666666667 : 2.48125 : JumpStart); (5.27083333333333 : 2.48125 : JumpEnd); (5.8750005 : 2.48125); (5.8750005 : 2.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PMBookDataContext/PMB_Proyecto/PMB_Proyecto_PMB_ProyectosComponente" />
       <nodes>
         <classShapeMoniker Id="98e99eb4-7e60-4e65-ae9b-3666d6e766a6" />
@@ -152,7 +152,7 @@
         <classShapeMoniker Id="ee88d09e-7854-4512-8196-3c4843a4bc75" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(6.54604782692308 : 2.45); (6.54604782692308 : 2.54375); (6.45833333333333 : 2.54375 : JumpStart); (6.29166666666667 : 2.54375 : JumpEnd); (6.26260499679487 : 2.54375 : JumpStart); (6.09593833012821 : 2.54375 : JumpEnd); (5.3125 : 2.54375); (5.3125 : 2.153124); (4.875 : 2.153124)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(6.54604782692308 : 2.45); (6.54604782692308 : 2.54375); (6.45833333333333 : 2.54375 : JumpStart); (6.29166666666667 : 2.54375 : JumpEnd); (5.3125 : 2.54375); (5.3125 : 2.153124); (4.875 : 2.153124)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PMBookDataContext/ADSUM_Usuario/ADSUM_Usuario_PMB_ProyectosConsultore" />
       <nodes>
         <classShapeMoniker Id="84548728-46c4-4aa7-b6f4-79df7211ecb0" />
@@ -172,14 +172,14 @@
         <elementListCompartment Id="65fc9d27-1fbe-4157-a9ca-976ffaaa04e2" absoluteBounds="2.8899999999999997, 3.21, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(3.7929675625 : 3.2); (3.7929675625 : 3.34375); (2.8125 : 3.34375); (2.8125 : 4.946874); (2.5 : 4.946874)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(3.5585938125 : 3.2); (3.5585938125 : 3.34375); (2.8125 : 3.34375); (2.8125 : 4.690622); (2.73958333333333 : 4.690622 : JumpStart); (2.51041666666667 : 4.690622 : JumpEnd); (2.5 : 4.690622)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PMBookDataContext/PMB_ProyectosModulo/PMB_ProyectosModulo_PMB_Actividade" />
       <nodes>
         <classShapeMoniker Id="a669672a-624a-4c65-b205-049a5292329a" />
         <classShapeMoniker Id="6fffe516-e197-4bcf-b0b2-e2ed93babd1e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.875 : 2.79717557285826); (5.04166666666667 : 2.79717557285826 : JumpStart); (5.36458333333333 : 2.79717557285826 : JumpEnd); (5.375 : 2.79717557285826)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.875 : 2.79717557285826); (5.04166666666667 : 2.79717557285826 : JumpStart); (5.36458333333333 : 2.79717557285826 : JumpEnd); (5.375 : 2.79717557285826)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PMBookDataContext/PMB_ProyectosModulo/PMB_ProyectosModulo_PMB_ProyectosComponente" />
       <nodes>
         <classShapeMoniker Id="a669672a-624a-4c65-b205-049a5292329a" />
@@ -219,14 +219,14 @@
         <elementListCompartment Id="979e7980-12bb-4c49-bf85-c5ed9130faf0" absoluteBounds="2.89, 3.835, 1.9700000000000002, 5.6338297526041661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(3.242187625 : 3.375); (3.242187625 : 3.2625); (2.92708333333333 : 3.2625 : JumpStart); (2.76041666666667 : 3.2625 : JumpEnd); (2.75 : 3.2625); (2.75 : 2.3375); (2.5 : 2.3375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(3.21679740625 : 3.375); (3.21679740625 : 3.2625); (2.92708333333333 : 3.2625 : JumpStart); (2.76041666666667 : 3.2625 : JumpEnd); (2.75 : 3.2625); (2.75 : 2.3375); (2.5 : 2.3375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PMBookDataContext/CTL_EmisoresPMBook/CTL_EmisoresPMBook_PMB_Proyecto" />
       <nodes>
         <classShapeMoniker Id="6c2e7b29-2159-47d5-9b55-30f5efa6b167" />
         <classShapeMoniker Id="98e99eb4-7e60-4e65-ae9b-3666d6e766a6" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.875 : 3.375); (2.73176526166627 : 3.30815712211093 : JumpStart); (2.58073473833373 : 3.23767621122241 : JumpEnd); (2.5 : 3.2)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.875 : 3.375); (2.5 : 3.2)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PMBookDataContext/CTL_EmisoresPMBook/CTL_EmisoresPMBook_PMB_ProyectosAsignacione" />
       <nodes>
         <classShapeMoniker Id="6c2e7b29-2159-47d5-9b55-30f5efa6b167" />
@@ -240,7 +240,7 @@
         <classShapeMoniker Id="d708103c-945d-4418-b19c-407b31d840a2" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.3437475 : 3.375); (4.3437475 : 3.2625); (4.97023809523809 : 3.2625 : JumpStart); (5.13690476190476 : 3.2625 : JumpEnd); (5.1875 : 3.2625); (5.1875 : 2.332814); (4.875 : 2.332814)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.21679640625 : 3.375); (4.21679640625 : 3.2625); (4.85416666666667 : 3.2625 : JumpStart); (5.13690476190476 : 3.2625 : JumpEnd); (5.1875 : 3.2625); (5.1875 : 2.332814); (4.875 : 2.332814)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PMBookDataContext/CTL_EmisoresPMBook/CTL_EmisoresPMBook_PMB_ProyectosConsultore" />
       <nodes>
         <classShapeMoniker Id="6c2e7b29-2159-47d5-9b55-30f5efa6b167" />
@@ -274,7 +274,7 @@
         <classShapeMoniker Id="98e99eb4-7e60-4e65-ae9b-3666d6e766a6" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.875 : 3.825); (2.73176526166627 : 3.89184287788907 : JumpStart); (2.51823473833373 : 3.99149045544426 : JumpEnd); (2.5 : 4)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.875 : 3.825); (2.66926526166627 : 3.92100954455574 : JumpStart); (2.51823473833373 : 3.99149045544426 : JumpEnd); (2.5 : 4)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PMBookDataContext/CTL_EmisoresPMBook/CTL_EmisoresPMBook_PMB_TiposProyecto" />
       <nodes>
         <classShapeMoniker Id="6c2e7b29-2159-47d5-9b55-30f5efa6b167" />
@@ -287,21 +287,21 @@
         <elementListCompartment Id="06f2990c-bcf3-40aa-bf02-1aff598e70d2" absoluteBounds="5.39, 3.835, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6.11718725 : 3.825); (6.11718725 : 3.9375); (5.2797619047619 : 3.9375 : JumpStart); (4.86197916666667 : 3.9375 : JumpEnd); (2.89583333333333 : 3.9375 : JumpStart); (2.72916666666667 : 3.9375 : JumpEnd); (2.71875 : 3.9375); (2.71875 : 4.6578115); (2.5 : 4.6578115)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.843748 : 3.825); (5.843748 : 3.9375); (5.2797619047619 : 3.9375 : JumpStart); (4.85416666666667 : 3.9375 : JumpEnd); (2.89583333333333 : 3.9375 : JumpStart); (2.72916666666667 : 3.9375 : JumpEnd); (2.65625 : 3.9375); (2.65625 : 4.946874); (2.5 : 4.946874)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PMBookDataContext/PMB_ProyectosComponente1/PMB_ProyectosComponente1_PMB_Actividade" />
       <nodes>
         <classShapeMoniker Id="52dd7b2d-41ab-4d9c-b292-09a5109cac63" />
         <classShapeMoniker Id="6fffe516-e197-4bcf-b0b2-e2ed93babd1e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.875 : 3.6); (4.97916666666667 : 3.6 : JumpStart); (5.36458333333333 : 3.6 : JumpEnd); (5.375 : 3.6)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.875 : 3.6); (4.97916666666667 : 3.6 : JumpStart); (5.20833333333333 : 3.6 : JumpEnd); (5.375 : 3.6)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PMBookDataContext/CTL_EmisoresPMBook/CTL_EmisoresPMBook_PMB_ProyectosComponente1" />
       <nodes>
         <classShapeMoniker Id="6c2e7b29-2159-47d5-9b55-30f5efa6b167" />
         <classShapeMoniker Id="52dd7b2d-41ab-4d9c-b292-09a5109cac63" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.50375961538462 : 2.45); (1.50375961538462 : 2.6875); (2.49479166666667 : 2.6875 : JumpStart); (2.66145833333333 : 2.6875 : JumpEnd); (2.66666666666667 : 2.6875 : JumpStart); (2.92708333333333 : 2.6875 : JumpEnd); (5.10416666666667 : 2.6875 : JumpStart); (5.27083333333333 : 2.6875 : JumpEnd); (5.28125 : 2.6875); (5.28125 : 3.743752); (5.375 : 3.743752)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.50375961538462 : 2.45); (1.50375961538462 : 2.6875); (2.49479166666667 : 2.6875 : JumpStart); (2.66145833333333 : 2.6875 : JumpEnd); (2.66666666666667 : 2.6875 : JumpStart); (2.92708333333333 : 2.6875 : JumpEnd); (4.85416666666667 : 2.6875 : JumpStart); (5.02083333333333 : 2.6875 : JumpEnd); (5.10416666666667 : 2.6875 : JumpStart); (5.27083333333333 : 2.6875 : JumpEnd); (5.28125 : 2.6875); (5.28125 : 3.631252); (5.375 : 3.631252)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PMBookDataContext/PMB_Proyecto/PMB_Proyecto_PMB_ProyectosComponente1" />
       <nodes>
         <classShapeMoniker Id="98e99eb4-7e60-4e65-ae9b-3666d6e766a6" />
@@ -321,14 +321,14 @@
         <elementListCompartment Id="8eb08023-7e02-4888-bf8c-2d2773ae092d" absoluteBounds="2.89, 4.46, 1.9700000000000002, 5.249226888020833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.875 : 4); (2.84786948968589 : 3.94212157799657 : JumpStart); (2.77713051031411 : 3.79121175533676 : JumpEnd); (2.69161948968589 : 3.60878824466324 : JumpStart); (2.52713051031411 : 3.25787842200343 : JumpEnd); (2.5 : 3.2)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.875 : 4); (2.84786948968589 : 3.94212157799657 : JumpStart); (2.77713051031411 : 3.79121175533676 : JumpEnd); (2.62911948968589 : 3.47545491132991 : JumpStart); (2.52713051031411 : 3.25787842200343 : JumpEnd); (2.5 : 3.2)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PMBookDataContext/PMB_ProyectosConsultore1/PMB_ProyectosConsultore1_PMB_ProyectosAsignacione" />
       <nodes>
         <classShapeMoniker Id="229d1959-5a11-4837-8046-4dd1d4fe475f" />
         <classShapeMoniker Id="ee88d09e-7854-4512-8196-3c4843a4bc75" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(6.99177591346154 : 2.45); (6.99177591346154 : 2.625); (6.26260499679487 : 2.625 : JumpStart); (6.09593833012821 : 2.625 : JumpEnd); (5.95833383333333 : 2.625 : JumpStart); (5.79166716666667 : 2.625 : JumpEnd); (5.125 : 2.625); (5.125 : 4.225); (5.08333333333333 : 4.225 : JumpStart); (4.91666666666667 : 4.225 : JumpEnd); (4.875 : 4.225)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(6.99177591346154 : 2.45); (6.99177591346154 : 2.625); (5.95833383333333 : 2.625 : JumpStart); (5.79166716666667 : 2.625 : JumpEnd); (5.125 : 2.625); (5.125 : 4.225); (4.875 : 4.225)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PMBookDataContext/ADSUM_Usuario/ADSUM_Usuario_PMB_ProyectosConsultore1" />
       <nodes>
         <classShapeMoniker Id="84548728-46c4-4aa7-b6f4-79df7211ecb0" />
@@ -342,7 +342,7 @@
         <classShapeMoniker Id="229d1959-5a11-4837-8046-4dd1d4fe475f" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.86584359615385 : 2.45); (1.86584359615385 : 2.625); (2.5625 : 2.625); (2.5625 : 4.256252); (2.57291666666667 : 4.256252 : JumpStart); (2.80208333333333 : 4.256252 : JumpEnd); (2.875 : 4.256252)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.86584359615385 : 2.45); (1.86584359615385 : 2.625); (2.5625 : 2.625); (2.5625 : 4.256252); (2.57291666666667 : 4.256252 : JumpStart); (2.83333333333333 : 4.256252 : JumpEnd); (2.875 : 4.256252)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PMBookDataContext/PMB_Proyecto/PMB_Proyecto_PMB_ProyectosConsultore1" />
       <nodes>
         <classShapeMoniker Id="98e99eb4-7e60-4e65-ae9b-3666d6e766a6" />
@@ -362,7 +362,7 @@
         <classShapeMoniker Id="ab2ec701-a81c-4cb1-8086-46fd03158d8d" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.5 : 2.1937475); (2.84375 : 2.1937475); (2.84375 : 3.90625); (4.84244791666667 : 3.90625 : JumpStart); (5.20833333333333 : 3.90625 : JumpEnd); (6.8593735 : 3.90625); (6.8593735 : 4)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.5 : 2.1937475); (2.84375 : 2.1937475); (2.84375 : 3.90625); (4.84244791666667 : 3.90625 : JumpStart); (5.20833333333333 : 3.90625 : JumpEnd); (6.6093735 : 3.90625); (6.6093735 : 4)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PMBookDataContext/PMB_Proyecto/PMB_Proyecto_PMB_ProyectosEstatus" />
       <nodes>
         <classShapeMoniker Id="98e99eb4-7e60-4e65-ae9b-3666d6e766a6" />
@@ -375,7 +375,7 @@
         <elementListCompartment Id="019a34f9-f1a1-495c-9323-d27e5ceebc65" absoluteBounds="2.89, 5.085, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(1.14167563461538 : 2.45); (1.14167563461538 : 2.65625); (2.53125 : 2.65625); (2.53125 : 4.754685); (2.875 : 4.754685)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.14167563461538 : 2.45); (1.14167563461538 : 2.71875); (2.53125 : 2.71875); (2.53125 : 4.754685); (2.57291666666667 : 4.754685 : JumpStart); (2.83333333333333 : 4.754685 : JumpEnd); (2.875 : 4.754685)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PMBookDataContext/PMB_Proyecto/PMB_Proyecto_PMB_ProyectosSprint" />
       <nodes>
         <classShapeMoniker Id="98e99eb4-7e60-4e65-ae9b-3666d6e766a6" />
@@ -408,28 +408,28 @@
         <elementListCompartment Id="1a4e6307-c93a-474c-ab49-ad6a8ac6fd63" absoluteBounds="5.39, 5.085, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.375 : 4.85); (5.125 : 4.85); (5.125 : 5.2); (5.08333333333333 : 5.2 : JumpStart); (4.91666666666667 : 5.2 : JumpEnd); (2.85119047619048 : 5.2 : JumpStart); (2.68452380952381 : 5.2 : JumpEnd); (1.468748 : 5.2); (1.468748 : 5.075)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.375 : 4.881252); (5.14583333333333 : 4.881252 : JumpStart); (4.97916666666667 : 4.881252 : JumpEnd); (4.9375 : 4.881252); (4.9375 : 5.1375); (2.83333333333333 : 5.1375 : JumpStart); (2.55059523809524 : 5.1375 : JumpEnd); (1.531252 : 5.1375); (1.531252 : 5.075)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PMBookDataContext/Ctl_Producto/Ctl_Producto_PMB_Actividade" />
       <nodes>
         <classShapeMoniker Id="2707b0fb-9227-4407-ae23-55defc7a510a" />
         <classShapeMoniker Id="6fffe516-e197-4bcf-b0b2-e2ed93babd1e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(7.375 : 4.625); (7.84732443490112 : 4.15267556509888 : JumpStart); (7.96517556509888 : 4.03482443490112 : JumpEnd); (8.125 : 3.875); (8.125 : 3.575); (7.375 : 3.19238361538462)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(7.375 : 4.625); (8.125 : 3.875); (8.125 : 3.575); (7.375 : 3.19238361538462)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PMBookDataContext/Ctl_Producto/Ctl_Producto_PMB_ProyectosComponente" />
       <nodes>
         <classShapeMoniker Id="2707b0fb-9227-4407-ae23-55defc7a510a" />
         <classShapeMoniker Id="d708103c-945d-4418-b19c-407b31d840a2" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(6.343748 : 4.625); (6.343748 : 4.5125); (7.4375 : 4.5125); (7.4375 : 3.568748); (7.375 : 3.568748)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(6.343748 : 4.625); (6.343748 : 4.5125); (7.4375 : 4.5125); (7.4375 : 3.568748); (7.375 : 3.568748)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PMBookDataContext/Ctl_Producto/Ctl_Producto_PMB_ProyectosComponente1" />
       <nodes>
         <classShapeMoniker Id="2707b0fb-9227-4407-ae23-55defc7a510a" />
         <classShapeMoniker Id="52dd7b2d-41ab-4d9c-b292-09a5109cac63" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.875 : 3.825); (4.9558334216664 : 3.95433347466624 : JumpStart); (5.1066665783336 : 4.19566652533376 : JumpEnd); (5.375 : 4.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(4.875 : 3.825); (4.8933334216664 : 3.85433347466624 : JumpStart); (4.9816665783336 : 3.99566652533376 : JumpEnd); (5.0183334216664 : 4.05433347466624 : JumpStart); (5.1066665783336 : 4.19566652533376 : JumpEnd); (5.2683334216664 : 4.45433347466624 : JumpStart); (5.3566665783336 : 4.59566652533376 : JumpEnd); (5.375 : 4.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PMBookDataContext/CTL_EmisoresPMBook/CTL_EmisoresPMBook_Ctl_Producto" />
       <nodes>
         <classShapeMoniker Id="6c2e7b29-2159-47d5-9b55-30f5efa6b167" />
@@ -442,28 +442,28 @@
         <elementListCompartment Id="cc68c751-6877-4039-9ed7-907e4d87f8ac" absoluteBounds="5.39, 5.71, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.375 : 5.531252); (5.1875 : 5.531252); (5.1875 : 5.171875); (5.14583333333333 : 5.171875 : JumpStart); (4.91666666666667 : 5.171875 : JumpEnd); (2.79092261904762 : 5.171875 : JumpStart); (2.62425595238095 : 5.171875 : JumpEnd); (1.984374 : 5.171875); (1.984374 : 5.075)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.375 : 5.475); (5 : 5.475); (5 : 5.1875); (2.83333333333333 : 5.1875 : JumpStart); (2.6577380952381 : 5.1875 : JumpEnd); (2.046878 : 5.1875); (2.046878 : 5.075)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/PMBookDataContext/Ctl_ProductosModulo/Ctl_ProductosModulo_PMB_Actividade" />
       <nodes>
         <classShapeMoniker Id="c237e681-252d-4723-a57f-579a67c5e329" />
         <classShapeMoniker Id="6fffe516-e197-4bcf-b0b2-e2ed93babd1e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(7.375 : 5.27215284615385); (7.90625 : 4.74090284615385); (7.90625 : 3.73851923076923); (7.36773076923077 : 3.2)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(7.375 : 5.27215284615385); (7.90625 : 4.74090284615385); (7.90625 : 3.73125); (7.375 : 3.2)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PMBookDataContext/Ctl_ProductosModulo/Ctl_ProductosModulo_PMB_ProyectosComponente" />
       <nodes>
         <classShapeMoniker Id="c237e681-252d-4723-a57f-579a67c5e329" />
         <classShapeMoniker Id="d708103c-945d-4418-b19c-407b31d840a2" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(7.36773076923077 : 5.25); (7.75 : 4.86773076923077); (7.75 : 4.2); (7.49642556509888 : 3.94642556509888 : JumpStart); (7.37857443490112 : 3.82857443490112 : JumpEnd); (7.375 : 3.825)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(7.36773076923077 : 5.25); (7.75 : 4.86773076923077); (7.75 : 4.2); (7.375 : 3.825)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PMBookDataContext/Ctl_ProductosModulo/Ctl_ProductosModulo_PMB_ProyectosComponente1" />
       <nodes>
         <classShapeMoniker Id="c237e681-252d-4723-a57f-579a67c5e329" />
         <classShapeMoniker Id="52dd7b2d-41ab-4d9c-b292-09a5109cac63" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(6.34011288461538 : 5.075); (6.34011288461538 : 5.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(6.34011288461538 : 5.075); (6.34011288461538 : 5.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PMBookDataContext/Ctl_Producto/Ctl_Producto_Ctl_ProductosModulo" />
       <nodes>
         <classShapeMoniker Id="2707b0fb-9227-4407-ae23-55defc7a510a" />
@@ -476,32 +476,72 @@
         <elementListCompartment Id="d618caaa-f676-4aca-8b3e-0a199b5c7d0f" absoluteBounds="2.89, 5.71, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.875 : 5.25); (2.5 : 5.075)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.875 : 5.25); (2.82551526166627 : 5.22690712211093 : JumpStart); (2.67448473833373 : 5.15642621122241 : JumpEnd); (2.5 : 5.075)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PMBookDataContext/Ctl_ProductosComponente/Ctl_ProductosComponente_PMB_Actividade" />
       <nodes>
         <classShapeMoniker Id="0a810826-5422-4d1f-ae8b-526ff41cfdcd" />
         <classShapeMoniker Id="6fffe516-e197-4bcf-b0b2-e2ed93babd1e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.875 : 5.415626); (5.0625 : 5.415626); (5.0625 : 3.23125); (5.19791666666667 : 3.23125 : JumpStart); (5.36904761904762 : 3.23125 : JumpEnd); (5.87318269230769 : 3.23125); (5.87318269230769 : 3.2)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.875 : 5.3625005); (5.0625 : 5.3625005); (5.0625 : 3.23125); (5.19791666666667 : 3.23125 : JumpStart); (5.36904761904762 : 3.23125 : JumpEnd); (6.375 : 3.23125); (6.375 : 3.2)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PMBookDataContext/Ctl_ProductosComponente/Ctl_ProductosComponente_PMB_ProyectosComponente" />
       <nodes>
         <classShapeMoniker Id="0a810826-5422-4d1f-ae8b-526ff41cfdcd" />
         <classShapeMoniker Id="d708103c-945d-4418-b19c-407b31d840a2" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.875 : 5.6156255); (5 : 5.6156255); (5 : 3.85625); (5.04166666666667 : 3.85625 : JumpStart); (5.20833333333333 : 3.85625 : JumpEnd); (5.714841625 : 3.85625); (5.714841625 : 3.825)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.875 : 5.5874995); (5.3125 : 5.5874995); (5.3125 : 3.85625); (6.375 : 3.85625); (6.375 : 3.825)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PMBookDataContext/Ctl_ProductosComponente/Ctl_ProductosComponente_PMB_ProyectosComponente1" />
       <nodes>
         <classShapeMoniker Id="0a810826-5422-4d1f-ae8b-526ff41cfdcd" />
         <classShapeMoniker Id="52dd7b2d-41ab-4d9c-b292-09a5109cac63" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.375 : 5.270313); (5.27083333333333 : 5.270313 : JumpStart); (4.91666666666667 : 5.270313 : JumpEnd); (4.875 : 5.270313)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.375 : 5.7); (5 : 6.075); (3.875 : 6.075); (3.875 : 5.7)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PMBookDataContext/Ctl_ProductosModulo/Ctl_ProductosModulo_Ctl_ProductosComponente" />
       <nodes>
         <classShapeMoniker Id="c237e681-252d-4723-a57f-579a67c5e329" />
         <classShapeMoniker Id="0a810826-5422-4d1f-ae8b-526ff41cfdcd" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="f0131a0e-e598-4303-8923-dfdae058fa29" isExpanded="false" absoluteBounds="0.625, 5.25, 2, 0.45">
+      <DataClassMoniker Name="/PMBookDataContext/Ctl_ProductosVersione" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9bde6972-4824-40c3-9e93-51c637d28836" absoluteBounds="0.63999999999999968, 5.71, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.015626 : 5.25); (1.015626 : 5.075)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PMBookDataContext/Ctl_ProductosVersione/Ctl_ProductosVersione_PMB_Actividade" />
+      <nodes>
+        <classShapeMoniker Id="f0131a0e-e598-4303-8923-dfdae058fa29" />
+        <classShapeMoniker Id="6fffe516-e197-4bcf-b0b2-e2ed93babd1e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.375 : 5.009378); (5.125 : 5.009378); (5.125 : 5.10625); (2.83333333333333 : 5.10625 : JumpStart); (2.66666666666667 : 5.10625 : JumpEnd); (2.3359385 : 5.10625); (2.3359385 : 5.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PMBookDataContext/Ctl_Producto/Ctl_Producto_Ctl_ProductosVersione" />
+      <nodes>
+        <classShapeMoniker Id="2707b0fb-9227-4407-ae23-55defc7a510a" />
+        <classShapeMoniker Id="f0131a0e-e598-4303-8923-dfdae058fa29" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="56ee6bc2-6a66-4f79-96f1-6d4b3989b64b" isExpanded="false" absoluteBounds="0.625, 5.875, 2, 0.45">
+      <DataClassMoniker Name="/PMBookDataContext/Ctl_TiposIncidente" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cb809677-1746-4cb7-9a9c-4fecfda2abe7" absoluteBounds="0.63999999999999968, 6.335, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.625 : 5.875); (1.625 : 5.7625); (0.4375 : 5.7625); (0.4375 : 4.993752); (0.5 : 4.993752)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PMBookDataContext/Ctl_TiposIncidente/Ctl_TiposIncidente_PMB_Actividade" />
+      <nodes>
+        <classShapeMoniker Id="56ee6bc2-6a66-4f79-96f1-6d4b3989b64b" />
+        <classShapeMoniker Id="6fffe516-e197-4bcf-b0b2-e2ed93babd1e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.875 : 3.825); (3.875 : 3.96875); (2.75 : 3.96875); (2.75 : 6.1); (2.625 : 6.1)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PMBookDataContext/CTL_EmisoresPMBook/CTL_EmisoresPMBook_Ctl_TiposIncidente" />
+      <nodes>
+        <classShapeMoniker Id="6c2e7b29-2159-47d5-9b55-30f5efa6b167" />
+        <classShapeMoniker Id="56ee6bc2-6a66-4f79-96f1-6d4b3989b64b" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

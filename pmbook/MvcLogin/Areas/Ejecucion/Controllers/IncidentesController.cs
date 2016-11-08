@@ -57,6 +57,35 @@ namespace MvcLogin.Areas.Ejecucion.Controllers
                 msgErr = Result.msgErr
             }, JsonRequestBehavior.AllowGet);
         }
+        ///TRAE TIPO INCIDENTE
+        public ActionResult ObtenerTipoIncidente()
+        {
+            PMBookDataContext DB = new PMBookDataContext();
+            IncidentesModel model = new IncidentesModel();
+            DTO_Incidente_Result Result = model.ObtenerTipoIncidente(DB);
+
+            return Json(new
+            {
+                TipoIncidente = Result.TipoIncidente,
+                bError = Result.bError,
+                msgErr = Result.msgErr
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        ///TRAE VERSIONES
+        public ActionResult ObtenerVersiones(int idProducto)
+        {
+            PMBookDataContext DB = new PMBookDataContext();
+            IncidentesModel model = new IncidentesModel();
+            DTO_Incidente_Result Result = model.ObtenerVersiones(DB, idProducto);
+
+            return Json(new
+            {
+                Versiones = Result.Versiones,
+                bError = Result.bError,
+                msgErr = Result.msgErr
+            }, JsonRequestBehavior.AllowGet);
+        }
 
         ///TRAE MODULOS
         public ActionResult ObtenerModulos(int idProducto)

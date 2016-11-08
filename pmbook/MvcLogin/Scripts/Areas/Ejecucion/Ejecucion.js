@@ -61,15 +61,16 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
     $scope.FILTROACTIVIDADES = { //Inicializamos la fecha de las actividades
         dFechaInicio: OLDMONTH,
         dFechaFin: HOY,
-        filtro: ''
+        filtro: '',
     };
+    $scope.FechaReporte = $scope.FILTROACTIVIDADES.dFechaFin;
     $scope.lstActividades = [];
     //Actividades
     $scope.LimpiarFiltroActividades = function () {
         $scope.FILTROACTIVIDADES = {
             dFechaInicio: OLDMONTH,
             dFechaFin: HOY,
-            filtro: ''
+            filtro: '',
         };
         $('.datepickerFin').datepicker('update', HOY);
         $('.datepickerInicio').datepicker('update', OLDMONTH);
@@ -106,7 +107,7 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
         filterText: '',
         useExternalFilter: false
     };
- 
+    $scope.mySelections = [];
     $scope.gridActividades = {
         data: 'lstActividades',
         showGroupPanel: true,
@@ -114,6 +115,8 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
         showFooter: true,
         enableFiltering: false,
         filterOptions: $scope.filterOptions,
+        selectedItems: $scope.mySelections,
+        multiSelect: false,
         aggregateTemplate: '<div ng-click="row.toggleExpand()" " ng-style="rowStyle(row)" class="ngAggregate"> <span class="ngAggregateText">{{row.label CUSTOM_FILTERS}} (Total Consultas: {{ActividadesSum(row)}})</span> <div class="{{row.aggClass()}}"></div> </div>',
     };
 
@@ -163,9 +166,16 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
         Producto: 0,
         Modulo: 0,
         Componente: 0,
+        Versiones: 0,
         Lider: 0,
         Tester: 0,
-        Consultor: 0
+        Consultor: 0,
+        TipoIncidente: 0,
+        cDescripcion: '',
+        tDescripcion: '',
+        Files:'',
+        Cobrable: false,
+        ControlCalidad:false
     };
     //
     $scope.lstProductos = [];
@@ -185,6 +195,45 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
         }).error(function (response, status, header, config) {
         });
     };
+    //tipo incidente
+    $scope.lstTipoIncidente = [];
+    $scope.LoadTipoIncidente = function () {
+        $http({
+            method: 'POST',
+            url: '/Ejecucion/Incidentes/ObtenerTipoIncidente',
+            data: {}
+        }).success(function (response, status, header, config) {
+            if (response.bError) {
+                swal('Error', response.msgErr, 'error');
+            }
+            else {
+                $scope.lstTipoIncidente = response.TipoIncidente;
+                $scope.Select.TipoIncidente = $scope.lstTipoIncidente;
+            }
+        }).error(function (response, status, header, config) {
+        });
+    };
+
+    //versiones
+    $scope.lstVersiones = [];
+    $scope.LoadVersiones = function (idProducto) {
+        $http({
+            method: 'POST',
+            url: '/Ejecucion/Incidentes/ObtenerVersiones',
+            data: { idProducto: idProducto }
+        }).success(function (response, status, header, config) {
+            if (response.bError) {
+                swal('Error', response.msgErr, 'error');
+            }
+            else {
+                $scope.lstVersiones = response.Versiones;
+                $scope.Select.Versiones = $scope.lstVersiones;
+            }
+        }).error(function (response, status, header, config) {
+        });
+
+    };
+
     //modulos
     $scope.lstModulos = [];
     $scope.LoadModulos = function (idProducto) {
@@ -311,9 +360,13 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
             Producto: 0,
             Modulo: 0,
             Componente: 0,
+            Versiones: 0,
             Lider: 0,
             Tester: 0,
-            Consultor: 0
+            Consultor: 0,
+            TipoIncidente: 0,
+            Cobrable: false,
+            ControlCalidad: false
         };
     };
 
@@ -329,9 +382,6 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
     };
 
     $scope.LoadIncidentes = function (idCliente) {
-        if (idCliente == null) {
-            idCliente = 0;
-        }
         $http({
             method: 'POST',
             url: '/Ejecucion/Incidentes/ObtenerIncidentes',
@@ -400,9 +450,13 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
         }).error(function (data, status, header, config) {
         });
     };
+    $scope.NuevoReporteActividadModal = function () {
+        $("#ReporteActividadModal").modal('show');
+    };
     $scope.NuevoIncidenteModal = function () {
         $("#RegistroIncidenteModal").modal('show');
     };
+
    
     //*******************************************************************************************************************
 

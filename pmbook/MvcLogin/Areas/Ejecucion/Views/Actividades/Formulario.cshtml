@@ -1,55 +1,183 @@
-﻿<div style="color:#00788F" class="modal fade" id="RegistroDiagnosticoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+﻿<div style="color:#00788F" class="modal fade" id="ReporteActividadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document" style="width: 80%; left: 0 !important">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cerrarModalDiagnostico()"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Registro de Diagnostico <i class="fa fa-pencil" aria-hidden="true"></i></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cerrarModalActividad()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Reporte de Avance <i class="fa fa-pencil" aria-hidden="true"></i></h4>
             </div>
             <div class="modal-body">
                 <div ng-hide="OnServer">
-                    <div class="row" style="padding-top:10px;">
-                        <div class='col-md-3' style="text-align:right"><h4>Descripción: </h4></div>
-                        <div class="col-md-7">
-                            <input class="form-control" placeholder="Descripción..." maxlength="50" ng-model="DIAGNOSTICO.cDiagnostico" ng-class="Obligatorio(DIAGNOSTICO.cDiagnostico)" />
+                    <form class="form-horizontal ng-valid ng-valid-time ng-valid-maxlength ng-valid-max-tags ng-valid-min-tags ng-valid-leftover-text ng-dirty ng-valid-parse">
+                    @* proyecto *@
+                   <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <div class="control-label col-sm-1" title="Proyecto"><strong>P</strong></div>
+                                <div class="col-sm-11">
+                                    <input class="form-control input-sm ng-pristine ng-untouched ng-valid" 
+                                        ng-model="lstActividades.Proyecto" ng-disabled="true" disabled="disabled">
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-1">
-                            <span style="color:red">*</span>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="control-label col-sm-6"><strong>Tiempo Autorizado</strong></div>
+                                <div class="col-sm-6">
+                                    <input class="form-control txt-right input-sm ng-pristine ng-untouched ng-valid" 
+                                        ng-model="lstActividades.Tiempoautorizado" disabled="disabled">
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    @* modulo *@
+                   <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <div class="control-label col-sm-1" title="Modulo"><strong>M</strong></div>
+                                <div class="col-sm-11">
+                                    <input class="form-control input-sm ng-pristine ng-untouched ng-valid" 
+                                        ng-model="lstActividades.Modulo" ng-disabled="true" disabled="disabled">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="control-label col-sm-6"><strong>Tiempo Invertido</strong></div>
+                                <div class="col-sm-6">
+                                    <input class="form-control txt-right input-sm ng-pristine ng-untouched ng-valid" 
+                                        ng-model="lstActividades.TrabajoRealizado" ng-disabled="true" disabled="disabled">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @* componente *@
                     <div class="row">
-                        <div class='col-md-3' style="text-align:right"><h4>Dispara alerta sanitaria: </h4></div>
-                        <div class="col-md-7">
-                            <md-switch ng-model="DIAGNOSTICO.bDisparaAlertaSanitaria" aria-label="Switch 1">
-                            </md-switch>
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <div class="control-label col-sm-1" title="Componente"><strong>C</strong></div>
+                                <div class="col-sm-11">
+                                    <input class="form-control input-sm ng-pristine ng-untouched ng-valid" 
+                                        ng-model="lstActividades.Componente" ng-disabled="true" disabled="disabled">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="control-label col-sm-6"><strong>Tiempo Restante</strong></div>
+                                <div class="col-sm-6">
+                                    <input class="form-control txt-right input-sm ng-pristine ng-untouched ng-valid" 
+                                        ng-model="lstActividades.TrabajoRestante" ng-disabled="true" disabled="disabled">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row" ng-show="DIAGNOSTICO.bDisparaAlertaSanitaria">
-                        <div class='col-md-3' style="text-align:right"><h4>Factor de activación: </h4></div>
-                        <div class="col-md-7">
-                            <input class="form-control" placeholder="Factor de activación..." type="number" min="0" ng-model="DIAGNOSTICO.nFactorActivacion" ng-class="Obligatorio(DIAGNOSTICO.nFactorActivacion)" />
+                    @* actividad *@
+                   <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <div class="control-label col-sm-1" title="Actividad"><strong>A</strong></div>
+                                <div class="col-sm-11">
+                                    <input class="form-control input-sm ng-pristine ng-untouched ng-valid" 
+                                        ng-model="lstActividades.Actividad" ng-disabled="true" disabled="disabled">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="control-label col-sm-6"><strong>Eficiencia</strong></div>
+                                <div class="col-sm-6">
+                                    <input class="form-control txt-right input-sm ng-pristine ng-untouched ng-valid" 
+                                        ng-model="lstActividades.Avance" ng-disabled="true" disabled="disabled">
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    @*  *@
                     <div class="row">
-                        <div class='col-md-3' style="text-align:right"><h4>Activo: </h4></div>
-                        <div class="col-md-7">
-                            <md-switch ng-model="DIAGNOSTICO.bActivo" aria-label="Switch 1">
-                            </md-switch>
+                        <div class="col-sm-8"></div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="control-label col-sm-6"><strong>Fecha Clave</strong></div>
+                                <div class="col-sm-6">
+                                    <input class="form-control txt-right input-sm ng-pristine ng-untouched ng-valid" 
+                                         ng-disabled="true" disabled="disabled">
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    @*  *@
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <div class="control-label col-sm-3">
+                              <strong>Fecha de Registro</strong>
+                          </div>
+                          <div class="col-sm-4">
+                            <input class="datepickerFin form-control ng-pristine ng-valid ng-touched"
+                                ng-model="FILTROACTIVIDADES.dFechaFin"/>
+                          </div>
+                          <div class="col-md-5">
+                          <div class="checkbox">
+                            <label class="">
+                                <input type="checkbox" ng-disabled="true" class="ng-pristine ng-untouched ng-valid" disabled="disabled"> Control de Calidad
+                            </label>
+                          </div>
+                         </div>
+                       </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label>Actividad Realizada</label>
+                                <textarea class="form-control ng-pristine ng-valid ng-touched"  style="resize:vertical;" rows="6"></textarea>
+                                <label class="ng-binding">1000 caracteres restantes.</label>
+                            </div>
+                        </div>
+                     <div class="row">
+                        <div class="col-sm-4"><label>Tiempo Invertido</label></div>
+                        <div class="col-sm-4"><label>Tiempo Restante</label></div>
+                        <div class="col-sm-4"><label>Avance</label></div>
+                    </div>
+                      </div>
+                      <div class="col-sm-6">
+                       <div>
+                           <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation"  class="active">
+                                        <a href="#Acciones" role="tab" data-toggle="tab">Acciones</a>
+                                    </li>
+                           </ul> 
+                            <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade in active" id="Acciones">
+                                <div class="row" style="margin-top:15px;">
+                                    <div class="col-sm-12">
+                                        <div class="input-group">
+                                            <tags-input  placeholder="Agregar acción..." class="ng-pristine ng-valid ng-isolate-scope ng-valid-max-tags ng-valid-min-tags ng-valid-leftover-text ng-touched"><span class="input" style="visibility: hidden; width: auto; white-space: pre; display: none;">Agregar acción...</span>
+                                            </tags-input>
+                                            <div class="input-group-btn">
+                                                <span class="btn btn-default" style="border-color: #CCCCCC"><i class="fa fa-plus-circle" style="font-size: 20px;"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                   
+                       </div>
+                      </div>
+                    </div>
+          
                     <div style="padding-top:20px" id="Diagnostico_msgerr" class="row">
 
                     </div>
+                 </form>
                 </div>
-                <div ng-show="OnServer">
+                 <div ng-show="OnServer">
                     <div layout="row" layout-sm="column" layout-align="space-around">
                         <md-progress-circular md-mode="indeterminate"></md-progress-circular>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
+               </div>
+             <div class="modal-footer">
                 <md-button class="md-raised md-primary" style="color:white" ng-click="ValidaGuardaDiagnostico()" ng-disabled="OnServer">Guardar <i class="fa fa-floppy-o" aria-hidden="true" style="color: white;"></i></md-button>
                 <md-button class="md-raised md-warn" style="color:white" data-dismiss="modal" ng-disabled="OnServer">Cancelar <i class="fa fa-times" aria-hidden="true"></i></md-button>
             </div>
+            </div>
         </div>
-    </div>
-</div>
+  </div>

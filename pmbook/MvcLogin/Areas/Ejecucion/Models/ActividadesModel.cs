@@ -238,13 +238,14 @@ namespace MvcLogin.Areas.Ejecucion.Models
                                                Modulo = m.cDescripcion,
                                                Componente = c.cDescripcion,
                                                Actividad = a.cDescripcion,
-                                               Tiempoautorizado = (double)a.nEstimacionAutorizadaUE,
-                                               TrabajoRestante = (double)a.nTrabajoRestanteHoras,
+                                               Tiempoautorizado = Math.Floor(a.nEstimacionAutorizadaUE / 60) + " Hr " + a.nEstimacionAutorizadaUE % 60 + " min",
+                                               TrabajoRealizado = Math.Floor(a.nTrabajoRealizadoHoras / 60) + " Hr " + a.nTrabajoRealizadoHoras % 60 + " min",
+                                               TrabajoRestante = Math.Floor(a.nTrabajoRestanteHoras / 60) + " Hr " + a.nTrabajoRestanteHoras % 60 + " min",
                                                Avance = (double)a.nAvancePorcentualEstimado,
                                                Vuelta = a.nVuelta,
                                                Estatus = a.nEstatus,
                                                Consultor = u.cNombre,
-                                               FechaRegistro = a.dFecha_Registro.ToString()
+                                               FechaRegistro = (a.dFecha_Registro != null) ? ((DateTime)a.dFecha_Registro).ToShortDateString() : "Sin fecha de cierre", 
                                            }).OrderBy(x => x.Actividad).ToList();
             }
             catch (Exception e)
@@ -286,8 +287,9 @@ namespace MvcLogin.Areas.Ejecucion.Models
                                                Modulo = m.cDescripcion,
                                                Componente = c.cDescripcion,
                                                Actividad = a.cDescripcion,
-                                               Tiempoautorizado = (double)a.nEstimacionAutorizadaUE,
-                                               TrabajoRestante = (double)a.nTrabajoRestanteHoras,
+                                               Tiempoautorizado = Math.Floor(a.nEstimacionAutorizadaUE / 60) + " Hr " + a.nEstimacionAutorizadaUE % 60 + " min",
+                                               TrabajoRealizado =Math.Floor(a.nTrabajoRealizadoHoras / 60) + " Hr " + a.nTrabajoRealizadoHoras % 60 +  "min",
+                                               TrabajoRestante = Math.Floor(a.nTrabajoRestanteHoras / 60) + " Hr " + a.nTrabajoRestanteHoras % 60 + " min",
                                                Avance = (double)a.nAvancePorcentualEstimado,
                                                Vuelta = a.nVuelta,
                                                Estatus = a.nEstatus,
@@ -311,8 +313,9 @@ namespace MvcLogin.Areas.Ejecucion.Models
         public string Modulo { get; set; }
         public string Componente { get; set; }
         public string Actividad { get; set; }
-        public double Tiempoautorizado { get; set; }
-        public double TrabajoRestante { get; set; }
+        public String Tiempoautorizado { get; set; }
+        public string TrabajoRealizado { get; set; }
+        public string TrabajoRestante { get; set; }
         public double Avance { get; set; }
         public int Vuelta { get; set; }
         public byte Estatus { get; set; }

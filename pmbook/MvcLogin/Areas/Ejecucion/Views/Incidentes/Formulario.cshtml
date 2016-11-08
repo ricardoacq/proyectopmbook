@@ -10,32 +10,41 @@
                     <div class="row" style="padding-top:10px;">
                         <div class='col-md-2' style="text-align:right"><h4>Cliente: </h4></div>
                         <div class="col-md-4">
-                            <select class="form-control"><option value="" ng-hide="true" class="ng-hide">Seleccione</option></select>
+                            <select class="form-control" ng-model="Select.Cliente" 
+                             ng-options="c.idCliente as c.Cliente for c in lstClientes">
+                             <option value="" ng-hide="true" class="ng-hide">Seleccione</option>
+                            </select>
                         </div>
                        <div class='col-md-2' style="text-align:right"><h4>Producto: </h4></div>
                         <div class="col-md-4">
-                            <select class="form-control"><option value="" ng-hide="true" class="ng-hide">Seleccione</option></select>
+                            <select class="form-control" ng-model="Select.Producto" ng-options="p.idProducto as p.Producto for p in lstProductos"
+                               ng-change="LoadModulos(Select.Producto);LoadVersiones(Select.Producto)" >
+                               <option value="" ng-hide="true" class="ng-hide">Seleccione</option>
+                            </select>
                         </div>
                     </div>
                     
                     <div class="row">
                         <div class='col-md-2' style="text-align:right"><h4>Fecha Registro: </h4></div>
                         <div class="col-md-4">
-                            <input class="form-control" placeholder="" type="number" min="0" />
+                            <input class="form-control" placeholder="" ng-model="FILTROACTIVIDADES.dFechaFin"  min="0" value="{{FILTROACTIVIDADES.dFechaFin}}" disabled/>
                         </div>
                         <div class='col-md-2' style="text-align:right"><h4>Version: </h4></div>
                         <div class="col-md-4">
-                             <select class="form-control"><option value="" ng-hide="true" class="ng-hide">Seleccione</option></select>
+                             <select class="form-control" ng-model="Select.Versiones"
+                             ng-options="v.idVersion as v.Version for v in lstVersiones">
+                             <option value="" ng-hide="true" class="ng-hide">Seleccione</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row">
-                        <div class='col-md-2' style="text-align:right"></h4></div>
-                        <div class="col-md-4">
-                            
-                        </div>
                         <div class='col-md-2' style="text-align:right"><h4>Modulo: </h4></div>
                         <div class="col-md-4">
-                             <select class="form-control"><option value="" ng-hide="true" class="ng-hide">Seleccione</option></select>
+                             <select class="form-control" ng-model="Select.Modulo"
+                             ng-options="m.idModulo as m.Modulo for m in lstModulos"
+                             ng-change="LoadComponentes(Select.Modulo)">
+                             <option value="" ng-hide="true" class="ng-hide">Seleccione</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row">
@@ -45,29 +54,35 @@
                         </div>
                         <div class='col-md-2' style="text-align:right"><h4>Componente: </h4></div>
                         <div class="col-md-4">
-                             <select class="form-control"><option value="" ng-hide="true" class="ng-hide">Seleccione</option></select>
+                           <select class="form-control" ng-model="Select.Componente"
+                             ng-options="c.idComponente as c.Componente for c in lstComponentes">
+                               <option value="" ng-hide="true" class="ng-hide">Seleccione</option>
+                            </select>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class='col-md-2' style="text-align:right"><h4>Incidente: </h4></div>
                         <div class="col-md-10">
-                             <input class="form-control" placeholder="Nombre de Incidente" type="number" min="0" />
+                             <input class="form-control" ng-model="Select.cDescripcion" id="cDescripcion" placeholder="Nombre de Incidente" type="number" min="0" />
                         </div>
                     </div>
                     <div class="row">
                         <div class='col-md-2' style="text-align:right"><h4>Tipo Incidente: </h4></div>
                         <div class="col-md-4">
-                             <select class="form-control"><option value="" ng-hide="true" class="ng-hide">Seleccione</option></select>
+                             <select class="form-control" ng-model="Select.TipoIncidente" placeholder="Seleccione"
+                             ng-options="t.idTipoIncidente as t.TipoIncidente for t in lstTipoIncidente">
+                             <option value="" ng-hide="true" class="ng-hide">Seleccione</option>
+                            </select>
                         </div>
-                        <div class="col-md-3"><input type="checkbox"/><label>Pasa Control de Calidad</label></div>
-                        <div class="col-md-3"><input type="checkbox"/><label>Cobrable</label></div>
+                        <div class="col-md-3"><input type="checkbox" ng-model="Select.ControlCalidad"/><label>Pasa Control de Calidad</label></div>
+                        <div class="col-md-3"><input type="checkbox" ng-model="Select.Cobrable"/><label>Cobrable</label></div>
                     </div>
                     <div class="row">
                         <div class="col-md-2"><h4>Descripcion</h4></div>
                         <div class="col-md-10"><textarea class="form-control ng-pristine ng-valid ng-touched" 
                             style="resize:vertical;"  rows="10" name="tDescripcion" 
-                            ></textarea></div>
+                            ng-model="Select.tDescripcion"></textarea></div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
@@ -87,8 +102,11 @@
                         </div>
                          <div class="col-md-6">
                             <div class="col-md-4"><h4>Asignar a</h4></div>
-                            <div class="col-md-8"><select class="form-control">
-                                <option value="" ng-hide="true" class="ng-hide">Seleccione</option></select>
+                            <div class="col-md-8">
+                             <select class="form-control" ng-model="Select.Consultor" 
+                             ng-options="c.idConsultor as c.Consultor for c in lstConsultores">
+                             <option value="" ng-hide="true" class="ng-hide">Seleccione</option>
+                            </select>
                             </div>
                         </div>
                         </div>
@@ -99,7 +117,7 @@
                                 <label class="control-label">Anexar archivos</label>
                             </div>
                             <div class="col-md-8">
-                                <div class="input-group ng-pristine ng-untouched ng-valid" ng-file-select="" ng-multiple="true">
+                               <div class="input-group ng-untouched ng-valid ng-dirty ng-valid-parse" ng-file-select="" ng-multiple="true"  ng-model="Select.Files" style="overflow: hidden;">
                                     <input class="form-control" placeholder="Examinar..." style="cursor:pointer !important;">
                                     <span class="input-group-btn">
                                        <button class="btn btn-default" style="height:34px;border: 1px solid #cbd5dd;">
@@ -125,7 +143,7 @@
                 </div>
             <div class="modal-footer">
                 <md-button class="md-raised md-primary" style="color:white"  ng-disabled="OnServer">Guardar <i class="fa fa-floppy-o" aria-hidden="true" style="color: white;"></i></md-button>
-                <md-button class="md-raised md-warn" style="color:white" data-dismiss="modal" ng-disabled="OnServer">Cancelar <i class="fa fa-times" aria-hidden="true"></i></md-button>
+                <md-button class="md-raised md-warn" style="color:white" data-dismiss="modal" ng-click="limpiarForm()" ng-disabled="OnServer">Cancelar <i class="fa fa-times" aria-hidden="true"></i></md-button>
             </div>
         </div>
     </div>

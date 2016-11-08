@@ -160,6 +160,8 @@
       <Association Name="Ctl_Producto_PMB_Actividade" Member="Ctl_Producto" ThisKey="nProducto" OtherKey="nProducto" Type="Ctl_Producto" IsForeignKey="true" />
       <Association Name="Ctl_ProductosModulo_PMB_Actividade" Member="Ctl_ProductosModulo" ThisKey="nProductoModulo" OtherKey="nProductoModulo" Type="Ctl_ProductosModulo" IsForeignKey="true" />
       <Association Name="Ctl_ProductosComponente_PMB_Actividade" Member="Ctl_ProductosComponente" ThisKey="nProductoComponente" OtherKey="nProductoComponente" Type="Ctl_ProductosComponente" IsForeignKey="true" />
+      <Association Name="Ctl_ProductosVersione_PMB_Actividade" Member="Ctl_ProductosVersione" ThisKey="nProductoVersion" OtherKey="nProductoVersion" Type="Ctl_ProductosVersione" IsForeignKey="true" />
+      <Association Name="Ctl_TiposIncidente_PMB_Actividade" Member="Ctl_TiposIncidente" ThisKey="nTipoIncidentes" OtherKey="nTipoIncidentes" Type="Ctl_TiposIncidente" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.PMB_Proyectos" Member="PMB_Proyectos">
@@ -392,6 +394,7 @@
       <Association Name="CTL_EmisoresPMBook_PMB_ProyectosConsultore1" Member="PMB_ProyectosConsultore1s" ThisKey="nEmisor" OtherKey="nEmisor" Type="PMB_ProyectosConsultore1" />
       <Association Name="CTL_EmisoresPMBook_PMB_ProyectosEstatus" Member="PMB_ProyectosEstatus" ThisKey="nEmisor" OtherKey="nEmisor" Type="PMB_ProyectosEstatus" />
       <Association Name="CTL_EmisoresPMBook_Ctl_Producto" Member="Ctl_Productos" ThisKey="nEmisor" OtherKey="nEmisor" Type="Ctl_Producto" />
+      <Association Name="CTL_EmisoresPMBook_Ctl_TiposIncidente" Member="Ctl_TiposIncidentes" ThisKey="nEmisor" OtherKey="nEmisor" Type="Ctl_TiposIncidente" />
     </Type>
   </Table>
   <Table Name="dbo.PMB_TiposProyecto" Member="PMB_TiposProyectos">
@@ -558,6 +561,7 @@
       <Association Name="Ctl_Producto_PMB_ProyectosComponente" Member="PMB_ProyectosComponentes" ThisKey="nProducto" OtherKey="nProducto" Type="PMB_ProyectosComponente" />
       <Association Name="Ctl_Producto_PMB_ProyectosComponente1" Member="PMB_ProyectosComponente1s" ThisKey="nProducto" OtherKey="nProducto" Type="PMB_ProyectosComponente1" />
       <Association Name="Ctl_Producto_Ctl_ProductosModulo" Member="Ctl_ProductosModulos" ThisKey="nProducto" OtherKey="nProducto" Type="Ctl_ProductosModulo" />
+      <Association Name="Ctl_Producto_Ctl_ProductosVersione" Member="Ctl_ProductosVersiones" ThisKey="nProducto" OtherKey="nProducto" Type="Ctl_ProductosVersione" />
       <Association Name="CTL_EmisoresPMBook_Ctl_Producto" Member="CTL_EmisoresPMBook" ThisKey="nEmisor" OtherKey="nEmisor" Type="CTL_EmisoresPMBook" IsForeignKey="true" />
     </Type>
   </Table>
@@ -604,6 +608,47 @@
       <Association Name="Ctl_ProductosComponente_PMB_ProyectosComponente" Member="PMB_ProyectosComponentes" ThisKey="nProductoComponente" OtherKey="nProductoComponente" Type="PMB_ProyectosComponente" />
       <Association Name="Ctl_ProductosComponente_PMB_ProyectosComponente1" Member="PMB_ProyectosComponente1s" ThisKey="nProductoComponente" OtherKey="nProductoComponente" Type="PMB_ProyectosComponente1" />
       <Association Name="Ctl_ProductosModulo_Ctl_ProductosComponente" Member="Ctl_ProductosModulo" ThisKey="nProductoModulo" OtherKey="nProductoModulo" Type="Ctl_ProductosModulo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Ctl_ProductosVersiones" Member="Ctl_ProductosVersiones">
+    <Type Name="Ctl_ProductosVersione">
+      <Column Name="nEmisor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nProductoVersion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cDescripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="tDescripcion" Type="System.String" DbType="VarChar(1000) NOT NULL" CanBeNull="false" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="dFecha_Registro" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cMaquina_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_UltimaModificacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="cUsuario_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_Eliminacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Association Name="Ctl_ProductosVersione_PMB_Actividade" Member="PMB_Actividades" ThisKey="nProductoVersion" OtherKey="nProductoVersion" Type="PMB_Actividade" />
+      <Association Name="Ctl_Producto_Ctl_ProductosVersione" Member="Ctl_Producto" ThisKey="nProducto" OtherKey="nProducto" Type="Ctl_Producto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Ctl_TiposIncidentes" Member="Ctl_TiposIncidentes">
+    <Type Name="Ctl_TiposIncidente">
+      <Column Name="nEmisor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nTipoIncidentes" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cDescripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="dFecha_Registro" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cMaquina_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_UltimaModificacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="cUsuario_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_Eliminacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="bRequiereQC" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Ctl_TiposIncidente_PMB_Actividade" Member="PMB_Actividades" ThisKey="nTipoIncidentes" OtherKey="nTipoIncidentes" Type="PMB_Actividade" />
+      <Association Name="CTL_EmisoresPMBook_Ctl_TiposIncidente" Member="CTL_EmisoresPMBook" ThisKey="nEmisor" OtherKey="nEmisor" Type="CTL_EmisoresPMBook" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

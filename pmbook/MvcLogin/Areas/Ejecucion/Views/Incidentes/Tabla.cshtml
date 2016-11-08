@@ -9,7 +9,7 @@
 <div class="panel-collapse in">
 <div class="panel-body">
   <div class="row col-md-10">
-        @* Clientes *@
+        @* Clientes*@
     <div class="col-md-3">
         <div class="form-group">
             <div class="col-md-12">
@@ -18,7 +18,6 @@
             <select class="form-control" ng-model="Select.Cliente" 
                 ng-options="c.idCliente as c.Cliente for c in lstClientes">
             </select>
-            <input type="text" value="{{Select.Cliente}}"/>
         </div>
     </div>
         @* Productos *@
@@ -119,6 +118,7 @@
         setTimeout(function () {
             var scope = $('#V_Catalogos').scope();
             scope.LoadProductos();
+            scope.LoadTipoIncidente();
             scope.LoadClientes();
             scope.LoadLideres();
             scope.LoadConsultores();

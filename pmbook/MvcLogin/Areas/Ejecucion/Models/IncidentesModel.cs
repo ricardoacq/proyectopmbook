@@ -42,6 +42,38 @@ namespace MvcLogin.Areas.Ejecucion.Models
             return Result;
 
         }
+        ///TRAE VERSIONES
+        public DTO_Incidente_Result ObtenerVersiones(PMBookDataContext DB, int idProducto)
+        {
+            DTO_Incidente_Result Result = new DTO_Incidente_Result()
+            {
+                bError = false,
+                msgErr = string.Empty
+            };
+
+            try
+            {
+                Result.Versiones = (from pv in DB.Ctl_ProductosVersiones
+                                  where pv.nEmisor == DataSesion.nEmisor
+                                  && pv.nProducto == idProducto
+                                  && (pv.bActivo)
+                                  select new DTO_Producto_Version()
+                                  {
+                                      idVersion = (pv.nProductoVersion != null) ? pv.nProductoVersion : 0,
+                                      Version = pv.cDescripcion ?? string.Empty,
+                                  }
+                                    ).OrderBy(x => x.Version).ToList();
+            }
+            catch (Exception e)
+            {
+                Result.bError = true;
+                Result.msgErr = e.ToString();
+            }
+
+            return Result;
+
+        }
+
 
         ///TRAE MODULOS
         public DTO_Incidente_Result ObtenerModulos(PMBookDataContext DB,int idProducto)
@@ -61,7 +93,7 @@ namespace MvcLogin.Areas.Ejecucion.Models
                                     select new DTO_Producto_Modulo()
                                     {
                                         idModulo = (pm.nProductoModulo != null) ? pm.nProductoModulo:0,
-                                        Modulo = pm.cDescripcion ?? string.Empty
+                                        Modulo = pm.cDescripcion ?? string.Empty,
                                     }
                                     ).OrderBy(x => x.Modulo).ToList();
             }
@@ -236,7 +268,36 @@ namespace MvcLogin.Areas.Ejecucion.Models
 
         }
 
-     /// 
+       ///TRAE TIPO INCIDNETE 
+        public DTO_Incidente_Result ObtenerTipoIncidente(PMBookDataContext DB)
+        {
+            DTO_Incidente_Result Result = new DTO_Incidente_Result()
+            {
+                bError = false,
+                msgErr = string.Empty
+            };
+
+            try
+            {
+                Result.TipoIncidente = (from t in DB.Ctl_TiposIncidentes
+                                      where t.nEmisor == DataSesion.nEmisor
+                                      && (t.bActivo)
+                                        select new DTO_TipoIncidente()
+                                      {
+                                          idTipoIncidente = (t.nTipoIncidentes != null) ? t.nTipoIncidentes : 0,
+                                          TipoIncidente = t.cDescripcion ?? string.Empty
+                                      }
+                                    ).OrderBy(x => x.TipoIncidente).ToList();
+            }
+            catch (Exception e)
+            {
+                Result.bError = true;
+                Result.msgErr = e.ToString();
+            }
+
+            return Result;
+
+        }
 
 
         //public DTO_Incidente_Result EliminarIncidente(PMBookDataContext DB, int nIncidente)
@@ -412,12 +473,19 @@ namespace MvcLogin.Areas.Ejecucion.Models
             return Result;
         }
     }
+    public class DTO_TipoIncidente
+    {
+        public int idTipoIncidente { get; set; }
+        public string TipoIncidente { get; set; }
+    }
     public class DTO_Producto
     {
         public int idProducto { get; set; }
         public string Producto { get; set; }
-
-
+    }
+    public class DTO_Producto_Version {
+        public int idVersion { get; set; }
+        public string Version { get; set; }
     }
     public class DTO_Producto_Modulo{
         public string Modulo { get; set; }
@@ -475,8 +543,10 @@ namespace MvcLogin.Areas.Ejecucion.Models
         public string msgErr { get; set; }
         public DTO_Incidente Incidente { get; set; }
         public List<DTO_Incidente> Incidentes { get; set; }
+        public List<DTO_TipoIncidente> TipoIncidente { get; set; }
         public List<DTO_Producto> Productos { get; set; }
         public List<DTO_Producto_Modulo> Modulos { get; set; }
+        public List<DTO_Producto_Version> Versiones { get; set; }
         public List<DTO_Cliente> Clientes { get; set; }
         public List<DTO_Lider> Lideres { get; set; }
         public List<DTO_Tester> Testers { get; set; }
