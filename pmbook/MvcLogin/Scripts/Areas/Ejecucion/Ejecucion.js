@@ -107,20 +107,105 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
         filterText: '',
         useExternalFilter: false
     };
+    $scope.btnOption = '<button id="editBtn" type="button" class="btn btn-primary" ng-click="ConsultarReporte(row)" title="Reportar Avance de Actividad"><i class="fa fa-plus-circle"></i>Reporte</button>';
+
     $scope.mySelections = [];
+
     $scope.gridActividades = {
         data: 'lstActividades',
         showGroupPanel: true,
         jqueryUIDraggable: true,
         showFooter: true,
         enableFiltering: false,
+            columnDefs: [{field:'ID', displayName:'id'}, {field:'Proyecto', displayName:'Proyecto'}, {field:'Modulo', displayName:'Modulo'},
+            {field:'Componente',displayName:'Componente'},{field:'Actividad',displayName:'Actividad'},{field:'Tiempoautorizado',displayName:'Tiempo Autorizado'},
+            {field:'TrabajoRealizado',displayName:'Trabajo Realizado'},{field:'TrabajoRestante',displayName:'Trabajo Restante'},{field:'Avance',displayName:'Avance'},
+            {field:'Vuelta',displayName:'Vuelta'},{field:'Estatus',displayName:'Estatus'},{field:'Consultor',displayName:'Consultor'},
+            { field: 'FechaRegistro', displayName: 'Fecha Registro' },{ displayName: 'Editar', cellTemplate: $scope.btnOption }],
         filterOptions: $scope.filterOptions,
         selectedItems: $scope.mySelections,
         multiSelect: false,
         aggregateTemplate: '<div ng-click="row.toggleExpand()" " ng-style="rowStyle(row)" class="ngAggregate"> <span class="ngAggregateText">{{row.label CUSTOM_FILTERS}} (Total Consultas: {{ActividadesSum(row)}})</span> <div class="{{row.aggClass()}}"></div> </div>',
     };
+    //divide las horas y minutos
+    $scope.ConsultarReporte = function (row) {
+        $scope.Act = row.entity;
+        $scope.cadena = $scope.Act.TrabajoRealizado.split(" ", 4);
+        $scope.Horas = parseInt($scope.cadena[0]);
+        $scope.Minutos = parseInt($scope.cadena[2]);
+        $scope.cadena2 = $scope.Act.TrabajoRestante.split(" ", 4);
+        $scope.HorasRes = parseInt($scope.cadena2[0]);
+        $scope.MinutosRes = parseInt($scope.cadena2[2]);
+        $("#ReporteActividadModal").modal('show');
+    };
+    ///INCREMENTAR HORAS Y MINUTOS
+    $scope.IncrementaHoras = function () {
+        $scope.Horas = $scope.Horas + 1;
+    };
+    $scope.IncrementaMinutos = function () {
+        if ($scope.Minutos === 55) {
+            $scope.IncrementaHoras();
+            $scope.Minutos = 0;
+        } else {
+            $scope.Minutos = $scope.Minutos+5;
+        }
+    };
+    $scope.IncrementaHorasRes = function () {
+        $scope.HorasRes = $scope.HorasRes + 1;
+    };
+    $scope.IncrementaMinutosRes = function () {
+        if ($scope.MinutosRes === 55) {
+            $scope.IncrementaHorasRes();
+            $scope.MinutosRes = 0;
+        } else {
+            $scope.MinutosRes = $scope.MinutosRes + 5;
+        }
+    };
 
+    ///DECREMENTAR HORAS Y MINUTOS
+    $scope.DecrementaHoras = function () {
+        $scope.Horas = $scope.Horas - 1;
+    };
+    $scope.DecrementaMinutos = function () {
+        if ($scope.Minutos === 0) {
+            $scope.DecrementaHoras();
+            $scope.Minutos = 55;
+        } else {
+            $scope.Minutos = $scope.Minutos - 5;
+        }
+    };
+    $scope.DecrementaHorasRes = function () {
+        $scope.HorasRes = $scope.HorasRes - 1;
+    };
+    $scope.DecrementaMinutosRes = function () {
+        if ($scope.MinutosRes === 0) {
+            $scope.DecrementaHorasRes();
+            $scope.MinutosRes = 55;
+        } else {
+            $scope.MinutosRes = $scope.MinutosRes - 5;
+        }
+    };
 
+    $scope.LimpiarAct = function () {
+        $scope.Act = {
+            ID:'',
+            Proyecto:'',
+            Modulo:'',
+            Componente:'',
+            Actividad:'',
+            Tiempoautorizado:'',
+            TrabajoRealizado:'',
+            TrabajoRestante:'',
+            Avance:'',
+            Vuelta:'',
+            Estatus:'',
+            Consultor:'',
+            FechaRegistro: ''
+        };
+    };
+    $scope.LimpiarAct();
+
+    //Cargar las actividades en un arreglo
     $scope.LoadActividades = function () {
         $http({
             method: 'POST',
@@ -451,6 +536,7 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
         });
     };
     $scope.NuevoReporteActividadModal = function () {
+        $scope.LimpiarAct();
         $("#ReporteActividadModal").modal('show');
     };
     $scope.NuevoIncidenteModal = function () {

@@ -150,6 +150,7 @@
       <Column Name="bSprintFavorito" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="dFechaCierre" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="PMB_Actividade_PMB_ProyectosAsignacione" Member="PMB_ProyectosAsignaciones" ThisKey="nActividad" OtherKey="nProyectoActividad" Type="PMB_ProyectosAsignacione" />
+      <Association Name="PMB_Actividade_PMB_ActividadesAccione" Member="PMB_ActividadesAcciones" ThisKey="nActividad" OtherKey="nActividad" Type="PMB_ActividadesAccione" />
       <Association Name="ADSUM_Usuario_PMB_Actividade" Member="ADSUM_Usuario" ThisKey="nAdsumUsuarioResponsable" OtherKey="nAdsumUsuario" Type="ADSUM_Usuario" IsForeignKey="true" />
       <Association Name="PMB_Proyecto_PMB_Actividade" Member="PMB_Proyecto" ThisKey="nProyecto" OtherKey="nProyecto" Type="PMB_Proyecto" IsForeignKey="true" />
       <Association Name="PMB_ProyectosComponente_PMB_Actividade" Member="PMB_ProyectosComponente" ThisKey="nProyectoComponente" OtherKey="nProyectoComponente" Type="PMB_ProyectosComponente" IsForeignKey="true" />
@@ -649,6 +650,26 @@
       <Column Name="bRequiereQC" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="Ctl_TiposIncidente_PMB_Actividade" Member="PMB_Actividades" ThisKey="nTipoIncidentes" OtherKey="nTipoIncidentes" Type="PMB_Actividade" />
       <Association Name="CTL_EmisoresPMBook_Ctl_TiposIncidente" Member="CTL_EmisoresPMBook" ThisKey="nEmisor" OtherKey="nEmisor" Type="CTL_EmisoresPMBook" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PMB_ActividadesAcciones" Member="PMB_ActividadesAcciones">
+    <Type Name="PMB_ActividadesAccione">
+      <Column Name="nEmisor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nActividad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nActividadAccion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cDescripcion" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="bCompletado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="bActivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="dFecha_Registro" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="cMaquina_Registro" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cUsuario_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_UltimaModificacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_UltimaModificacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="cUsuario_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="dFecha_Eliminacion" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="cMaquina_Eliminacion" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Association Name="PMB_Actividade_PMB_ActividadesAccione" Member="PMB_Actividade" ThisKey="nActividad" OtherKey="nActividad" Type="PMB_Actividade" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

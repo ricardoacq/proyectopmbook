@@ -233,12 +233,16 @@ namespace MvcLogin.Areas.Ejecucion.Models
                                             && (a.bActivo)
                                            select new DTO_Actividad_Grid()
                                            {
-                                               ID = a.cClaveERP ?? string.Empty,
-                                               Proyecto = p.cDescripcion,
+                                               ID = (a.nActividad != null) ? a.nActividad : 0,
+                                               Favorito = a.bFavorito,
+                                               RequiereQC = (bool)a.bRequiereQC,
+                                               SprintFavorito = a.bSprintFavorito,
+                                               Terminado = a.bTerminado,                                               
+                                               Proyecto = a.cDescripcion,
                                                Modulo = m.cDescripcion,
                                                Componente = c.cDescripcion,
                                                Actividad = a.cDescripcion,
-                                               Tiempoautorizado = Math.Floor(a.nEstimacionAutorizadaUE / 60) + " Hr " + a.nEstimacionAutorizadaUE % 60 + " min",
+                                               Tiempoautorizado = Math.Floor(a.nEstimacionAutorizadaHoras / 60) + " Hr " + a.nEstimacionAutorizadaHoras % 60 + " min",
                                                TrabajoRealizado = Math.Floor(a.nTrabajoRealizadoHoras / 60) + " Hr " + a.nTrabajoRealizadoHoras % 60 + " min",
                                                TrabajoRestante = Math.Floor(a.nTrabajoRestanteHoras / 60) + " Hr " + a.nTrabajoRestanteHoras % 60 + " min",
                                                Avance = (double)a.nAvancePorcentualEstimado,
@@ -282,13 +286,17 @@ namespace MvcLogin.Areas.Ejecucion.Models
                                             && !(a.bActivo)
                                            select new DTO_Actividad_Grid()
                                            {
-                                               ID = a.cClaveERP ?? string.Empty,
+                                               ID = (a.nActividad != null) ? a.nActividad : 0,
+                                               Favorito = a.bFavorito,
+                                               RequiereQC = (bool)a.bRequiereQC,
+                                               SprintFavorito = a.bSprintFavorito,
+                                               Terminado = a.bTerminado, 
                                                Proyecto = p.cDescripcion,
                                                Modulo = m.cDescripcion,
                                                Componente = c.cDescripcion,
                                                Actividad = a.cDescripcion,
-                                               Tiempoautorizado = Math.Floor(a.nEstimacionAutorizadaUE / 60) + " Hr " + a.nEstimacionAutorizadaUE % 60 + " min",
-                                               TrabajoRealizado =Math.Floor(a.nTrabajoRealizadoHoras / 60) + " Hr " + a.nTrabajoRealizadoHoras % 60 +  "min",
+                                               Tiempoautorizado = Math.Floor(a.nEstimacionAutorizadaHoras / 60) + " Hr " + a.nEstimacionAutorizadaHoras % 60 + " min",
+                                               TrabajoRealizado = Math.Floor(a.nTrabajoRealizadoHoras / 60) + " Hr " + a.nTrabajoRealizadoHoras % 60 + "min",
                                                TrabajoRestante = Math.Floor(a.nTrabajoRestanteHoras / 60) + " Hr " + a.nTrabajoRestanteHoras % 60 + " min",
                                                Avance = (double)a.nAvancePorcentualEstimado,
                                                Vuelta = a.nVuelta,
@@ -308,7 +316,11 @@ namespace MvcLogin.Areas.Ejecucion.Models
     }
     public class DTO_Actividad_Grid
     {
-        public string ID  { get; set; }
+        public int ID  { get; set; }
+        public bool Favorito { get; set; }
+        public bool RequiereQC { get; set; }
+        public bool SprintFavorito { get; set; }
+        public bool Terminado { get; set; }
         public string Proyecto { get; set; }
         public string Modulo { get; set; }
         public string Componente { get; set; }

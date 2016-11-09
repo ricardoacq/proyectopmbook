@@ -15,7 +15,7 @@
                                 <div class="control-label col-sm-1" title="Proyecto"><strong>P</strong></div>
                                 <div class="col-sm-11">
                                     <input class="form-control input-sm ng-pristine ng-untouched ng-valid" 
-                                        ng-model="lstActividades.Proyecto" ng-disabled="true" disabled="disabled">
+                                        ng-model="Act.Proyecto" ng-disabled="true" disabled="disabled">
                                 </div>
                             </div>
                         </div>
@@ -24,7 +24,7 @@
                                 <div class="control-label col-sm-6"><strong>Tiempo Autorizado</strong></div>
                                 <div class="col-sm-6">
                                     <input class="form-control txt-right input-sm ng-pristine ng-untouched ng-valid" 
-                                        ng-model="lstActividades.Tiempoautorizado" disabled="disabled">
+                                        ng-model="Act.Tiempoautorizado" disabled="disabled">
                                 </div>
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                                 <div class="control-label col-sm-1" title="Modulo"><strong>M</strong></div>
                                 <div class="col-sm-11">
                                     <input class="form-control input-sm ng-pristine ng-untouched ng-valid" 
-                                        ng-model="lstActividades.Modulo" ng-disabled="true" disabled="disabled">
+                                        ng-model="Act.Modulo" ng-disabled="true" disabled="disabled">
                                 </div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                                 <div class="control-label col-sm-6"><strong>Tiempo Invertido</strong></div>
                                 <div class="col-sm-6">
                                     <input class="form-control txt-right input-sm ng-pristine ng-untouched ng-valid" 
-                                        ng-model="lstActividades.TrabajoRealizado" ng-disabled="true" disabled="disabled">
+                                        ng-model="Act.TrabajoRealizado" ng-disabled="true" disabled="disabled">
                                 </div>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                                 <div class="control-label col-sm-1" title="Componente"><strong>C</strong></div>
                                 <div class="col-sm-11">
                                     <input class="form-control input-sm ng-pristine ng-untouched ng-valid" 
-                                        ng-model="lstActividades.Componente" ng-disabled="true" disabled="disabled">
+                                        ng-model="Act.Componente" ng-disabled="true" disabled="disabled">
                                 </div>
                             </div>
                         </div>
@@ -66,7 +66,7 @@
                                 <div class="control-label col-sm-6"><strong>Tiempo Restante</strong></div>
                                 <div class="col-sm-6">
                                     <input class="form-control txt-right input-sm ng-pristine ng-untouched ng-valid" 
-                                        ng-model="lstActividades.TrabajoRestante" ng-disabled="true" disabled="disabled">
+                                        ng-model="Act.TrabajoRestante" ng-disabled="true" disabled="disabled">
                                 </div>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                                 <div class="control-label col-sm-1" title="Actividad"><strong>A</strong></div>
                                 <div class="col-sm-11">
                                     <input class="form-control input-sm ng-pristine ng-untouched ng-valid" 
-                                        ng-model="lstActividades.Actividad" ng-disabled="true" disabled="disabled">
+                                        ng-model="Act.Actividad" ng-disabled="true" disabled="disabled">
                                 </div>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                                 <div class="control-label col-sm-6"><strong>Eficiencia</strong></div>
                                 <div class="col-sm-6">
                                     <input class="form-control txt-right input-sm ng-pristine ng-untouched ng-valid" 
-                                        ng-model="lstActividades.Avance" ng-disabled="true" disabled="disabled">
+                                         ng-disabled="true" disabled="disabled">
                                 </div>
                             </div>
                         </div>
@@ -119,7 +119,7 @@
                           <div class="col-md-5">
                           <div class="checkbox">
                             <label class="">
-                                <input type="checkbox" ng-disabled="true" class="ng-pristine ng-untouched ng-valid" disabled="disabled"> Control de Calidad
+                                <input type="checkbox" ng-disabled="true" ng-model="Act.RequiereQC" class="ng-pristine ng-untouched ng-valid" disabled="disabled"> Control de Calidad
                             </label>
                           </div>
                          </div>
@@ -127,14 +127,88 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <label>Actividad Realizada</label>
-                                <textarea class="form-control ng-pristine ng-valid ng-touched"  style="resize:vertical;" rows="6"></textarea>
+                                <textarea class="form-control ng-pristine ng-valid ng-touched" style="resize:vertical;" rows="6"></textarea>
                                 <label class="ng-binding">1000 caracteres restantes.</label>
                             </div>
                         </div>
                      <div class="row">
-                        <div class="col-sm-4"><label>Tiempo Invertido</label></div>
-                        <div class="col-sm-4"><label>Tiempo Restante</label></div>
-                        <div class="col-sm-4"><label>Avance</label></div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label>Tiempo Invertido</label>
+                                    <table @*ng-model="ACtrl.PRTNuevo.nTrabajoRealizadoHoras"*@ hour-step="1" minute-step="5" show-meridian="0" disabled="disabled" class="ng-isolate-scope ng-valid ng-valid-time">
+                                    <tbody>
+                                        <tr class="text-center">
+                                            <td><a ng-click="IncrementaHoras()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-up"></span></a></td>
+                                            <td>&nbsp;</td>
+                                            <td><a ng-click="IncrementaMinutos()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-up"></span></a></td>
+                                            <td ng-show="showMeridian" class="ng-hide"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:50px;" class="form-group" @*ng-class="{'has-error': invalidHours}"*@>
+                                                <input type="text" ng-model="Horas" @*ng-change="updateHours()"*@ class="form-control text-center ng-pristine ng-untouched ng-valid ng-valid-maxlength"@* ng-mousewheel="incrementHours()"*@ ng-readonly="readonlyInput" maxlength="2">
+                                            </td>
+                                            <td>:</td>
+                                            <td style="width:50px;" class="form-group" @*ng-class="{'has-error': invalidMinutes}"*@>
+                                                <input type="text" ng-model="Minutos" @*ng-change="updateMinutes()"*@ class="form-control text-center ng-pristine ng-untouched ng-valid ng-valid-maxlength" ng-readonly="readonlyInput" maxlength="2">
+                                            </td>
+                                            <td ng-show="showMeridian" class="ng-hide"><button type="button" class="btn btn-default text-center ng-binding" ng-click="toggleMeridian()">a.m.</button></td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td><a ng-click="DecrementaHoras()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
+                                            <td>&nbsp;</td>
+                                            <td><a ng-click="DecrementaMinutos()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
+                                            <td ng-show="showMeridian" class="ng-hide"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label>Tiempo Restante</label>
+                                    <table  hour-step="1" minute-step="5" show-meridian="0" class="ng-isolate-scope ng-valid ng-valid-time">
+                                    <tbody>
+                                        <tr class="text-center">
+                                            <td><a ng-click="IncrementaHorasRes()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-up"></span></a></td>
+                                            <td>&nbsp;</td>
+                                            <td><a ng-click="IncrementaMinutosRes()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-up"></span></a></td>
+                                            <td ng-show="showMeridian" class="ng-hide"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:50px;" class="form-group" >
+                                                <input type="text" ng-model="HorasRes" class="form-control text-center ng-pristine ng-untouched ng-valid ng-valid-maxlength"  ng-readonly="readonlyInput" maxlength="2">
+                                            </td>
+                                            <td>:</td>
+                                            <td style="width:50px;" class="form-group" >
+                                                <input type="text" ng-model="MinutosRes"  class="form-control text-center ng-pristine ng-untouched ng-valid ng-valid-maxlength" ng-readonly="readonlyInput" maxlength="2">
+                                            </td>
+                                            <td ng-show="showMeridian" class="ng-hide"><button type="button" class="btn btn-default text-center ng-binding" ng-click="toggleMeridian()">p.m.</button></td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td><a ng-click="DecrementaHorasRes()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
+                                            <td>&nbsp;</td>
+                                            <td><a ng-click="DecrementaMinutosRes()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
+                                            <td ng-show="showMeridian" class="ng-hide"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <label>Avance</label>
+                                    <div class="input-group" style="margin-top:28px;">
+                                        <input class="form-control txt-right ng-pristine ng-untouched ng-valid" data-ng-model="Act.Avance" placeholder="0">
+                                        <div class="input-group-addon">%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                       </div>
                       <div class="col-sm-6">
