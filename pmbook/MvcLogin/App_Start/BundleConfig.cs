@@ -90,8 +90,7 @@ namespace MvcLogin
                    ));
             //Areas
             bundles.Add(new ScriptBundle("~/bundles/Areas/Admin").Include(
-                       "~/Scripts/Areas/Admin/app.js",
-                        "~/Scripts/Areas/Ejecucion/Ejecucion.js"
+                       "~/Scripts/Areas/Admin/app.js"
                     ));
         } 
 

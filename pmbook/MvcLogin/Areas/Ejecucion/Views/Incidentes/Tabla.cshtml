@@ -13,10 +13,11 @@
     <div class="col-md-3">
         <div class="form-group">
             <div class="col-md-12">
-                <label>Clientes:  &nbsp;<span aria-label="Campo Obligatorio" style="color:red">*</span></label>       
+                <label>Clientes:  &nbsp;<span aria-label="Campo Obligatorio" style="color:red"></span></label>       
             </div>
             <select class="form-control" ng-model="Select.Cliente" 
                 ng-options="c.idCliente as c.Cliente for c in lstClientes">
+                <option value="" ng-hide="true">Seleccione</option>
             </select>
         </div>
     </div>
@@ -24,10 +25,11 @@
     <div class="col-md-3">
         <div class="form-group">
             <div class="col-md-12">
-                <label>Productos: &nbsp;<span aria-label="Campo Obligatorio" style="color:red">*</span></label>
+                <label>Productos: &nbsp;<span aria-label="Campo Obligatorio" style="color:red"></span></label>
             </div>
             <select class="form-control" ng-model="Select.Producto" ng-options="p.idProducto as p.Producto for p in lstProductos"
-               ng-change="LoadModulos(Select.Producto)" >
+               ng-change="LoadModulos(Select.Producto)">
+                <option value="" ng-hide="true">Seleccione</option>
             </select>
         </div>
     </div>
@@ -40,6 +42,7 @@
             <select class="form-control" ng-model="Select.Modulo"
              ng-options="m.idModulo as m.Modulo for m in lstModulos"
                  ng-change="LoadComponentes(Select.Modulo)">
+                <option value="" ng-hide="true">Seleccione</option>
             </select>
         </div>
     </div>
@@ -51,6 +54,7 @@
             </div>
             <select class="form-control" ng-model="Select.Componente"
              ng-options="c.idComponente as c.Componente for c in lstComponentes">
+                <option value="" ng-hide="true">Seleccione</option>
             </select>
         </div>
     </div>
@@ -62,6 +66,7 @@
             </div>
             <select class="form-control" ng-model="Select.Lider"
                 ng-options="l.idLider as l.Lider for l in lstLideres">
+                <option value="" ng-hide="true">Seleccione</option>
             </select>
         </div>
     </div>
@@ -69,10 +74,11 @@
     <div class="col-md-3">
         <div class="form-group">
             <div class="col-md-12">
-                <label>Consultor: &nbsp;<span aria-label="Campo Obligatorio" style="color:red">*</span></label>
+                <label>Consultor: &nbsp;<span aria-label="Campo Obligatorio" style="color:red"></span></label>
             </div>
             <select class="form-control" ng-model="Select.Consultor" 
                 ng-options="c.idConsultor as c.Consultor for c in lstConsultores">
+                <option value="" ng-hide="true">Seleccione</option>
             </select>
         </div>
     </div>
@@ -84,6 +90,7 @@
             </div>
            <select class="form-control" ng-model="Select.Tester"
                 ng-options="t.idTester as t.Tester for t in lstTesters">
+               <option value="" ng-hide="true">Seleccione</option>
             </select>
         </div>
     </div>
@@ -97,8 +104,8 @@
          Mostrar Control de Calidad
        </label>
      </div>
-     <span class="btn btn-primary" ng-click="LoadIncidentes(Select.Cliente)"><i class="fa fa-search"></i> Buscar</span>
-     <span class="btn btn-warning" ng-click="LoadIncidentesInactivos(Select.Cliente)"><i class="fa fa-exclamation-circle"></i> Solo Pendientes</span>
+     <span class="btn btn-primary" ng-click="LoadIncidentes()"><i class="fa fa-search"></i> Buscar</span>
+     <span class="btn btn-warning" ng-click="LoadIncidentesInactivos()"><i class="fa fa-exclamation-circle"></i> Solo Pendientes</span>
      <button class="btn btn-info" ng-csv="lstIncidentes" filename="Incidentes {{FILTROACTIVIDADES.dFechaFin}}.csv" type="submit"><i class="fa fa-file-excel-o"></i> Exportar a Excel</button>
     </div>
    </div>
@@ -106,7 +113,6 @@
    <div class=" col-md-12">
     <div class="row">
       <div class="gridStyle" ng-grid="gridIncidentes">
-
       </div>
     </div>
    </div>
@@ -117,6 +123,7 @@
     $(document).ready(function () {
         setTimeout(function () {
             var scope = $('#V_Catalogos').scope();
+            scope.limpiarForm();
             scope.LoadProductos();
             scope.LoadTipoIncidente();
             scope.LoadClientes();

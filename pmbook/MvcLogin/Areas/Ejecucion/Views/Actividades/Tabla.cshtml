@@ -6,16 +6,85 @@
  <div class="panel-collapse in">
   <div class="panel-body md-10">
       @* Seleccionar Proyectos *@
-    <div class="col-md-4">
-        <div class="col-md-4"><h4>Filtro: </h4></div>
-        <div class="col-md-8">
-            <input  class="form-control" type="text" ng-model="nfiltro"/>
+    <div class="col-md-3">
+        <div class="form-group">
+            <div class="col-md-12">
+                <label>Proyecto:  &nbsp;<span aria-label="Campo Obligatorio" style="color:red"></span></label>       
+            </div>
+            <select class="form-control" ng-model="Select.Proyecto" 
+                ng-options="p.idProyecto as p.Proyecto for p in lstProyectos"
+                ng-change="Select.ProyectoModulo='';Select.ProyectoComponente='';LoadProyectoModulos(Select.Proyecto)">
+                <option value="" ng-hide="true">Seleccione</option>
+            </select>
+        </div>
+    </div>
+      
+    @* Seleccionar Modulo Proyecto *@
+    <div class="col-md-3">
+        <div class="form-group">
+            <div class="col-md-12">
+                <label>Modulo:  &nbsp;</label>       
+            </div>
+            <select class="form-control" ng-model="Select.ProyectoModulo" 
+                ng-options="m.idProyectoModulo as m.ProyectoModulo for m in lstProyectoModulos"
+                 ng-change="Select.ProyectoComponente='';LoadProyectoComponentes(Select.ProyectoModulo)">
+                <option value="" ng-show="false">Seleccione</option>
+            </select>
+        </div>
+
+    </div>
+    @* Seleccionar Componente Proyecto *@
+    <div class="col-md-3">
+        <div class="form-group">
+            <div class="col-md-12">
+                <label>Componente:  &nbsp;</label>       
+            </div>
+            <select class="form-control" ng-model="Select.ProyectoComponente" 
+                 ng-options="pc.idProyectoComponente as pc.ProyectoComponente for pc in lstProyectoComponentes">
+                <option value="" ng-hide="true" >Seleccione</option>
+            </select>
+        </div>
+    </div>
+          @* Seleccionar Consultor *@
+    <div class="col-md-3">
+        <div class="form-group">
+            <div class="col-md-12">
+                <label>Consultor:  &nbsp;<span aria-label="Campo Obligatorio" style="color:red">*</span></label>       
+            </div>
+            <select class="form-control" ng-model="Select.Consultor" 
+               ng-options="c.idConsultor as c.Consultor for c in lstConsultores">
+                <option value="" ng-hide="true" >Seleccione</option>
+            </select>
+        </div>
+    </div>
+    @* Seleccionar Lider *@
+    <div class="col-md-3">
+        <div class="form-group">
+            <div class="col-md-12">
+                <label>Lideres:  &nbsp;</label>       
+            </div>
+            <select class="form-control" ng-model="Select.Lider" 
+                 ng-options="l.idLider as l.Lider for l in lstLideres">
+                <option value="" ng-hide="true" >Seleccione</option>
+            </select>
+        </div>
+    </div>
+      @* Seleccionar Proyecto Inactivos *@
+    <div class="col-md-3">
+        <div class="form-group">
+            <div class="col-md-12">
+                <label>Proyectos Inactivos:  &nbsp;</label>       
+            </div>
+            <select class="form-control" ng-model="Select.ProyectoIn" 
+                ng-options="pi.idProyecto as pi.Proyecto for pi in lstProyectosIn">
+                <option value="" ng-hide="true" >Seleccione</option>
+            </select>
         </div>
     </div>
       @* Seleccionar Fecha desde *@
-    <div class="col-md-4">
-        <div class="col-md-4"><h4>Desde: </h4> </div>
-        <div class="col-md-8">
+    <div class="col-md-6">
+        <div class="col-md-2"><h4>Desde: </h4> </div>
+        <div class="col-md-10">
             <div class='input-group'>
                 <input id="dFechaInicioActividades" class="datepickerInicio form-control" data-date-today-btn="linked" 
                     data-date-format="dd/mm/yyyy" data-date-language="es" data-date-autoclose="true" type="text" 
@@ -26,9 +95,9 @@
         </div>
     </div>
       @* Seleccionar Fecha hasta *@
-    <div class="col-md-4">
-        <div class="col-md-4"><h4>Hasta: </h4></div>
-        <div class="col-md-8">
+    <div class="col-md-6">
+        <div class="col-md-2"><h4>Hasta: </h4></div>
+        <div class="col-md-10">
              <div class='input-group'>
                 <input id="dFechaFinActividades" class="datepickerFin form-control" data-date-today-btn="linked" 
                     data-date-format="dd/mm/yyyy" data-date-language="es" data-date-autoclose="true" type="text" 
@@ -38,6 +107,7 @@
             </div>
         </div>
     </div>
+      
       @* Botones buscar, pendientes y exportar *@
     <div class="col-md-12">
     <div class="pull-left">
@@ -49,20 +119,18 @@
         </label>
     </div>
         @* Buscar *@
-    <span  class="btn btn-primary" ng-click="LoadActividades();filterOptions.filterText=nfiltro"><i class="fa fa-search"></i> Buscar</span>
+    <span  class="btn btn-primary" ng-click="LoadActividades();"><i class="fa fa-search"></i> Buscar</span>
     @* Filtar pendientes *@
-    <span class="btn btn-warning" ng-click="LoadActividadesInActivas();filterOptions.filterText=nfiltro"><i class="fa fa-exclamation-circle"></i>Buscar Solo Pendientes</span>
+    <span class="btn btn-warning" ng-click="LoadActividadesInActivas();"><i class="fa fa-exclamation-circle"></i>Buscar Solo Pendientes</span>
     @* Exportar archivos a excel *@
-    <button class="btn btn-info" ng-csv="lstActividades | filter : nfiltro" lazy-load="true"  filename="reporte {{FILTROACTIVIDADES.dFechaFin}}.csv" type="submit"><i class="fa fa-file-excel-o"></i> Exportar a Excel</button>
+    <button class="btn btn-info" ng-csv="lstActividades" lazy-load="true"  filename="Consultar Actividades {{FILTROACTIVIDADES.dFechaFin}}.csv" type="submit"><i class="fa fa-file-excel-o"></i> Exportar a Excel</button>
      </div>
     </div>
       @* Tabla de Actividades *@
     <div class="col-md-12" >
         <div class="row">
           <div class="gridStyle" ng-grid="gridActividades"></div>
-          <div class="selectedItems">{{mySelections}}
-
-          </div>
+            
         </div>
     </div>
     </div>
@@ -73,7 +141,10 @@
         setTimeout(function () {
             var scope = $('#V_Catalogos').scope();
             scope.LimpiarFiltroActividades();
-            scope.LoadActividades();
+            scope.limpiarForm();
+            scope.LoadImpacto();
+            scope.LoadProyectos();
+            scope.LoadProyectosIn();
         }, 1000);
     });
 </script>

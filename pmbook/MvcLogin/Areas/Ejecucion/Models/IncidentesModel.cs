@@ -73,8 +73,6 @@ namespace MvcLogin.Areas.Ejecucion.Models
             return Result;
 
         }
-
-
         ///TRAE MODULOS
         public DTO_Incidente_Result ObtenerModulos(PMBookDataContext DB,int idProducto)
         {
@@ -106,7 +104,6 @@ namespace MvcLogin.Areas.Ejecucion.Models
             return Result;
 
         }
-
         ///TRAE COMPONENTES
         public DTO_Incidente_Result ObtenerComponentes(PMBookDataContext DB, int idModulo)
         {
@@ -138,7 +135,6 @@ namespace MvcLogin.Areas.Ejecucion.Models
             return Result;
 
         }
-
         ///TRAE CLIENTES
         public DTO_Incidente_Result ObtenerClientes(PMBookDataContext DB)
         {
@@ -169,7 +165,6 @@ namespace MvcLogin.Areas.Ejecucion.Models
             return Result;
 
         }
-
         ///TRAE LIDERES
         public DTO_Incidente_Result ObtenerLideres(PMBookDataContext DB)
         {
@@ -202,7 +197,6 @@ namespace MvcLogin.Areas.Ejecucion.Models
             return Result;
 
         }
-
         ///TRAE TESTERS
         public DTO_Incidente_Result ObtenerTesters(PMBookDataContext DB)
         {
@@ -235,7 +229,6 @@ namespace MvcLogin.Areas.Ejecucion.Models
             return Result;
 
         }
-
         ///TRAE CONSULTOR
         public DTO_Incidente_Result ObtenerConsultores(PMBookDataContext DB)
         {
@@ -248,15 +241,14 @@ namespace MvcLogin.Areas.Ejecucion.Models
             try
             {
                 Result.Consultores = (from c in DB.ADSUM_Usuarios
-                                  where c.nEmisor == DataSesion.nEmisor
-                                  && c.nAdsumUsuario==DataSesion.nIdUsuario
-                                  && (c.bActivo)
-                                      select new DTO_Consultor()
-                                  {
-                                      idConsultor = (c.nAdsumUsuario != null) ? c.nAdsumUsuario : 0,
-                                      Consultor = c.cNombre ?? string.Empty
-                                  }
-                                    ).OrderBy(x => x.Consultor).ToList();
+                                      where c.nEmisor == DataSesion.nEmisor
+                                      && (c.bActivo)
+                                          select new DTO_Consultor()
+                                      {
+                                          idConsultor = (c.nAdsumUsuario != null) ? c.nAdsumUsuario : 0,
+                                          Consultor = c.cNombre ?? string.Empty
+                                      }
+                                        ).OrderBy(x => x.Consultor).ToList();
             }
             catch (Exception e)
             {
@@ -285,7 +277,8 @@ namespace MvcLogin.Areas.Ejecucion.Models
                                         select new DTO_TipoIncidente()
                                       {
                                           idTipoIncidente = (t.nTipoIncidentes != null) ? t.nTipoIncidentes : 0,
-                                          TipoIncidente = t.cDescripcion ?? string.Empty
+                                          TipoIncidente = t.cDescripcion ?? string.Empty,
+                                          RequiereQC = t.bRequiereQC
                                       }
                                     ).OrderBy(x => x.TipoIncidente).ToList();
             }
@@ -322,50 +315,78 @@ namespace MvcLogin.Areas.Ejecucion.Models
         //    return Result;
         //}
 
-        //public DTO_Incidente_Result GuardarIncidente(PMBookDataContext DB, DTO_Incidente Incidente)
-        //{
-        //    DTO_Incidente_Result Result = new DTO_Incidente_Result()
-        //    {
-        //        bError = false,
-        //        msgErr = string.Empty
-        //    };
+        public DTO_Incidente_Result GuardarIncidente(PMBookDataContext DB, int idCliente, int? idProducto, int? idModulo, int? ProductoVersion, int? idComponente, int? idConsultor, int TipoIncidente, int nIncidente, string cIncidente, bool bCobrable, string tDescripcion,bool? bRequiereQC, int THoras, int TMinutos)
+        {
+            DTO_Incidente_Result Result = new DTO_Incidente_Result()
+            {
+                bError = false,
+                msgErr = string.Empty
+            };
+            decimal tiempoh = THoras + ((decimal)TMinutos / 60);
+            decimal tiempom = (THoras * 60) + TMinutos;
+            try
+            {
+                if (DB.PMB_Actividades.Where(x => x.nActividad != nIncidente).Select(x => x.cDescripcion).ToList().Contains(cIncidente))
+                {
+                    Result.bError = true;
+                    Result.msgErr = "La descripción del Incidente ya existe, no pueden existir registros repetidos.";
+                    return Result;
+                }
 
-        //    try
-        //    {
-        //        if (DB.PMB_Incidentes.Where(x => x.nIncidente != Incidente.nIncidente).Select(x => x.cDescripcion).ToList().Contains(Incidente.cDescripcion))
-        //        {
-        //            Result.bError = true;
-        //            Result.msgErr = "La descripción del Incidente ya existe, no pueden existir registros repetidos.";
-        //            return Result;
-        //        }
+                PMB_Actividade RegistroIncidente = DB.PMB_Actividades.Where(x => x.nActividad == nIncidente).SingleOrDefault() ?? new PMB_Actividade();
 
-        //        PMB_Incidentes RegistroIncidente = DB.PMB_Incidentes.Where(x => x.nIncidente == Incidente.nIncidente).SingleOrDefault() ?? new PMB_Incidentes();
+                RegistroIncidente.bActivo = true;
+                RegistroIncidente.bIncidente = true;
+                RegistroIncidente.bFavorito = true;
+                RegistroIncidente.bTerminado = false;
+                RegistroIncidente.nCliente = idCliente;
+                RegistroIncidente.nProducto = idProducto;
+                RegistroIncidente.nProductoModulo = idModulo;
+                RegistroIncidente.nProductoComponente = idComponente;
+                RegistroIncidente.nNivelAsociacion = 0;
+                RegistroIncidente.nAvancePorcentualEstimado = 0;
+                RegistroIncidente.cDescripcion = cIncidente;
+                RegistroIncidente.tDescripcion =tDescripcion;
+                RegistroIncidente.nTipoIncidentes = TipoIncidente;
+                RegistroIncidente.bIncidenteCobrable = bCobrable;                
+                RegistroIncidente.bRequiereQC = bRequiereQC;
+                RegistroIncidente.nEstatus = 1;
+                RegistroIncidente.nVuelta = 0;                
+                RegistroIncidente.nProductoVersion = ProductoVersion;
+                RegistroIncidente.nEstimacionBaseUE = tiempoh;
+                RegistroIncidente.nEstimacionAutorizadaUE = tiempoh;
+                RegistroIncidente.nEstimacionSolicitadaUE = tiempoh;
+                RegistroIncidente.nEstimacionAutorizadaHoras = tiempom;
+                RegistroIncidente.nTrabajoRealizadoHoras = 0;
+                RegistroIncidente.nTrabajoRestanteHoras = tiempom;
 
-        //        RegistroIncidente.bActivo =Incidente.bActivo;
-        //       
 
-        //        if (RegistroIncidente.nIncidente == 0)
-        //        {//nuevo
-        //            RegistroIncidente.cClaveERP = DB.PMB_Incidentes.Where(x => x.nEmisor == DataSesion.nEmisor && x.bActivo).ToList().Count + 1 + "";
-        //            RegistroIncidente.cUsuario_Registro = DataSesion.cLogin;
-        //            RegistroIncidente.cMaquina_Registro = Environment.MachineName;
-        //            RegistroIncidente.dFecha_Registro = DateTime.Now;
-        //            RegistroIncidente.nEmisor = DataSesion.nEmisor;
 
-        //            DB.PMB_Incidentes.InsertOnSubmit(RegistroIncidente);
-        //        }
-        //        DB.SubmitChanges();
-        //        Result.Incidente = new DTO_Incidente() { nIncidente = RegistroIncidente.nIncidente, cDescripcion = RegistroIncidente.cDescripcion, cClaveERP = RegistroIncidente.cClaveERP };
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Result.bError = true;
-        //        Result.msgErr = e.ToString();
-        //    }
-        //    return Result;
-        //}
 
-        public DTO_Incidente_Result ObtenerIncidentes(PMBookDataContext DB, int idCliente)
+
+
+                if (RegistroIncidente.nActividad == 0)
+                {//nuevo
+                    RegistroIncidente.cClaveERP = DB.PMB_Actividades.Where(x => x.nEmisor == DataSesion.nEmisor && x.bActivo).ToList().Count + 1 + "";
+                    RegistroIncidente.cUsuario_Registro = DataSesion.cLogin;
+                    RegistroIncidente.cMaquina_Registro = Environment.MachineName;
+                    RegistroIncidente.dFecha_Registro = DateTime.Now;
+                    RegistroIncidente.nEmisor = DataSesion.nEmisor;
+
+                    DB.PMB_Actividades.InsertOnSubmit(RegistroIncidente);
+                }
+                DB.SubmitChanges();
+                Result.Incidente = new DTO_Incidente() { nIncidente = RegistroIncidente.nActividad, Incidente = RegistroIncidente.cDescripcion, cClaveERP = RegistroIncidente.cClaveERP };
+            }
+            catch (Exception e)
+            {
+                Result.bError = true;
+                Result.msgErr = e.ToString();
+            }
+            return Result;
+        }
+
+        public DTO_Incidente_Result ObtenerIncidentes(PMBookDataContext DB, int idCliente,int idProducto,int idModulo,int idComponente,int idConsultor)
         {
             DTO_Incidente_Result Result = new DTO_Incidente_Result()
             {
@@ -385,11 +406,13 @@ namespace MvcLogin.Areas.Ejecucion.Models
                                      join c in DB.CTM_Clientes
                                      on a.nCliente equals c.nCliente
                                         where a.nEmisor == DataSesion.nEmisor
-                                        && a.nCliente ==idCliente
+                                        && (a.nCliente == idCliente || idCliente == 0)
+                                        && (a.nProducto == idProducto || idProducto == 0)
+                                        && (a.nProductoModulo == idModulo || idModulo == 0)
+                                        && (a.nProductoComponente == idComponente || idComponente == 0)
+                                        && (a.nAdsumUsuarioResponsable == idConsultor || idConsultor == 0)
                                         && (a.bActivo)
-                                        || a.nEmisor == DataSesion.nEmisor
-                                        && a.nCliente == idCliente
-                                        && (a.bActivo)
+
                                         select new DTO_Incidente()
                                         {
                                            nIncidente = (a.nActividad  != null) ? a.nActividad:0,
@@ -419,7 +442,7 @@ namespace MvcLogin.Areas.Ejecucion.Models
             return Result;
         }
 
-        public DTO_Incidente_Result ObtenerIncidentesInactivos(PMBookDataContext DB, int idCliente)
+        public DTO_Incidente_Result ObtenerIncidentesInactivos(PMBookDataContext DB, int idCliente, int idProducto, int idModulo, int idComponente, int idConsultor)
         {
             DTO_Incidente_Result Result = new DTO_Incidente_Result()
             {
@@ -439,11 +462,13 @@ namespace MvcLogin.Areas.Ejecucion.Models
                                      join c in DB.CTM_Clientes
                                      on a.nCliente equals c.nCliente
                                      where a.nEmisor == DataSesion.nEmisor
-                                     && a.nCliente == idCliente
+                                     && (a.nCliente == idCliente || idCliente == 0)
+                                     && (a.nProducto == idProducto || idProducto == 0)
+                                     && (a.nProductoModulo == idModulo || idModulo == 0)
+                                     && (a.nProductoComponente == idComponente || idComponente == 0)
+                                     && (a.nAdsumUsuarioResponsable == idConsultor || idConsultor == 0)
                                      && !(a.bActivo)
-                                     || a.nEmisor == DataSesion.nEmisor 
-                                     && a.nCliente == idCliente
-                                     && !(a.bActivo)
+  
                                      select new DTO_Incidente()
                                      {
                                          nIncidente = (a.nActividad != null) ? a.nActividad : 0,
@@ -477,6 +502,7 @@ namespace MvcLogin.Areas.Ejecucion.Models
     {
         public int idTipoIncidente { get; set; }
         public string TipoIncidente { get; set; }
+        public bool RequiereQC { get; set; }
     }
     public class DTO_Producto
     {
@@ -522,16 +548,26 @@ namespace MvcLogin.Areas.Ejecucion.Models
     }
     public class DTO_Incidente {
         public int nIncidente { get; set; }
+        public string cClaveERP { get; set; }
         public string Incidente { get; set; }
         public string Cliente { get; set; }
+        public int idCliente { get; set; }
+        public int idProducto { get; set; }
+        public int idModulo { get; set; }
+        public int ProductoVersion { get; set; }
+        public string tDescripcion { get; set; }
+        public int idComponente { get; set; }
         public string Producto { get; set; }
         public string Modulo { get; set; }
         public string Componente { get; set; }
+        public int TipoIncidente { get; set; }
         public decimal T_Solicitado_UE { get; set; }
         public decimal T_Autorizado { get; set; }
         public decimal Trab_Realizado { get; set; }
         public decimal Trab_Restante { get; set; }
         public decimal Avance { get; set; }
+        public bool Cobrable { get; set; }
+        public bool RequiereQC { get; set; }
         public byte Estatus { get; set; }
         public string FechaRegistro { get; set; }
         public string HoraRegistro { get; set; }

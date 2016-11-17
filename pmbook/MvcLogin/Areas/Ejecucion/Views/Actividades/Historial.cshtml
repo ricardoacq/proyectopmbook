@@ -1,0 +1,33 @@
+﻿<div style="color:#00788F" class="modal fade" id="ReporteAvanceActividadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document" style="width: 80%; left: 0 !important">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cerrarModalReporteActividad()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Historial-{{Act.Actividad}} <i class="fa fa-pencil" aria-hidden="true"></i></h4>
+            </div>
+            <div class="modal-body">
+                <div ng-hide="OnServer">
+                  <div class="col-md-12" >
+                    <div class="row">
+                        <div class="gridStyle" ng-grid="gridHistorial"></div>            
+                    </div>
+                </div>
+                </div>
+                 <div ng-show="OnServer">
+                    <div layout="row" layout-sm="column" layout-align="space-around">
+                        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+                    </div>
+                </div>
+               </div>
+             <div class="modal-footer">
+                  <div class="pull-left">
+                   <button class="btn btn-default" ng-click="MostrarReporte();CerrarReporteAvanceActividad();" style="color:black"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Atras </button>
+                  </div>
+                 <div class="pull-right">
+               
+                <button class="btn btn-default" style="color:black" data-dismiss="modal" ng-disabled="OnServer">Cancelar <i class="fa fa-times" aria-hidden="true"></i></button>
+                </div>
+             </div>
+            </div>
+        </div>
+  </div>

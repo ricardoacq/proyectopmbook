@@ -1,0 +1,87 @@
+﻿<div style="color:#00788F" class="modal fade" id="ActividadesAyudaModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" style="width: 75%; left: 0 !important">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Solicitar Ayuda</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal ng-hide">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <span class="btn btn-primary"><i class="fa fa-plus-circle"></i> Nuevo</span>
+                        </div>
+                    </div>
+                </div>
+                <form name="ActividadAyudaForm" class="ng-valid ng-dirty" >
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <label>Ayuda</label>
+                                <input class="form-control ng-pristine ng-valid ng-touched"  placeholder="Escribe una descripción corta">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Impacto</label>
+                                <select class="form-control" ng-model="Select.Impacto" 
+                                    ng-options="a.idImpacto as a.Impacto for a in lstImpacto">
+                                     <option value="" ng-hide="true" class="ng-hide">Seleccione</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Tipo de ayuda</label>
+                                <select class="form-control ng-valid ng-touched ng-dirty" ng-model="Select.Tipoayuda" ng-options="t.idTipoayuda as t.Tipoayuda for t in TipoAyuda">
+                                <option data-ng-hide="true" value="" class="ng-hide">Seleccione</option>                         
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="ng-binding"></label>
+                                <select class="form-control ng-pristine ng-untouched ng-valid ng-hide" ng-options="co.idConsultor as co.Consultor for co in lstConsultores" 
+                                ng-model="Select.Consultor2" ng-show="Select.Tipoayuda==1">
+                                <option data-ng-hide="true" value="" class="ng-hide">Seleccione</option>
+                                </select>
+                                <select class="form-control ng-pristine ng-untouched ng-valid ng-hide" ng-options="c.idCliente as c.Cliente for c in lstClientes" 
+                                ng-model="Select.Cliente2" ng-show="Select.Tipoayuda==2">
+                                <option data-ng-hide="true" value="" class="ng-hide">Seleccione</option>
+                                </select>
+                                <input class="form-control ng-pristine ng-valid ng-touched ng-hide">
+                            </div>
+                        </div>
+                        <div class="col-md-4 ng-hide" ng-show="prueba3">
+                            <div class="form-group">
+                                <label>Correo</label>
+                                <input class="form-control ng-pristine ng-valid ng-touched">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        <textarea class="form-control ng-pristine ng-untouched ng-valid" style="resize:vertical;" rows="6"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="pull-right">
+                                <span class="btn btn-default" ng-click="CerrarActividadesAyudaModal();limpiarForm();"><i class="fa fa-times"></i> Cancelar</span>
+                                <span class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;Agregar</span>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="btn btn-default" data-dismiss="modal" ng-click="limpiarreporte()" ><i class="fa fa-times"></i> Cerrar</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

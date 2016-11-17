@@ -894,6 +894,8 @@
     <Content Include="Areas\Ejecucion\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Ejecucion\Views\Incidentes\Tabla.cshtml" />
     <Content Include="Areas\Ejecucion\Views\Incidentes\Formulario.cshtml" />
+    <Content Include="Areas\Ejecucion\Views\Actividades\Historial.cshtml" />
+    <Content Include="Areas\Ejecucion\Views\Actividades\Ayuda.cshtml" />
     <None Include="Properties\PublishProfiles\BaseMVC.pubxml" />
     <Content Include="Scripts\canvasjs.js" />
     <Content Include="Scripts\FileUpload\angular-file-upload-master.zip" />

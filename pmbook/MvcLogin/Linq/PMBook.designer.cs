@@ -102,6 +102,18 @@ namespace MvcLogin.Linq
     partial void InsertPMB_ActividadesAccione(PMB_ActividadesAccione instance);
     partial void UpdatePMB_ActividadesAccione(PMB_ActividadesAccione instance);
     partial void DeletePMB_ActividadesAccione(PMB_ActividadesAccione instance);
+    partial void InsertPMB_ActividadesAyuda(PMB_ActividadesAyuda instance);
+    partial void UpdatePMB_ActividadesAyuda(PMB_ActividadesAyuda instance);
+    partial void DeletePMB_ActividadesAyuda(PMB_ActividadesAyuda instance);
+    partial void InsertPMB_ActividadesQC(PMB_ActividadesQC instance);
+    partial void UpdatePMB_ActividadesQC(PMB_ActividadesQC instance);
+    partial void DeletePMB_ActividadesQC(PMB_ActividadesQC instance);
+    partial void InsertCTL_ImpactosActividadesAyuda(CTL_ImpactosActividadesAyuda instance);
+    partial void UpdateCTL_ImpactosActividadesAyuda(CTL_ImpactosActividadesAyuda instance);
+    partial void DeleteCTL_ImpactosActividadesAyuda(CTL_ImpactosActividadesAyuda instance);
+    partial void InsertPMB_ProyectosRegistrosTrabajo(PMB_ProyectosRegistrosTrabajo instance);
+    partial void UpdatePMB_ProyectosRegistrosTrabajo(PMB_ProyectosRegistrosTrabajo instance);
+    partial void DeletePMB_ProyectosRegistrosTrabajo(PMB_ProyectosRegistrosTrabajo instance);
     #endregion
 		
 		public PMBookDataContext() : 
@@ -339,6 +351,46 @@ namespace MvcLogin.Linq
 			get
 			{
 				return this.GetTable<PMB_ActividadesAccione>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PMB_ActividadesAyuda> PMB_ActividadesAyudas
+		{
+			get
+			{
+				return this.GetTable<PMB_ActividadesAyuda>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PMB_ActividadesQC> PMB_ActividadesQCs
+		{
+			get
+			{
+				return this.GetTable<PMB_ActividadesQC>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PMB_ActividadesAnexo> PMB_ActividadesAnexos
+		{
+			get
+			{
+				return this.GetTable<PMB_ActividadesAnexo>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CTL_ImpactosActividadesAyuda> CTL_ImpactosActividadesAyudas
+		{
+			get
+			{
+				return this.GetTable<CTL_ImpactosActividadesAyuda>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PMB_ProyectosRegistrosTrabajo> PMB_ProyectosRegistrosTrabajos
+		{
+			get
+			{
+				return this.GetTable<PMB_ProyectosRegistrosTrabajo>();
 			}
 		}
 	}
@@ -1557,6 +1609,12 @@ namespace MvcLogin.Linq
 		
 		private EntitySet<PMB_ProyectosConsultore1> _PMB_ProyectosConsultore1s;
 		
+		private EntitySet<PMB_ActividadesAyuda> _PMB_ActividadesAyudas;
+		
+		private EntitySet<PMB_ActividadesQC> _PMB_ActividadesQCs;
+		
+		private EntitySet<PMB_ProyectosRegistrosTrabajo> _PMB_ProyectosRegistrosTrabajos;
+		
 		private EntityRef<ADSUM_Usuario> _ADSUM_Usuario1;
 		
 		private EntityRef<ADSUM_Usuario> _ADSUM_Usuario2;
@@ -1605,6 +1663,9 @@ namespace MvcLogin.Linq
 			this._PMB_ProyectosAsignaciones1 = new EntitySet<PMB_ProyectosAsignacione>(new Action<PMB_ProyectosAsignacione>(this.attach_PMB_ProyectosAsignaciones1), new Action<PMB_ProyectosAsignacione>(this.detach_PMB_ProyectosAsignaciones1));
 			this._PMB_ProyectosConsultores = new EntitySet<PMB_ProyectosConsultore>(new Action<PMB_ProyectosConsultore>(this.attach_PMB_ProyectosConsultores), new Action<PMB_ProyectosConsultore>(this.detach_PMB_ProyectosConsultores));
 			this._PMB_ProyectosConsultore1s = new EntitySet<PMB_ProyectosConsultore1>(new Action<PMB_ProyectosConsultore1>(this.attach_PMB_ProyectosConsultore1s), new Action<PMB_ProyectosConsultore1>(this.detach_PMB_ProyectosConsultore1s));
+			this._PMB_ActividadesAyudas = new EntitySet<PMB_ActividadesAyuda>(new Action<PMB_ActividadesAyuda>(this.attach_PMB_ActividadesAyudas), new Action<PMB_ActividadesAyuda>(this.detach_PMB_ActividadesAyudas));
+			this._PMB_ActividadesQCs = new EntitySet<PMB_ActividadesQC>(new Action<PMB_ActividadesQC>(this.attach_PMB_ActividadesQCs), new Action<PMB_ActividadesQC>(this.detach_PMB_ActividadesQCs));
+			this._PMB_ProyectosRegistrosTrabajos = new EntitySet<PMB_ProyectosRegistrosTrabajo>(new Action<PMB_ProyectosRegistrosTrabajo>(this.attach_PMB_ProyectosRegistrosTrabajos), new Action<PMB_ProyectosRegistrosTrabajo>(this.detach_PMB_ProyectosRegistrosTrabajos));
 			this._ADSUM_Usuario1 = default(EntityRef<ADSUM_Usuario>);
 			this._ADSUM_Usuario2 = default(EntityRef<ADSUM_Usuario>);
 			OnCreated();
@@ -2002,6 +2063,45 @@ namespace MvcLogin.Linq
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADSUM_Usuario_PMB_ActividadesAyuda", Storage="_PMB_ActividadesAyudas", ThisKey="nAdsumUsuario", OtherKey="nAdsumUsuarioAyuda")]
+		public EntitySet<PMB_ActividadesAyuda> PMB_ActividadesAyudas
+		{
+			get
+			{
+				return this._PMB_ActividadesAyudas;
+			}
+			set
+			{
+				this._PMB_ActividadesAyudas.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADSUM_Usuario_PMB_ActividadesQC", Storage="_PMB_ActividadesQCs", ThisKey="nAdsumUsuario", OtherKey="nAdsumUsuarioRegistro")]
+		public EntitySet<PMB_ActividadesQC> PMB_ActividadesQCs
+		{
+			get
+			{
+				return this._PMB_ActividadesQCs;
+			}
+			set
+			{
+				this._PMB_ActividadesQCs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADSUM_Usuario_PMB_ProyectosRegistrosTrabajo", Storage="_PMB_ProyectosRegistrosTrabajos", ThisKey="nAdsumUsuario", OtherKey="nAdsumUsuario")]
+		public EntitySet<PMB_ProyectosRegistrosTrabajo> PMB_ProyectosRegistrosTrabajos
+		{
+			get
+			{
+				return this._PMB_ProyectosRegistrosTrabajos;
+			}
+			set
+			{
+				this._PMB_ProyectosRegistrosTrabajos.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADSUM_Usuario_ADSUM_Usuario", Storage="_ADSUM_Usuario1", ThisKey="nAdsumUsuarioTester", OtherKey="nAdsumUsuario", IsForeignKey=true)]
 		public ADSUM_Usuario ADSUM_Usuario1
 		{
@@ -2185,6 +2285,42 @@ namespace MvcLogin.Linq
 			this.SendPropertyChanging();
 			entity.ADSUM_Usuario = null;
 		}
+		
+		private void attach_PMB_ActividadesAyudas(PMB_ActividadesAyuda entity)
+		{
+			this.SendPropertyChanging();
+			entity.ADSUM_Usuario = this;
+		}
+		
+		private void detach_PMB_ActividadesAyudas(PMB_ActividadesAyuda entity)
+		{
+			this.SendPropertyChanging();
+			entity.ADSUM_Usuario = null;
+		}
+		
+		private void attach_PMB_ActividadesQCs(PMB_ActividadesQC entity)
+		{
+			this.SendPropertyChanging();
+			entity.ADSUM_Usuario = this;
+		}
+		
+		private void detach_PMB_ActividadesQCs(PMB_ActividadesQC entity)
+		{
+			this.SendPropertyChanging();
+			entity.ADSUM_Usuario = null;
+		}
+		
+		private void attach_PMB_ProyectosRegistrosTrabajos(PMB_ProyectosRegistrosTrabajo entity)
+		{
+			this.SendPropertyChanging();
+			entity.ADSUM_Usuario = this;
+		}
+		
+		private void detach_PMB_ProyectosRegistrosTrabajos(PMB_ProyectosRegistrosTrabajo entity)
+		{
+			this.SendPropertyChanging();
+			entity.ADSUM_Usuario = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PMB_Actividades")]
@@ -2292,6 +2428,10 @@ namespace MvcLogin.Linq
 		private EntitySet<PMB_ProyectosAsignacione> _PMB_ProyectosAsignaciones;
 		
 		private EntitySet<PMB_ActividadesAccione> _PMB_ActividadesAcciones;
+		
+		private EntitySet<PMB_ActividadesAyuda> _PMB_ActividadesAyudas;
+		
+		private EntitySet<PMB_ActividadesQC> _PMB_ActividadesQCs;
 		
 		private EntityRef<ADSUM_Usuario> _ADSUM_Usuario;
 		
@@ -2423,6 +2563,8 @@ namespace MvcLogin.Linq
 		{
 			this._PMB_ProyectosAsignaciones = new EntitySet<PMB_ProyectosAsignacione>(new Action<PMB_ProyectosAsignacione>(this.attach_PMB_ProyectosAsignaciones), new Action<PMB_ProyectosAsignacione>(this.detach_PMB_ProyectosAsignaciones));
 			this._PMB_ActividadesAcciones = new EntitySet<PMB_ActividadesAccione>(new Action<PMB_ActividadesAccione>(this.attach_PMB_ActividadesAcciones), new Action<PMB_ActividadesAccione>(this.detach_PMB_ActividadesAcciones));
+			this._PMB_ActividadesAyudas = new EntitySet<PMB_ActividadesAyuda>(new Action<PMB_ActividadesAyuda>(this.attach_PMB_ActividadesAyudas), new Action<PMB_ActividadesAyuda>(this.detach_PMB_ActividadesAyudas));
+			this._PMB_ActividadesQCs = new EntitySet<PMB_ActividadesQC>(new Action<PMB_ActividadesQC>(this.attach_PMB_ActividadesQCs), new Action<PMB_ActividadesQC>(this.detach_PMB_ActividadesQCs));
 			this._ADSUM_Usuario = default(EntityRef<ADSUM_Usuario>);
 			this._PMB_Proyecto = default(EntityRef<PMB_Proyecto>);
 			this._PMB_ProyectosComponente = default(EntityRef<PMB_ProyectosComponente>);
@@ -3468,6 +3610,32 @@ namespace MvcLogin.Linq
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PMB_Actividade_PMB_ActividadesAyuda", Storage="_PMB_ActividadesAyudas", ThisKey="nActividad", OtherKey="nActividad")]
+		public EntitySet<PMB_ActividadesAyuda> PMB_ActividadesAyudas
+		{
+			get
+			{
+				return this._PMB_ActividadesAyudas;
+			}
+			set
+			{
+				this._PMB_ActividadesAyudas.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PMB_Actividade_PMB_ActividadesQC", Storage="_PMB_ActividadesQCs", ThisKey="nActividad", OtherKey="nActividad")]
+		public EntitySet<PMB_ActividadesQC> PMB_ActividadesQCs
+		{
+			get
+			{
+				return this._PMB_ActividadesQCs;
+			}
+			set
+			{
+				this._PMB_ActividadesQCs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADSUM_Usuario_PMB_Actividade", Storage="_ADSUM_Usuario", ThisKey="nAdsumUsuarioResponsable", OtherKey="nAdsumUsuario", IsForeignKey=true)]
 		public ADSUM_Usuario ADSUM_Usuario
 		{
@@ -3915,6 +4083,30 @@ namespace MvcLogin.Linq
 		}
 		
 		private void detach_PMB_ActividadesAcciones(PMB_ActividadesAccione entity)
+		{
+			this.SendPropertyChanging();
+			entity.PMB_Actividade = null;
+		}
+		
+		private void attach_PMB_ActividadesAyudas(PMB_ActividadesAyuda entity)
+		{
+			this.SendPropertyChanging();
+			entity.PMB_Actividade = this;
+		}
+		
+		private void detach_PMB_ActividadesAyudas(PMB_ActividadesAyuda entity)
+		{
+			this.SendPropertyChanging();
+			entity.PMB_Actividade = null;
+		}
+		
+		private void attach_PMB_ActividadesQCs(PMB_ActividadesQC entity)
+		{
+			this.SendPropertyChanging();
+			entity.PMB_Actividade = this;
+		}
+		
+		private void detach_PMB_ActividadesQCs(PMB_ActividadesQC entity)
 		{
 			this.SendPropertyChanging();
 			entity.PMB_Actividade = null;
@@ -5090,6 +5282,8 @@ namespace MvcLogin.Linq
 		
 		private System.Nullable<int> _nAdsumUsuarioAyudante;
 		
+		private EntitySet<PMB_ProyectosRegistrosTrabajo> _PMB_ProyectosRegistrosTrabajos;
+		
 		private EntityRef<ADSUM_Usuario> _ADSUM_Usuario;
 		
 		private EntityRef<PMB_Actividade> _PMB_Actividade;
@@ -5150,6 +5344,7 @@ namespace MvcLogin.Linq
 		
 		public PMB_ProyectosAsignacione()
 		{
+			this._PMB_ProyectosRegistrosTrabajos = new EntitySet<PMB_ProyectosRegistrosTrabajo>(new Action<PMB_ProyectosRegistrosTrabajo>(this.attach_PMB_ProyectosRegistrosTrabajos), new Action<PMB_ProyectosRegistrosTrabajo>(this.detach_PMB_ProyectosRegistrosTrabajos));
 			this._ADSUM_Usuario = default(EntityRef<ADSUM_Usuario>);
 			this._PMB_Actividade = default(EntityRef<PMB_Actividade>);
 			this._ADSUM_Usuario1 = default(EntityRef<ADSUM_Usuario>);
@@ -5579,6 +5774,19 @@ namespace MvcLogin.Linq
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PMB_ProyectosAsignacione_PMB_ProyectosRegistrosTrabajo", Storage="_PMB_ProyectosRegistrosTrabajos", ThisKey="nProyectoAsignacion", OtherKey="nProyectoAsignacion")]
+		public EntitySet<PMB_ProyectosRegistrosTrabajo> PMB_ProyectosRegistrosTrabajos
+		{
+			get
+			{
+				return this._PMB_ProyectosRegistrosTrabajos;
+			}
+			set
+			{
+				this._PMB_ProyectosRegistrosTrabajos.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADSUM_Usuario_PMB_ProyectosAsignacione", Storage="_ADSUM_Usuario", ThisKey="nAdsumUsuario", OtherKey="nAdsumUsuario", IsForeignKey=true)]
 		public ADSUM_Usuario ADSUM_Usuario
 		{
@@ -5801,6 +6009,18 @@ namespace MvcLogin.Linq
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_PMB_ProyectosRegistrosTrabajos(PMB_ProyectosRegistrosTrabajo entity)
+		{
+			this.SendPropertyChanging();
+			entity.PMB_ProyectosAsignacione = this;
+		}
+		
+		private void detach_PMB_ProyectosRegistrosTrabajos(PMB_ProyectosRegistrosTrabajo entity)
+		{
+			this.SendPropertyChanging();
+			entity.PMB_ProyectosAsignacione = null;
 		}
 	}
 	
@@ -6704,6 +6924,8 @@ namespace MvcLogin.Linq
 		
 		private EntitySet<PMB_ProyectosAsignacione> _PMB_ProyectosAsignaciones;
 		
+		private EntitySet<PMB_ProyectosRegistrosTrabajo> _PMB_ProyectosRegistrosTrabajos;
+		
 		private EntityRef<ADSUM_Usuario> _ADSUM_Usuario;
 		
 		private EntityRef<PMB_Proyecto> _PMB_Proyecto;
@@ -6771,6 +6993,7 @@ namespace MvcLogin.Linq
 		public PMB_ProyectosConsultore()
 		{
 			this._PMB_ProyectosAsignaciones = new EntitySet<PMB_ProyectosAsignacione>(new Action<PMB_ProyectosAsignacione>(this.attach_PMB_ProyectosAsignaciones), new Action<PMB_ProyectosAsignacione>(this.detach_PMB_ProyectosAsignaciones));
+			this._PMB_ProyectosRegistrosTrabajos = new EntitySet<PMB_ProyectosRegistrosTrabajo>(new Action<PMB_ProyectosRegistrosTrabajo>(this.attach_PMB_ProyectosRegistrosTrabajos), new Action<PMB_ProyectosRegistrosTrabajo>(this.detach_PMB_ProyectosRegistrosTrabajos));
 			this._ADSUM_Usuario = default(EntityRef<ADSUM_Usuario>);
 			this._PMB_Proyecto = default(EntityRef<PMB_Proyecto>);
 			this._CTL_EmisoresPMBook = default(EntityRef<CTL_EmisoresPMBook>);
@@ -7322,6 +7545,19 @@ namespace MvcLogin.Linq
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PMB_ProyectosConsultore_PMB_ProyectosRegistrosTrabajo", Storage="_PMB_ProyectosRegistrosTrabajos", ThisKey="nProyectoConsultor", OtherKey="nProyectoConsultor")]
+		public EntitySet<PMB_ProyectosRegistrosTrabajo> PMB_ProyectosRegistrosTrabajos
+		{
+			get
+			{
+				return this._PMB_ProyectosRegistrosTrabajos;
+			}
+			set
+			{
+				this._PMB_ProyectosRegistrosTrabajos.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADSUM_Usuario_PMB_ProyectosConsultore", Storage="_ADSUM_Usuario", ThisKey="nAdsumUsuario", OtherKey="nAdsumUsuario", IsForeignKey=true)]
 		public ADSUM_Usuario ADSUM_Usuario
 		{
@@ -7451,6 +7687,18 @@ namespace MvcLogin.Linq
 		}
 		
 		private void detach_PMB_ProyectosAsignaciones(PMB_ProyectosAsignacione entity)
+		{
+			this.SendPropertyChanging();
+			entity.PMB_ProyectosConsultore = null;
+		}
+		
+		private void attach_PMB_ProyectosRegistrosTrabajos(PMB_ProyectosRegistrosTrabajo entity)
+		{
+			this.SendPropertyChanging();
+			entity.PMB_ProyectosConsultore = this;
+		}
+		
+		private void detach_PMB_ProyectosRegistrosTrabajos(PMB_ProyectosRegistrosTrabajo entity)
 		{
 			this.SendPropertyChanging();
 			entity.PMB_ProyectosConsultore = null;
@@ -8663,6 +8911,8 @@ namespace MvcLogin.Linq
 		
 		private EntitySet<Ctl_TiposIncidente> _Ctl_TiposIncidentes;
 		
+		private EntitySet<PMB_ProyectosRegistrosTrabajo> _PMB_ProyectosRegistrosTrabajos;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -8739,6 +8989,7 @@ namespace MvcLogin.Linq
 			this._PMB_ProyectosEstatus = new EntitySet<PMB_ProyectosEstatus>(new Action<PMB_ProyectosEstatus>(this.attach_PMB_ProyectosEstatus), new Action<PMB_ProyectosEstatus>(this.detach_PMB_ProyectosEstatus));
 			this._Ctl_Productos = new EntitySet<Ctl_Producto>(new Action<Ctl_Producto>(this.attach_Ctl_Productos), new Action<Ctl_Producto>(this.detach_Ctl_Productos));
 			this._Ctl_TiposIncidentes = new EntitySet<Ctl_TiposIncidente>(new Action<Ctl_TiposIncidente>(this.attach_Ctl_TiposIncidentes), new Action<Ctl_TiposIncidente>(this.detach_Ctl_TiposIncidentes));
+			this._PMB_ProyectosRegistrosTrabajos = new EntitySet<PMB_ProyectosRegistrosTrabajo>(new Action<PMB_ProyectosRegistrosTrabajo>(this.attach_PMB_ProyectosRegistrosTrabajos), new Action<PMB_ProyectosRegistrosTrabajo>(this.detach_PMB_ProyectosRegistrosTrabajos));
 			OnCreated();
 		}
 		
@@ -9458,6 +9709,19 @@ namespace MvcLogin.Linq
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CTL_EmisoresPMBook_PMB_ProyectosRegistrosTrabajo", Storage="_PMB_ProyectosRegistrosTrabajos", ThisKey="nEmisor", OtherKey="nEmisor")]
+		public EntitySet<PMB_ProyectosRegistrosTrabajo> PMB_ProyectosRegistrosTrabajos
+		{
+			get
+			{
+				return this._PMB_ProyectosRegistrosTrabajos;
+			}
+			set
+			{
+				this._PMB_ProyectosRegistrosTrabajos.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -9617,6 +9881,18 @@ namespace MvcLogin.Linq
 		}
 		
 		private void detach_Ctl_TiposIncidentes(Ctl_TiposIncidente entity)
+		{
+			this.SendPropertyChanging();
+			entity.CTL_EmisoresPMBook = null;
+		}
+		
+		private void attach_PMB_ProyectosRegistrosTrabajos(PMB_ProyectosRegistrosTrabajo entity)
+		{
+			this.SendPropertyChanging();
+			entity.CTL_EmisoresPMBook = this;
+		}
+		
+		private void detach_PMB_ProyectosRegistrosTrabajos(PMB_ProyectosRegistrosTrabajo entity)
 		{
 			this.SendPropertyChanging();
 			entity.CTL_EmisoresPMBook = null;
@@ -10966,6 +11242,8 @@ namespace MvcLogin.Linq
 		
 		private EntitySet<PMB_ProyectosAsignacione> _PMB_ProyectosAsignaciones;
 		
+		private EntitySet<PMB_ProyectosRegistrosTrabajo> _PMB_ProyectosRegistrosTrabajos;
+		
 		private EntityRef<ADSUM_Usuario> _ADSUM_Usuario;
 		
 		private EntityRef<CTL_EmisoresPMBook> _CTL_EmisoresPMBook;
@@ -11033,6 +11311,7 @@ namespace MvcLogin.Linq
 		public PMB_ProyectosConsultore1()
 		{
 			this._PMB_ProyectosAsignaciones = new EntitySet<PMB_ProyectosAsignacione>(new Action<PMB_ProyectosAsignacione>(this.attach_PMB_ProyectosAsignaciones), new Action<PMB_ProyectosAsignacione>(this.detach_PMB_ProyectosAsignaciones));
+			this._PMB_ProyectosRegistrosTrabajos = new EntitySet<PMB_ProyectosRegistrosTrabajo>(new Action<PMB_ProyectosRegistrosTrabajo>(this.attach_PMB_ProyectosRegistrosTrabajos), new Action<PMB_ProyectosRegistrosTrabajo>(this.detach_PMB_ProyectosRegistrosTrabajos));
 			this._ADSUM_Usuario = default(EntityRef<ADSUM_Usuario>);
 			this._CTL_EmisoresPMBook = default(EntityRef<CTL_EmisoresPMBook>);
 			this._PMB_Proyecto = default(EntityRef<PMB_Proyecto>);
@@ -11584,6 +11863,19 @@ namespace MvcLogin.Linq
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PMB_ProyectosConsultore1_PMB_ProyectosRegistrosTrabajo", Storage="_PMB_ProyectosRegistrosTrabajos", ThisKey="nProyectoConsultor", OtherKey="nProyectoConsultor")]
+		public EntitySet<PMB_ProyectosRegistrosTrabajo> PMB_ProyectosRegistrosTrabajos
+		{
+			get
+			{
+				return this._PMB_ProyectosRegistrosTrabajos;
+			}
+			set
+			{
+				this._PMB_ProyectosRegistrosTrabajos.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADSUM_Usuario_PMB_ProyectosConsultore1", Storage="_ADSUM_Usuario", ThisKey="nAdsumUsuario", OtherKey="nAdsumUsuario", IsForeignKey=true)]
 		public ADSUM_Usuario ADSUM_Usuario
 		{
@@ -11713,6 +12005,18 @@ namespace MvcLogin.Linq
 		}
 		
 		private void detach_PMB_ProyectosAsignaciones(PMB_ProyectosAsignacione entity)
+		{
+			this.SendPropertyChanging();
+			entity.PMB_ProyectosConsultore1 = null;
+		}
+		
+		private void attach_PMB_ProyectosRegistrosTrabajos(PMB_ProyectosRegistrosTrabajo entity)
+		{
+			this.SendPropertyChanging();
+			entity.PMB_ProyectosConsultore1 = this;
+		}
+		
+		private void detach_PMB_ProyectosRegistrosTrabajos(PMB_ProyectosRegistrosTrabajo entity)
 		{
 			this.SendPropertyChanging();
 			entity.PMB_ProyectosConsultore1 = null;
@@ -12604,6 +12908,8 @@ namespace MvcLogin.Linq
 		
 		private EntitySet<PMB_Proyecto> _PMB_Proyectos;
 		
+		private EntitySet<PMB_ActividadesAyuda> _PMB_ActividadesAyudas;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -12642,6 +12948,7 @@ namespace MvcLogin.Linq
 		{
 			this._PMB_Actividades = new EntitySet<PMB_Actividade>(new Action<PMB_Actividade>(this.attach_PMB_Actividades), new Action<PMB_Actividade>(this.detach_PMB_Actividades));
 			this._PMB_Proyectos = new EntitySet<PMB_Proyecto>(new Action<PMB_Proyecto>(this.attach_PMB_Proyectos), new Action<PMB_Proyecto>(this.detach_PMB_Proyectos));
+			this._PMB_ActividadesAyudas = new EntitySet<PMB_ActividadesAyuda>(new Action<PMB_ActividadesAyuda>(this.attach_PMB_ActividadesAyudas), new Action<PMB_ActividadesAyuda>(this.detach_PMB_ActividadesAyudas));
 			OnCreated();
 		}
 		
@@ -12951,6 +13258,19 @@ namespace MvcLogin.Linq
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CTM_Cliente_PMB_ActividadesAyuda", Storage="_PMB_ActividadesAyudas", ThisKey="nCliente", OtherKey="nClienteAyuda")]
+		public EntitySet<PMB_ActividadesAyuda> PMB_ActividadesAyudas
+		{
+			get
+			{
+				return this._PMB_ActividadesAyudas;
+			}
+			set
+			{
+				this._PMB_ActividadesAyudas.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -12990,6 +13310,18 @@ namespace MvcLogin.Linq
 		}
 		
 		private void detach_PMB_Proyectos(PMB_Proyecto entity)
+		{
+			this.SendPropertyChanging();
+			entity.CTM_Cliente = null;
+		}
+		
+		private void attach_PMB_ActividadesAyudas(PMB_ActividadesAyuda entity)
+		{
+			this.SendPropertyChanging();
+			entity.CTM_Cliente = this;
+		}
+		
+		private void detach_PMB_ActividadesAyudas(PMB_ActividadesAyuda entity)
 		{
 			this.SendPropertyChanging();
 			entity.CTM_Cliente = null;
@@ -15877,6 +16209,2925 @@ namespace MvcLogin.Linq
 						this._nActividad = default(int);
 					}
 					this.SendPropertyChanged("PMB_Actividade");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PMB_ActividadesAyuda")]
+	public partial class PMB_ActividadesAyuda : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _nEmisor;
+		
+		private int _nActividad;
+		
+		private int _nActividadAyuda;
+		
+		private string _cDescripcion;
+		
+		private byte _nTipoAyuda;
+		
+		private System.Nullable<int> _nAdsumUsuarioAyuda;
+		
+		private System.Nullable<int> _nClienteAyuda;
+		
+		private string _cAyudante;
+		
+		private string _cCorreo;
+		
+		private int _nImpacto;
+		
+		private string _tDescripcion;
+		
+		private long _nFechaSolicitudAyuda;
+		
+		private System.Nullable<long> _nFechaAyudaProvista;
+		
+		private bool _bAyudaProvista;
+		
+		private string _cComentarioCierre;
+		
+		private bool _bActivo;
+		
+		private string _cUsuario_Registro;
+		
+		private System.DateTime _dFecha_Registro;
+		
+		private string _cMaquina_Registro;
+		
+		private string _cUsuario_UltimaModificacion;
+		
+		private System.Nullable<System.DateTime> _dFecha_UltimaModificacion;
+		
+		private string _cMaquina_UltimaModificacion;
+		
+		private string _cUsuario_Eliminacion;
+		
+		private System.Nullable<System.DateTime> _dFecha_Eliminacion;
+		
+		private string _cMaquina_Eliminacion;
+		
+		private EntityRef<ADSUM_Usuario> _ADSUM_Usuario;
+		
+		private EntityRef<CTM_Cliente> _CTM_Cliente;
+		
+		private EntityRef<PMB_Actividade> _PMB_Actividade;
+		
+		private EntityRef<CTL_ImpactosActividadesAyuda> _CTL_ImpactosActividadesAyuda;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnnEmisorChanging(int value);
+    partial void OnnEmisorChanged();
+    partial void OnnActividadChanging(int value);
+    partial void OnnActividadChanged();
+    partial void OnnActividadAyudaChanging(int value);
+    partial void OnnActividadAyudaChanged();
+    partial void OncDescripcionChanging(string value);
+    partial void OncDescripcionChanged();
+    partial void OnnTipoAyudaChanging(byte value);
+    partial void OnnTipoAyudaChanged();
+    partial void OnnAdsumUsuarioAyudaChanging(System.Nullable<int> value);
+    partial void OnnAdsumUsuarioAyudaChanged();
+    partial void OnnClienteAyudaChanging(System.Nullable<int> value);
+    partial void OnnClienteAyudaChanged();
+    partial void OncAyudanteChanging(string value);
+    partial void OncAyudanteChanged();
+    partial void OncCorreoChanging(string value);
+    partial void OncCorreoChanged();
+    partial void OnnImpactoChanging(int value);
+    partial void OnnImpactoChanged();
+    partial void OntDescripcionChanging(string value);
+    partial void OntDescripcionChanged();
+    partial void OnnFechaSolicitudAyudaChanging(long value);
+    partial void OnnFechaSolicitudAyudaChanged();
+    partial void OnnFechaAyudaProvistaChanging(System.Nullable<long> value);
+    partial void OnnFechaAyudaProvistaChanged();
+    partial void OnbAyudaProvistaChanging(bool value);
+    partial void OnbAyudaProvistaChanged();
+    partial void OncComentarioCierreChanging(string value);
+    partial void OncComentarioCierreChanged();
+    partial void OnbActivoChanging(bool value);
+    partial void OnbActivoChanged();
+    partial void OncUsuario_RegistroChanging(string value);
+    partial void OncUsuario_RegistroChanged();
+    partial void OndFecha_RegistroChanging(System.DateTime value);
+    partial void OndFecha_RegistroChanged();
+    partial void OncMaquina_RegistroChanging(string value);
+    partial void OncMaquina_RegistroChanged();
+    partial void OncUsuario_UltimaModificacionChanging(string value);
+    partial void OncUsuario_UltimaModificacionChanged();
+    partial void OndFecha_UltimaModificacionChanging(System.Nullable<System.DateTime> value);
+    partial void OndFecha_UltimaModificacionChanged();
+    partial void OncMaquina_UltimaModificacionChanging(string value);
+    partial void OncMaquina_UltimaModificacionChanged();
+    partial void OncUsuario_EliminacionChanging(string value);
+    partial void OncUsuario_EliminacionChanged();
+    partial void OndFecha_EliminacionChanging(System.Nullable<System.DateTime> value);
+    partial void OndFecha_EliminacionChanged();
+    partial void OncMaquina_EliminacionChanging(string value);
+    partial void OncMaquina_EliminacionChanged();
+    #endregion
+		
+		public PMB_ActividadesAyuda()
+		{
+			this._ADSUM_Usuario = default(EntityRef<ADSUM_Usuario>);
+			this._CTM_Cliente = default(EntityRef<CTM_Cliente>);
+			this._PMB_Actividade = default(EntityRef<PMB_Actividade>);
+			this._CTL_ImpactosActividadesAyuda = default(EntityRef<CTL_ImpactosActividadesAyuda>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nEmisor", DbType="Int NOT NULL")]
+		public int nEmisor
+		{
+			get
+			{
+				return this._nEmisor;
+			}
+			set
+			{
+				if ((this._nEmisor != value))
+				{
+					this.OnnEmisorChanging(value);
+					this.SendPropertyChanging();
+					this._nEmisor = value;
+					this.SendPropertyChanged("nEmisor");
+					this.OnnEmisorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nActividad", DbType="Int NOT NULL")]
+		public int nActividad
+		{
+			get
+			{
+				return this._nActividad;
+			}
+			set
+			{
+				if ((this._nActividad != value))
+				{
+					if (this._PMB_Actividade.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnnActividadChanging(value);
+					this.SendPropertyChanging();
+					this._nActividad = value;
+					this.SendPropertyChanged("nActividad");
+					this.OnnActividadChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nActividadAyuda", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int nActividadAyuda
+		{
+			get
+			{
+				return this._nActividadAyuda;
+			}
+			set
+			{
+				if ((this._nActividadAyuda != value))
+				{
+					this.OnnActividadAyudaChanging(value);
+					this.SendPropertyChanging();
+					this._nActividadAyuda = value;
+					this.SendPropertyChanged("nActividadAyuda");
+					this.OnnActividadAyudaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cDescripcion", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string cDescripcion
+		{
+			get
+			{
+				return this._cDescripcion;
+			}
+			set
+			{
+				if ((this._cDescripcion != value))
+				{
+					this.OncDescripcionChanging(value);
+					this.SendPropertyChanging();
+					this._cDescripcion = value;
+					this.SendPropertyChanged("cDescripcion");
+					this.OncDescripcionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nTipoAyuda", DbType="TinyInt NOT NULL")]
+		public byte nTipoAyuda
+		{
+			get
+			{
+				return this._nTipoAyuda;
+			}
+			set
+			{
+				if ((this._nTipoAyuda != value))
+				{
+					this.OnnTipoAyudaChanging(value);
+					this.SendPropertyChanging();
+					this._nTipoAyuda = value;
+					this.SendPropertyChanged("nTipoAyuda");
+					this.OnnTipoAyudaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nAdsumUsuarioAyuda", DbType="Int")]
+		public System.Nullable<int> nAdsumUsuarioAyuda
+		{
+			get
+			{
+				return this._nAdsumUsuarioAyuda;
+			}
+			set
+			{
+				if ((this._nAdsumUsuarioAyuda != value))
+				{
+					if (this._ADSUM_Usuario.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnnAdsumUsuarioAyudaChanging(value);
+					this.SendPropertyChanging();
+					this._nAdsumUsuarioAyuda = value;
+					this.SendPropertyChanged("nAdsumUsuarioAyuda");
+					this.OnnAdsumUsuarioAyudaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nClienteAyuda", DbType="Int")]
+		public System.Nullable<int> nClienteAyuda
+		{
+			get
+			{
+				return this._nClienteAyuda;
+			}
+			set
+			{
+				if ((this._nClienteAyuda != value))
+				{
+					if (this._CTM_Cliente.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnnClienteAyudaChanging(value);
+					this.SendPropertyChanging();
+					this._nClienteAyuda = value;
+					this.SendPropertyChanged("nClienteAyuda");
+					this.OnnClienteAyudaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cAyudante", DbType="VarChar(50)")]
+		public string cAyudante
+		{
+			get
+			{
+				return this._cAyudante;
+			}
+			set
+			{
+				if ((this._cAyudante != value))
+				{
+					this.OncAyudanteChanging(value);
+					this.SendPropertyChanging();
+					this._cAyudante = value;
+					this.SendPropertyChanged("cAyudante");
+					this.OncAyudanteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cCorreo", DbType="VarChar(200)")]
+		public string cCorreo
+		{
+			get
+			{
+				return this._cCorreo;
+			}
+			set
+			{
+				if ((this._cCorreo != value))
+				{
+					this.OncCorreoChanging(value);
+					this.SendPropertyChanging();
+					this._cCorreo = value;
+					this.SendPropertyChanged("cCorreo");
+					this.OncCorreoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nImpacto", DbType="Int NOT NULL")]
+		public int nImpacto
+		{
+			get
+			{
+				return this._nImpacto;
+			}
+			set
+			{
+				if ((this._nImpacto != value))
+				{
+					if (this._CTL_ImpactosActividadesAyuda.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnnImpactoChanging(value);
+					this.SendPropertyChanging();
+					this._nImpacto = value;
+					this.SendPropertyChanged("nImpacto");
+					this.OnnImpactoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tDescripcion", DbType="VarChar(MAX)")]
+		public string tDescripcion
+		{
+			get
+			{
+				return this._tDescripcion;
+			}
+			set
+			{
+				if ((this._tDescripcion != value))
+				{
+					this.OntDescripcionChanging(value);
+					this.SendPropertyChanging();
+					this._tDescripcion = value;
+					this.SendPropertyChanged("tDescripcion");
+					this.OntDescripcionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nFechaSolicitudAyuda", DbType="BigInt NOT NULL")]
+		public long nFechaSolicitudAyuda
+		{
+			get
+			{
+				return this._nFechaSolicitudAyuda;
+			}
+			set
+			{
+				if ((this._nFechaSolicitudAyuda != value))
+				{
+					this.OnnFechaSolicitudAyudaChanging(value);
+					this.SendPropertyChanging();
+					this._nFechaSolicitudAyuda = value;
+					this.SendPropertyChanged("nFechaSolicitudAyuda");
+					this.OnnFechaSolicitudAyudaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nFechaAyudaProvista", DbType="BigInt")]
+		public System.Nullable<long> nFechaAyudaProvista
+		{
+			get
+			{
+				return this._nFechaAyudaProvista;
+			}
+			set
+			{
+				if ((this._nFechaAyudaProvista != value))
+				{
+					this.OnnFechaAyudaProvistaChanging(value);
+					this.SendPropertyChanging();
+					this._nFechaAyudaProvista = value;
+					this.SendPropertyChanged("nFechaAyudaProvista");
+					this.OnnFechaAyudaProvistaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_bAyudaProvista", DbType="Bit NOT NULL")]
+		public bool bAyudaProvista
+		{
+			get
+			{
+				return this._bAyudaProvista;
+			}
+			set
+			{
+				if ((this._bAyudaProvista != value))
+				{
+					this.OnbAyudaProvistaChanging(value);
+					this.SendPropertyChanging();
+					this._bAyudaProvista = value;
+					this.SendPropertyChanged("bAyudaProvista");
+					this.OnbAyudaProvistaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cComentarioCierre", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string cComentarioCierre
+		{
+			get
+			{
+				return this._cComentarioCierre;
+			}
+			set
+			{
+				if ((this._cComentarioCierre != value))
+				{
+					this.OncComentarioCierreChanging(value);
+					this.SendPropertyChanging();
+					this._cComentarioCierre = value;
+					this.SendPropertyChanged("cComentarioCierre");
+					this.OncComentarioCierreChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_bActivo", DbType="Bit NOT NULL")]
+		public bool bActivo
+		{
+			get
+			{
+				return this._bActivo;
+			}
+			set
+			{
+				if ((this._bActivo != value))
+				{
+					this.OnbActivoChanging(value);
+					this.SendPropertyChanging();
+					this._bActivo = value;
+					this.SendPropertyChanged("bActivo");
+					this.OnbActivoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cUsuario_Registro", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string cUsuario_Registro
+		{
+			get
+			{
+				return this._cUsuario_Registro;
+			}
+			set
+			{
+				if ((this._cUsuario_Registro != value))
+				{
+					this.OncUsuario_RegistroChanging(value);
+					this.SendPropertyChanging();
+					this._cUsuario_Registro = value;
+					this.SendPropertyChanged("cUsuario_Registro");
+					this.OncUsuario_RegistroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dFecha_Registro", DbType="DateTime NOT NULL")]
+		public System.DateTime dFecha_Registro
+		{
+			get
+			{
+				return this._dFecha_Registro;
+			}
+			set
+			{
+				if ((this._dFecha_Registro != value))
+				{
+					this.OndFecha_RegistroChanging(value);
+					this.SendPropertyChanging();
+					this._dFecha_Registro = value;
+					this.SendPropertyChanged("dFecha_Registro");
+					this.OndFecha_RegistroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cMaquina_Registro", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string cMaquina_Registro
+		{
+			get
+			{
+				return this._cMaquina_Registro;
+			}
+			set
+			{
+				if ((this._cMaquina_Registro != value))
+				{
+					this.OncMaquina_RegistroChanging(value);
+					this.SendPropertyChanging();
+					this._cMaquina_Registro = value;
+					this.SendPropertyChanged("cMaquina_Registro");
+					this.OncMaquina_RegistroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cUsuario_UltimaModificacion", DbType="VarChar(30)")]
+		public string cUsuario_UltimaModificacion
+		{
+			get
+			{
+				return this._cUsuario_UltimaModificacion;
+			}
+			set
+			{
+				if ((this._cUsuario_UltimaModificacion != value))
+				{
+					this.OncUsuario_UltimaModificacionChanging(value);
+					this.SendPropertyChanging();
+					this._cUsuario_UltimaModificacion = value;
+					this.SendPropertyChanged("cUsuario_UltimaModificacion");
+					this.OncUsuario_UltimaModificacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dFecha_UltimaModificacion", DbType="SmallDateTime")]
+		public System.Nullable<System.DateTime> dFecha_UltimaModificacion
+		{
+			get
+			{
+				return this._dFecha_UltimaModificacion;
+			}
+			set
+			{
+				if ((this._dFecha_UltimaModificacion != value))
+				{
+					this.OndFecha_UltimaModificacionChanging(value);
+					this.SendPropertyChanging();
+					this._dFecha_UltimaModificacion = value;
+					this.SendPropertyChanged("dFecha_UltimaModificacion");
+					this.OndFecha_UltimaModificacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cMaquina_UltimaModificacion", DbType="VarChar(30)")]
+		public string cMaquina_UltimaModificacion
+		{
+			get
+			{
+				return this._cMaquina_UltimaModificacion;
+			}
+			set
+			{
+				if ((this._cMaquina_UltimaModificacion != value))
+				{
+					this.OncMaquina_UltimaModificacionChanging(value);
+					this.SendPropertyChanging();
+					this._cMaquina_UltimaModificacion = value;
+					this.SendPropertyChanged("cMaquina_UltimaModificacion");
+					this.OncMaquina_UltimaModificacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cUsuario_Eliminacion", DbType="VarChar(30)")]
+		public string cUsuario_Eliminacion
+		{
+			get
+			{
+				return this._cUsuario_Eliminacion;
+			}
+			set
+			{
+				if ((this._cUsuario_Eliminacion != value))
+				{
+					this.OncUsuario_EliminacionChanging(value);
+					this.SendPropertyChanging();
+					this._cUsuario_Eliminacion = value;
+					this.SendPropertyChanged("cUsuario_Eliminacion");
+					this.OncUsuario_EliminacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dFecha_Eliminacion", DbType="SmallDateTime")]
+		public System.Nullable<System.DateTime> dFecha_Eliminacion
+		{
+			get
+			{
+				return this._dFecha_Eliminacion;
+			}
+			set
+			{
+				if ((this._dFecha_Eliminacion != value))
+				{
+					this.OndFecha_EliminacionChanging(value);
+					this.SendPropertyChanging();
+					this._dFecha_Eliminacion = value;
+					this.SendPropertyChanged("dFecha_Eliminacion");
+					this.OndFecha_EliminacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cMaquina_Eliminacion", DbType="VarChar(30)")]
+		public string cMaquina_Eliminacion
+		{
+			get
+			{
+				return this._cMaquina_Eliminacion;
+			}
+			set
+			{
+				if ((this._cMaquina_Eliminacion != value))
+				{
+					this.OncMaquina_EliminacionChanging(value);
+					this.SendPropertyChanging();
+					this._cMaquina_Eliminacion = value;
+					this.SendPropertyChanged("cMaquina_Eliminacion");
+					this.OncMaquina_EliminacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADSUM_Usuario_PMB_ActividadesAyuda", Storage="_ADSUM_Usuario", ThisKey="nAdsumUsuarioAyuda", OtherKey="nAdsumUsuario", IsForeignKey=true)]
+		public ADSUM_Usuario ADSUM_Usuario
+		{
+			get
+			{
+				return this._ADSUM_Usuario.Entity;
+			}
+			set
+			{
+				ADSUM_Usuario previousValue = this._ADSUM_Usuario.Entity;
+				if (((previousValue != value) 
+							|| (this._ADSUM_Usuario.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ADSUM_Usuario.Entity = null;
+						previousValue.PMB_ActividadesAyudas.Remove(this);
+					}
+					this._ADSUM_Usuario.Entity = value;
+					if ((value != null))
+					{
+						value.PMB_ActividadesAyudas.Add(this);
+						this._nAdsumUsuarioAyuda = value.nAdsumUsuario;
+					}
+					else
+					{
+						this._nAdsumUsuarioAyuda = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("ADSUM_Usuario");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CTM_Cliente_PMB_ActividadesAyuda", Storage="_CTM_Cliente", ThisKey="nClienteAyuda", OtherKey="nCliente", IsForeignKey=true)]
+		public CTM_Cliente CTM_Cliente
+		{
+			get
+			{
+				return this._CTM_Cliente.Entity;
+			}
+			set
+			{
+				CTM_Cliente previousValue = this._CTM_Cliente.Entity;
+				if (((previousValue != value) 
+							|| (this._CTM_Cliente.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CTM_Cliente.Entity = null;
+						previousValue.PMB_ActividadesAyudas.Remove(this);
+					}
+					this._CTM_Cliente.Entity = value;
+					if ((value != null))
+					{
+						value.PMB_ActividadesAyudas.Add(this);
+						this._nClienteAyuda = value.nCliente;
+					}
+					else
+					{
+						this._nClienteAyuda = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("CTM_Cliente");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PMB_Actividade_PMB_ActividadesAyuda", Storage="_PMB_Actividade", ThisKey="nActividad", OtherKey="nActividad", IsForeignKey=true)]
+		public PMB_Actividade PMB_Actividade
+		{
+			get
+			{
+				return this._PMB_Actividade.Entity;
+			}
+			set
+			{
+				PMB_Actividade previousValue = this._PMB_Actividade.Entity;
+				if (((previousValue != value) 
+							|| (this._PMB_Actividade.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PMB_Actividade.Entity = null;
+						previousValue.PMB_ActividadesAyudas.Remove(this);
+					}
+					this._PMB_Actividade.Entity = value;
+					if ((value != null))
+					{
+						value.PMB_ActividadesAyudas.Add(this);
+						this._nActividad = value.nActividad;
+					}
+					else
+					{
+						this._nActividad = default(int);
+					}
+					this.SendPropertyChanged("PMB_Actividade");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CTL_ImpactosActividadesAyuda_PMB_ActividadesAyuda", Storage="_CTL_ImpactosActividadesAyuda", ThisKey="nImpacto", OtherKey="nImpactoActividadAyuda", IsForeignKey=true)]
+		public CTL_ImpactosActividadesAyuda CTL_ImpactosActividadesAyuda
+		{
+			get
+			{
+				return this._CTL_ImpactosActividadesAyuda.Entity;
+			}
+			set
+			{
+				CTL_ImpactosActividadesAyuda previousValue = this._CTL_ImpactosActividadesAyuda.Entity;
+				if (((previousValue != value) 
+							|| (this._CTL_ImpactosActividadesAyuda.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CTL_ImpactosActividadesAyuda.Entity = null;
+						previousValue.PMB_ActividadesAyudas.Remove(this);
+					}
+					this._CTL_ImpactosActividadesAyuda.Entity = value;
+					if ((value != null))
+					{
+						value.PMB_ActividadesAyudas.Add(this);
+						this._nImpacto = value.nImpactoActividadAyuda;
+					}
+					else
+					{
+						this._nImpacto = default(int);
+					}
+					this.SendPropertyChanged("CTL_ImpactosActividadesAyuda");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PMB_ActividadesQC")]
+	public partial class PMB_ActividadesQC : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _nEmisor;
+		
+		private int _nActividad;
+		
+		private int _nActividadQC;
+		
+		private string _cDescripcion;
+		
+		private byte _nTipoActividadQC;
+		
+		private int _nImpacto;
+		
+		private decimal _nTiempoAutorizado;
+		
+		private decimal _nTiempoSolicitado;
+		
+		private byte _nEstatus;
+		
+		private string _tDescripcion;
+		
+		private System.Nullable<long> _nFechaSolucion;
+		
+		private int _nAdsumUsuarioRegistro;
+		
+		private short _nVuelta;
+		
+		private bool _bActivo;
+		
+		private string _cUsuario_Registro;
+		
+		private System.DateTime _dFecha_Registro;
+		
+		private string _cMaquina_Registro;
+		
+		private string _cUsuario_UltimaModificacion;
+		
+		private System.Nullable<System.DateTime> _dFecha_UltimaModificacion;
+		
+		private string _cMaquina_UltimaModificacion;
+		
+		private string _cUsuario_Eliminacion;
+		
+		private System.Nullable<System.DateTime> _dFecha_Eliminacion;
+		
+		private string _cMaquina_Eliminacion;
+		
+		private EntityRef<ADSUM_Usuario> _ADSUM_Usuario;
+		
+		private EntityRef<PMB_Actividade> _PMB_Actividade;
+		
+		private EntityRef<CTL_ImpactosActividadesAyuda> _CTL_ImpactosActividadesAyuda;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnnEmisorChanging(int value);
+    partial void OnnEmisorChanged();
+    partial void OnnActividadChanging(int value);
+    partial void OnnActividadChanged();
+    partial void OnnActividadQCChanging(int value);
+    partial void OnnActividadQCChanged();
+    partial void OncDescripcionChanging(string value);
+    partial void OncDescripcionChanged();
+    partial void OnnTipoActividadQCChanging(byte value);
+    partial void OnnTipoActividadQCChanged();
+    partial void OnnImpactoChanging(int value);
+    partial void OnnImpactoChanged();
+    partial void OnnTiempoAutorizadoChanging(decimal value);
+    partial void OnnTiempoAutorizadoChanged();
+    partial void OnnTiempoSolicitadoChanging(decimal value);
+    partial void OnnTiempoSolicitadoChanged();
+    partial void OnnEstatusChanging(byte value);
+    partial void OnnEstatusChanged();
+    partial void OntDescripcionChanging(string value);
+    partial void OntDescripcionChanged();
+    partial void OnnFechaSolucionChanging(System.Nullable<long> value);
+    partial void OnnFechaSolucionChanged();
+    partial void OnnAdsumUsuarioRegistroChanging(int value);
+    partial void OnnAdsumUsuarioRegistroChanged();
+    partial void OnnVueltaChanging(short value);
+    partial void OnnVueltaChanged();
+    partial void OnbActivoChanging(bool value);
+    partial void OnbActivoChanged();
+    partial void OncUsuario_RegistroChanging(string value);
+    partial void OncUsuario_RegistroChanged();
+    partial void OndFecha_RegistroChanging(System.DateTime value);
+    partial void OndFecha_RegistroChanged();
+    partial void OncMaquina_RegistroChanging(string value);
+    partial void OncMaquina_RegistroChanged();
+    partial void OncUsuario_UltimaModificacionChanging(string value);
+    partial void OncUsuario_UltimaModificacionChanged();
+    partial void OndFecha_UltimaModificacionChanging(System.Nullable<System.DateTime> value);
+    partial void OndFecha_UltimaModificacionChanged();
+    partial void OncMaquina_UltimaModificacionChanging(string value);
+    partial void OncMaquina_UltimaModificacionChanged();
+    partial void OncUsuario_EliminacionChanging(string value);
+    partial void OncUsuario_EliminacionChanged();
+    partial void OndFecha_EliminacionChanging(System.Nullable<System.DateTime> value);
+    partial void OndFecha_EliminacionChanged();
+    partial void OncMaquina_EliminacionChanging(string value);
+    partial void OncMaquina_EliminacionChanged();
+    #endregion
+		
+		public PMB_ActividadesQC()
+		{
+			this._ADSUM_Usuario = default(EntityRef<ADSUM_Usuario>);
+			this._PMB_Actividade = default(EntityRef<PMB_Actividade>);
+			this._CTL_ImpactosActividadesAyuda = default(EntityRef<CTL_ImpactosActividadesAyuda>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nEmisor", DbType="Int NOT NULL")]
+		public int nEmisor
+		{
+			get
+			{
+				return this._nEmisor;
+			}
+			set
+			{
+				if ((this._nEmisor != value))
+				{
+					this.OnnEmisorChanging(value);
+					this.SendPropertyChanging();
+					this._nEmisor = value;
+					this.SendPropertyChanged("nEmisor");
+					this.OnnEmisorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nActividad", DbType="Int NOT NULL")]
+		public int nActividad
+		{
+			get
+			{
+				return this._nActividad;
+			}
+			set
+			{
+				if ((this._nActividad != value))
+				{
+					if (this._PMB_Actividade.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnnActividadChanging(value);
+					this.SendPropertyChanging();
+					this._nActividad = value;
+					this.SendPropertyChanged("nActividad");
+					this.OnnActividadChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nActividadQC", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int nActividadQC
+		{
+			get
+			{
+				return this._nActividadQC;
+			}
+			set
+			{
+				if ((this._nActividadQC != value))
+				{
+					this.OnnActividadQCChanging(value);
+					this.SendPropertyChanging();
+					this._nActividadQC = value;
+					this.SendPropertyChanged("nActividadQC");
+					this.OnnActividadQCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cDescripcion", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string cDescripcion
+		{
+			get
+			{
+				return this._cDescripcion;
+			}
+			set
+			{
+				if ((this._cDescripcion != value))
+				{
+					this.OncDescripcionChanging(value);
+					this.SendPropertyChanging();
+					this._cDescripcion = value;
+					this.SendPropertyChanged("cDescripcion");
+					this.OncDescripcionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nTipoActividadQC", DbType="TinyInt NOT NULL")]
+		public byte nTipoActividadQC
+		{
+			get
+			{
+				return this._nTipoActividadQC;
+			}
+			set
+			{
+				if ((this._nTipoActividadQC != value))
+				{
+					this.OnnTipoActividadQCChanging(value);
+					this.SendPropertyChanging();
+					this._nTipoActividadQC = value;
+					this.SendPropertyChanged("nTipoActividadQC");
+					this.OnnTipoActividadQCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nImpacto", DbType="Int NOT NULL")]
+		public int nImpacto
+		{
+			get
+			{
+				return this._nImpacto;
+			}
+			set
+			{
+				if ((this._nImpacto != value))
+				{
+					if (this._CTL_ImpactosActividadesAyuda.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnnImpactoChanging(value);
+					this.SendPropertyChanging();
+					this._nImpacto = value;
+					this.SendPropertyChanged("nImpacto");
+					this.OnnImpactoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nTiempoAutorizado", DbType="Decimal(10,2) NOT NULL")]
+		public decimal nTiempoAutorizado
+		{
+			get
+			{
+				return this._nTiempoAutorizado;
+			}
+			set
+			{
+				if ((this._nTiempoAutorizado != value))
+				{
+					this.OnnTiempoAutorizadoChanging(value);
+					this.SendPropertyChanging();
+					this._nTiempoAutorizado = value;
+					this.SendPropertyChanged("nTiempoAutorizado");
+					this.OnnTiempoAutorizadoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nTiempoSolicitado", DbType="Decimal(10,2) NOT NULL")]
+		public decimal nTiempoSolicitado
+		{
+			get
+			{
+				return this._nTiempoSolicitado;
+			}
+			set
+			{
+				if ((this._nTiempoSolicitado != value))
+				{
+					this.OnnTiempoSolicitadoChanging(value);
+					this.SendPropertyChanging();
+					this._nTiempoSolicitado = value;
+					this.SendPropertyChanged("nTiempoSolicitado");
+					this.OnnTiempoSolicitadoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nEstatus", DbType="TinyInt NOT NULL")]
+		public byte nEstatus
+		{
+			get
+			{
+				return this._nEstatus;
+			}
+			set
+			{
+				if ((this._nEstatus != value))
+				{
+					this.OnnEstatusChanging(value);
+					this.SendPropertyChanging();
+					this._nEstatus = value;
+					this.SendPropertyChanged("nEstatus");
+					this.OnnEstatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tDescripcion", DbType="VarChar(5000) NOT NULL", CanBeNull=false)]
+		public string tDescripcion
+		{
+			get
+			{
+				return this._tDescripcion;
+			}
+			set
+			{
+				if ((this._tDescripcion != value))
+				{
+					this.OntDescripcionChanging(value);
+					this.SendPropertyChanging();
+					this._tDescripcion = value;
+					this.SendPropertyChanged("tDescripcion");
+					this.OntDescripcionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nFechaSolucion", DbType="BigInt")]
+		public System.Nullable<long> nFechaSolucion
+		{
+			get
+			{
+				return this._nFechaSolucion;
+			}
+			set
+			{
+				if ((this._nFechaSolucion != value))
+				{
+					this.OnnFechaSolucionChanging(value);
+					this.SendPropertyChanging();
+					this._nFechaSolucion = value;
+					this.SendPropertyChanged("nFechaSolucion");
+					this.OnnFechaSolucionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nAdsumUsuarioRegistro", DbType="Int NOT NULL")]
+		public int nAdsumUsuarioRegistro
+		{
+			get
+			{
+				return this._nAdsumUsuarioRegistro;
+			}
+			set
+			{
+				if ((this._nAdsumUsuarioRegistro != value))
+				{
+					if (this._ADSUM_Usuario.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnnAdsumUsuarioRegistroChanging(value);
+					this.SendPropertyChanging();
+					this._nAdsumUsuarioRegistro = value;
+					this.SendPropertyChanged("nAdsumUsuarioRegistro");
+					this.OnnAdsumUsuarioRegistroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nVuelta", DbType="SmallInt NOT NULL")]
+		public short nVuelta
+		{
+			get
+			{
+				return this._nVuelta;
+			}
+			set
+			{
+				if ((this._nVuelta != value))
+				{
+					this.OnnVueltaChanging(value);
+					this.SendPropertyChanging();
+					this._nVuelta = value;
+					this.SendPropertyChanged("nVuelta");
+					this.OnnVueltaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_bActivo", DbType="Bit NOT NULL")]
+		public bool bActivo
+		{
+			get
+			{
+				return this._bActivo;
+			}
+			set
+			{
+				if ((this._bActivo != value))
+				{
+					this.OnbActivoChanging(value);
+					this.SendPropertyChanging();
+					this._bActivo = value;
+					this.SendPropertyChanged("bActivo");
+					this.OnbActivoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cUsuario_Registro", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string cUsuario_Registro
+		{
+			get
+			{
+				return this._cUsuario_Registro;
+			}
+			set
+			{
+				if ((this._cUsuario_Registro != value))
+				{
+					this.OncUsuario_RegistroChanging(value);
+					this.SendPropertyChanging();
+					this._cUsuario_Registro = value;
+					this.SendPropertyChanged("cUsuario_Registro");
+					this.OncUsuario_RegistroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dFecha_Registro", DbType="DateTime NOT NULL")]
+		public System.DateTime dFecha_Registro
+		{
+			get
+			{
+				return this._dFecha_Registro;
+			}
+			set
+			{
+				if ((this._dFecha_Registro != value))
+				{
+					this.OndFecha_RegistroChanging(value);
+					this.SendPropertyChanging();
+					this._dFecha_Registro = value;
+					this.SendPropertyChanged("dFecha_Registro");
+					this.OndFecha_RegistroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cMaquina_Registro", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string cMaquina_Registro
+		{
+			get
+			{
+				return this._cMaquina_Registro;
+			}
+			set
+			{
+				if ((this._cMaquina_Registro != value))
+				{
+					this.OncMaquina_RegistroChanging(value);
+					this.SendPropertyChanging();
+					this._cMaquina_Registro = value;
+					this.SendPropertyChanged("cMaquina_Registro");
+					this.OncMaquina_RegistroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cUsuario_UltimaModificacion", DbType="VarChar(30)")]
+		public string cUsuario_UltimaModificacion
+		{
+			get
+			{
+				return this._cUsuario_UltimaModificacion;
+			}
+			set
+			{
+				if ((this._cUsuario_UltimaModificacion != value))
+				{
+					this.OncUsuario_UltimaModificacionChanging(value);
+					this.SendPropertyChanging();
+					this._cUsuario_UltimaModificacion = value;
+					this.SendPropertyChanged("cUsuario_UltimaModificacion");
+					this.OncUsuario_UltimaModificacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dFecha_UltimaModificacion", DbType="SmallDateTime")]
+		public System.Nullable<System.DateTime> dFecha_UltimaModificacion
+		{
+			get
+			{
+				return this._dFecha_UltimaModificacion;
+			}
+			set
+			{
+				if ((this._dFecha_UltimaModificacion != value))
+				{
+					this.OndFecha_UltimaModificacionChanging(value);
+					this.SendPropertyChanging();
+					this._dFecha_UltimaModificacion = value;
+					this.SendPropertyChanged("dFecha_UltimaModificacion");
+					this.OndFecha_UltimaModificacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cMaquina_UltimaModificacion", DbType="VarChar(30)")]
+		public string cMaquina_UltimaModificacion
+		{
+			get
+			{
+				return this._cMaquina_UltimaModificacion;
+			}
+			set
+			{
+				if ((this._cMaquina_UltimaModificacion != value))
+				{
+					this.OncMaquina_UltimaModificacionChanging(value);
+					this.SendPropertyChanging();
+					this._cMaquina_UltimaModificacion = value;
+					this.SendPropertyChanged("cMaquina_UltimaModificacion");
+					this.OncMaquina_UltimaModificacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cUsuario_Eliminacion", DbType="VarChar(30)")]
+		public string cUsuario_Eliminacion
+		{
+			get
+			{
+				return this._cUsuario_Eliminacion;
+			}
+			set
+			{
+				if ((this._cUsuario_Eliminacion != value))
+				{
+					this.OncUsuario_EliminacionChanging(value);
+					this.SendPropertyChanging();
+					this._cUsuario_Eliminacion = value;
+					this.SendPropertyChanged("cUsuario_Eliminacion");
+					this.OncUsuario_EliminacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dFecha_Eliminacion", DbType="SmallDateTime")]
+		public System.Nullable<System.DateTime> dFecha_Eliminacion
+		{
+			get
+			{
+				return this._dFecha_Eliminacion;
+			}
+			set
+			{
+				if ((this._dFecha_Eliminacion != value))
+				{
+					this.OndFecha_EliminacionChanging(value);
+					this.SendPropertyChanging();
+					this._dFecha_Eliminacion = value;
+					this.SendPropertyChanged("dFecha_Eliminacion");
+					this.OndFecha_EliminacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cMaquina_Eliminacion", DbType="VarChar(30)")]
+		public string cMaquina_Eliminacion
+		{
+			get
+			{
+				return this._cMaquina_Eliminacion;
+			}
+			set
+			{
+				if ((this._cMaquina_Eliminacion != value))
+				{
+					this.OncMaquina_EliminacionChanging(value);
+					this.SendPropertyChanging();
+					this._cMaquina_Eliminacion = value;
+					this.SendPropertyChanged("cMaquina_Eliminacion");
+					this.OncMaquina_EliminacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADSUM_Usuario_PMB_ActividadesQC", Storage="_ADSUM_Usuario", ThisKey="nAdsumUsuarioRegistro", OtherKey="nAdsumUsuario", IsForeignKey=true)]
+		public ADSUM_Usuario ADSUM_Usuario
+		{
+			get
+			{
+				return this._ADSUM_Usuario.Entity;
+			}
+			set
+			{
+				ADSUM_Usuario previousValue = this._ADSUM_Usuario.Entity;
+				if (((previousValue != value) 
+							|| (this._ADSUM_Usuario.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ADSUM_Usuario.Entity = null;
+						previousValue.PMB_ActividadesQCs.Remove(this);
+					}
+					this._ADSUM_Usuario.Entity = value;
+					if ((value != null))
+					{
+						value.PMB_ActividadesQCs.Add(this);
+						this._nAdsumUsuarioRegistro = value.nAdsumUsuario;
+					}
+					else
+					{
+						this._nAdsumUsuarioRegistro = default(int);
+					}
+					this.SendPropertyChanged("ADSUM_Usuario");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PMB_Actividade_PMB_ActividadesQC", Storage="_PMB_Actividade", ThisKey="nActividad", OtherKey="nActividad", IsForeignKey=true)]
+		public PMB_Actividade PMB_Actividade
+		{
+			get
+			{
+				return this._PMB_Actividade.Entity;
+			}
+			set
+			{
+				PMB_Actividade previousValue = this._PMB_Actividade.Entity;
+				if (((previousValue != value) 
+							|| (this._PMB_Actividade.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PMB_Actividade.Entity = null;
+						previousValue.PMB_ActividadesQCs.Remove(this);
+					}
+					this._PMB_Actividade.Entity = value;
+					if ((value != null))
+					{
+						value.PMB_ActividadesQCs.Add(this);
+						this._nActividad = value.nActividad;
+					}
+					else
+					{
+						this._nActividad = default(int);
+					}
+					this.SendPropertyChanged("PMB_Actividade");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CTL_ImpactosActividadesAyuda_PMB_ActividadesQC", Storage="_CTL_ImpactosActividadesAyuda", ThisKey="nImpacto", OtherKey="nImpactoActividadAyuda", IsForeignKey=true)]
+		public CTL_ImpactosActividadesAyuda CTL_ImpactosActividadesAyuda
+		{
+			get
+			{
+				return this._CTL_ImpactosActividadesAyuda.Entity;
+			}
+			set
+			{
+				CTL_ImpactosActividadesAyuda previousValue = this._CTL_ImpactosActividadesAyuda.Entity;
+				if (((previousValue != value) 
+							|| (this._CTL_ImpactosActividadesAyuda.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CTL_ImpactosActividadesAyuda.Entity = null;
+						previousValue.PMB_ActividadesQCs.Remove(this);
+					}
+					this._CTL_ImpactosActividadesAyuda.Entity = value;
+					if ((value != null))
+					{
+						value.PMB_ActividadesQCs.Add(this);
+						this._nImpacto = value.nImpactoActividadAyuda;
+					}
+					else
+					{
+						this._nImpacto = default(int);
+					}
+					this.SendPropertyChanged("CTL_ImpactosActividadesAyuda");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PMB_ActividadesAnexos")]
+	public partial class PMB_ActividadesAnexo
+	{
+		
+		private int _nEmisor;
+		
+		private System.Nullable<int> _nActividad;
+		
+		private int _nActividadAnexo;
+		
+		private string _cDescripcion;
+		
+		private bool _bActivo;
+		
+		private string _cUsuario_Registro;
+		
+		private System.DateTime _dFecha_Registro;
+		
+		private string _cMaquina_Registro;
+		
+		private string _cUsuario_UltimaModificacion;
+		
+		private System.Nullable<System.DateTime> _dFecha_UltimaModificacion;
+		
+		private string _cMaquina_UltimaModificacion;
+		
+		private string _cUsuario_Eliminacion;
+		
+		private System.Nullable<System.DateTime> _dFecha_Eliminacion;
+		
+		private string _cMaquina_Eliminacion;
+		
+		private System.Nullable<int> _nActividadQC;
+		
+		public PMB_ActividadesAnexo()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nEmisor", DbType="Int NOT NULL")]
+		public int nEmisor
+		{
+			get
+			{
+				return this._nEmisor;
+			}
+			set
+			{
+				if ((this._nEmisor != value))
+				{
+					this._nEmisor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nActividad", DbType="Int")]
+		public System.Nullable<int> nActividad
+		{
+			get
+			{
+				return this._nActividad;
+			}
+			set
+			{
+				if ((this._nActividad != value))
+				{
+					this._nActividad = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nActividadAnexo", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int nActividadAnexo
+		{
+			get
+			{
+				return this._nActividadAnexo;
+			}
+			set
+			{
+				if ((this._nActividadAnexo != value))
+				{
+					this._nActividadAnexo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cDescripcion", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string cDescripcion
+		{
+			get
+			{
+				return this._cDescripcion;
+			}
+			set
+			{
+				if ((this._cDescripcion != value))
+				{
+					this._cDescripcion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_bActivo", DbType="Bit NOT NULL")]
+		public bool bActivo
+		{
+			get
+			{
+				return this._bActivo;
+			}
+			set
+			{
+				if ((this._bActivo != value))
+				{
+					this._bActivo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cUsuario_Registro", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string cUsuario_Registro
+		{
+			get
+			{
+				return this._cUsuario_Registro;
+			}
+			set
+			{
+				if ((this._cUsuario_Registro != value))
+				{
+					this._cUsuario_Registro = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dFecha_Registro", DbType="DateTime NOT NULL")]
+		public System.DateTime dFecha_Registro
+		{
+			get
+			{
+				return this._dFecha_Registro;
+			}
+			set
+			{
+				if ((this._dFecha_Registro != value))
+				{
+					this._dFecha_Registro = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cMaquina_Registro", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string cMaquina_Registro
+		{
+			get
+			{
+				return this._cMaquina_Registro;
+			}
+			set
+			{
+				if ((this._cMaquina_Registro != value))
+				{
+					this._cMaquina_Registro = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cUsuario_UltimaModificacion", DbType="VarChar(30)")]
+		public string cUsuario_UltimaModificacion
+		{
+			get
+			{
+				return this._cUsuario_UltimaModificacion;
+			}
+			set
+			{
+				if ((this._cUsuario_UltimaModificacion != value))
+				{
+					this._cUsuario_UltimaModificacion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dFecha_UltimaModificacion", DbType="SmallDateTime")]
+		public System.Nullable<System.DateTime> dFecha_UltimaModificacion
+		{
+			get
+			{
+				return this._dFecha_UltimaModificacion;
+			}
+			set
+			{
+				if ((this._dFecha_UltimaModificacion != value))
+				{
+					this._dFecha_UltimaModificacion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cMaquina_UltimaModificacion", DbType="VarChar(30)")]
+		public string cMaquina_UltimaModificacion
+		{
+			get
+			{
+				return this._cMaquina_UltimaModificacion;
+			}
+			set
+			{
+				if ((this._cMaquina_UltimaModificacion != value))
+				{
+					this._cMaquina_UltimaModificacion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cUsuario_Eliminacion", DbType="VarChar(30)")]
+		public string cUsuario_Eliminacion
+		{
+			get
+			{
+				return this._cUsuario_Eliminacion;
+			}
+			set
+			{
+				if ((this._cUsuario_Eliminacion != value))
+				{
+					this._cUsuario_Eliminacion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dFecha_Eliminacion", DbType="SmallDateTime")]
+		public System.Nullable<System.DateTime> dFecha_Eliminacion
+		{
+			get
+			{
+				return this._dFecha_Eliminacion;
+			}
+			set
+			{
+				if ((this._dFecha_Eliminacion != value))
+				{
+					this._dFecha_Eliminacion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cMaquina_Eliminacion", DbType="VarChar(30)")]
+		public string cMaquina_Eliminacion
+		{
+			get
+			{
+				return this._cMaquina_Eliminacion;
+			}
+			set
+			{
+				if ((this._cMaquina_Eliminacion != value))
+				{
+					this._cMaquina_Eliminacion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nActividadQC", DbType="Int")]
+		public System.Nullable<int> nActividadQC
+		{
+			get
+			{
+				return this._nActividadQC;
+			}
+			set
+			{
+				if ((this._nActividadQC != value))
+				{
+					this._nActividadQC = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CTL_ImpactosActividadesAyuda")]
+	public partial class CTL_ImpactosActividadesAyuda : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _nEmisor;
+		
+		private int _nImpactoActividadAyuda;
+		
+		private string _cDescripcion;
+		
+		private byte _nNivel;
+		
+		private string _cColor;
+		
+		private bool _bActivo;
+		
+		private string _cUsuario_Registro;
+		
+		private System.DateTime _dFecha_Registro;
+		
+		private string _cMaquina_Registro;
+		
+		private string _cUsuario_UltimaModificacion;
+		
+		private System.Nullable<System.DateTime> _dFecha_UltimaModificacion;
+		
+		private string _cMaquina_UltimaModificacion;
+		
+		private string _cUsuario_Eliminacion;
+		
+		private System.Nullable<System.DateTime> _dFecha_Eliminacion;
+		
+		private string _cMaquina_Eliminacion;
+		
+		private EntitySet<PMB_ActividadesAyuda> _PMB_ActividadesAyudas;
+		
+		private EntitySet<PMB_ActividadesQC> _PMB_ActividadesQCs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnnEmisorChanging(int value);
+    partial void OnnEmisorChanged();
+    partial void OnnImpactoActividadAyudaChanging(int value);
+    partial void OnnImpactoActividadAyudaChanged();
+    partial void OncDescripcionChanging(string value);
+    partial void OncDescripcionChanged();
+    partial void OnnNivelChanging(byte value);
+    partial void OnnNivelChanged();
+    partial void OncColorChanging(string value);
+    partial void OncColorChanged();
+    partial void OnbActivoChanging(bool value);
+    partial void OnbActivoChanged();
+    partial void OncUsuario_RegistroChanging(string value);
+    partial void OncUsuario_RegistroChanged();
+    partial void OndFecha_RegistroChanging(System.DateTime value);
+    partial void OndFecha_RegistroChanged();
+    partial void OncMaquina_RegistroChanging(string value);
+    partial void OncMaquina_RegistroChanged();
+    partial void OncUsuario_UltimaModificacionChanging(string value);
+    partial void OncUsuario_UltimaModificacionChanged();
+    partial void OndFecha_UltimaModificacionChanging(System.Nullable<System.DateTime> value);
+    partial void OndFecha_UltimaModificacionChanged();
+    partial void OncMaquina_UltimaModificacionChanging(string value);
+    partial void OncMaquina_UltimaModificacionChanged();
+    partial void OncUsuario_EliminacionChanging(string value);
+    partial void OncUsuario_EliminacionChanged();
+    partial void OndFecha_EliminacionChanging(System.Nullable<System.DateTime> value);
+    partial void OndFecha_EliminacionChanged();
+    partial void OncMaquina_EliminacionChanging(string value);
+    partial void OncMaquina_EliminacionChanged();
+    #endregion
+		
+		public CTL_ImpactosActividadesAyuda()
+		{
+			this._PMB_ActividadesAyudas = new EntitySet<PMB_ActividadesAyuda>(new Action<PMB_ActividadesAyuda>(this.attach_PMB_ActividadesAyudas), new Action<PMB_ActividadesAyuda>(this.detach_PMB_ActividadesAyudas));
+			this._PMB_ActividadesQCs = new EntitySet<PMB_ActividadesQC>(new Action<PMB_ActividadesQC>(this.attach_PMB_ActividadesQCs), new Action<PMB_ActividadesQC>(this.detach_PMB_ActividadesQCs));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nEmisor", DbType="Int NOT NULL")]
+		public int nEmisor
+		{
+			get
+			{
+				return this._nEmisor;
+			}
+			set
+			{
+				if ((this._nEmisor != value))
+				{
+					this.OnnEmisorChanging(value);
+					this.SendPropertyChanging();
+					this._nEmisor = value;
+					this.SendPropertyChanged("nEmisor");
+					this.OnnEmisorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nImpactoActividadAyuda", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int nImpactoActividadAyuda
+		{
+			get
+			{
+				return this._nImpactoActividadAyuda;
+			}
+			set
+			{
+				if ((this._nImpactoActividadAyuda != value))
+				{
+					this.OnnImpactoActividadAyudaChanging(value);
+					this.SendPropertyChanging();
+					this._nImpactoActividadAyuda = value;
+					this.SendPropertyChanged("nImpactoActividadAyuda");
+					this.OnnImpactoActividadAyudaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cDescripcion", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string cDescripcion
+		{
+			get
+			{
+				return this._cDescripcion;
+			}
+			set
+			{
+				if ((this._cDescripcion != value))
+				{
+					this.OncDescripcionChanging(value);
+					this.SendPropertyChanging();
+					this._cDescripcion = value;
+					this.SendPropertyChanged("cDescripcion");
+					this.OncDescripcionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nNivel", DbType="TinyInt NOT NULL")]
+		public byte nNivel
+		{
+			get
+			{
+				return this._nNivel;
+			}
+			set
+			{
+				if ((this._nNivel != value))
+				{
+					this.OnnNivelChanging(value);
+					this.SendPropertyChanging();
+					this._nNivel = value;
+					this.SendPropertyChanged("nNivel");
+					this.OnnNivelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cColor", DbType="VarChar(7) NOT NULL", CanBeNull=false)]
+		public string cColor
+		{
+			get
+			{
+				return this._cColor;
+			}
+			set
+			{
+				if ((this._cColor != value))
+				{
+					this.OncColorChanging(value);
+					this.SendPropertyChanging();
+					this._cColor = value;
+					this.SendPropertyChanged("cColor");
+					this.OncColorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_bActivo", DbType="Bit NOT NULL")]
+		public bool bActivo
+		{
+			get
+			{
+				return this._bActivo;
+			}
+			set
+			{
+				if ((this._bActivo != value))
+				{
+					this.OnbActivoChanging(value);
+					this.SendPropertyChanging();
+					this._bActivo = value;
+					this.SendPropertyChanged("bActivo");
+					this.OnbActivoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cUsuario_Registro", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string cUsuario_Registro
+		{
+			get
+			{
+				return this._cUsuario_Registro;
+			}
+			set
+			{
+				if ((this._cUsuario_Registro != value))
+				{
+					this.OncUsuario_RegistroChanging(value);
+					this.SendPropertyChanging();
+					this._cUsuario_Registro = value;
+					this.SendPropertyChanged("cUsuario_Registro");
+					this.OncUsuario_RegistroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dFecha_Registro", DbType="DateTime NOT NULL")]
+		public System.DateTime dFecha_Registro
+		{
+			get
+			{
+				return this._dFecha_Registro;
+			}
+			set
+			{
+				if ((this._dFecha_Registro != value))
+				{
+					this.OndFecha_RegistroChanging(value);
+					this.SendPropertyChanging();
+					this._dFecha_Registro = value;
+					this.SendPropertyChanged("dFecha_Registro");
+					this.OndFecha_RegistroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cMaquina_Registro", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string cMaquina_Registro
+		{
+			get
+			{
+				return this._cMaquina_Registro;
+			}
+			set
+			{
+				if ((this._cMaquina_Registro != value))
+				{
+					this.OncMaquina_RegistroChanging(value);
+					this.SendPropertyChanging();
+					this._cMaquina_Registro = value;
+					this.SendPropertyChanged("cMaquina_Registro");
+					this.OncMaquina_RegistroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cUsuario_UltimaModificacion", DbType="VarChar(30)")]
+		public string cUsuario_UltimaModificacion
+		{
+			get
+			{
+				return this._cUsuario_UltimaModificacion;
+			}
+			set
+			{
+				if ((this._cUsuario_UltimaModificacion != value))
+				{
+					this.OncUsuario_UltimaModificacionChanging(value);
+					this.SendPropertyChanging();
+					this._cUsuario_UltimaModificacion = value;
+					this.SendPropertyChanged("cUsuario_UltimaModificacion");
+					this.OncUsuario_UltimaModificacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dFecha_UltimaModificacion", DbType="SmallDateTime")]
+		public System.Nullable<System.DateTime> dFecha_UltimaModificacion
+		{
+			get
+			{
+				return this._dFecha_UltimaModificacion;
+			}
+			set
+			{
+				if ((this._dFecha_UltimaModificacion != value))
+				{
+					this.OndFecha_UltimaModificacionChanging(value);
+					this.SendPropertyChanging();
+					this._dFecha_UltimaModificacion = value;
+					this.SendPropertyChanged("dFecha_UltimaModificacion");
+					this.OndFecha_UltimaModificacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cMaquina_UltimaModificacion", DbType="VarChar(30)")]
+		public string cMaquina_UltimaModificacion
+		{
+			get
+			{
+				return this._cMaquina_UltimaModificacion;
+			}
+			set
+			{
+				if ((this._cMaquina_UltimaModificacion != value))
+				{
+					this.OncMaquina_UltimaModificacionChanging(value);
+					this.SendPropertyChanging();
+					this._cMaquina_UltimaModificacion = value;
+					this.SendPropertyChanged("cMaquina_UltimaModificacion");
+					this.OncMaquina_UltimaModificacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cUsuario_Eliminacion", DbType="VarChar(30)")]
+		public string cUsuario_Eliminacion
+		{
+			get
+			{
+				return this._cUsuario_Eliminacion;
+			}
+			set
+			{
+				if ((this._cUsuario_Eliminacion != value))
+				{
+					this.OncUsuario_EliminacionChanging(value);
+					this.SendPropertyChanging();
+					this._cUsuario_Eliminacion = value;
+					this.SendPropertyChanged("cUsuario_Eliminacion");
+					this.OncUsuario_EliminacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dFecha_Eliminacion", DbType="SmallDateTime")]
+		public System.Nullable<System.DateTime> dFecha_Eliminacion
+		{
+			get
+			{
+				return this._dFecha_Eliminacion;
+			}
+			set
+			{
+				if ((this._dFecha_Eliminacion != value))
+				{
+					this.OndFecha_EliminacionChanging(value);
+					this.SendPropertyChanging();
+					this._dFecha_Eliminacion = value;
+					this.SendPropertyChanged("dFecha_Eliminacion");
+					this.OndFecha_EliminacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cMaquina_Eliminacion", DbType="VarChar(30)")]
+		public string cMaquina_Eliminacion
+		{
+			get
+			{
+				return this._cMaquina_Eliminacion;
+			}
+			set
+			{
+				if ((this._cMaquina_Eliminacion != value))
+				{
+					this.OncMaquina_EliminacionChanging(value);
+					this.SendPropertyChanging();
+					this._cMaquina_Eliminacion = value;
+					this.SendPropertyChanged("cMaquina_Eliminacion");
+					this.OncMaquina_EliminacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CTL_ImpactosActividadesAyuda_PMB_ActividadesAyuda", Storage="_PMB_ActividadesAyudas", ThisKey="nImpactoActividadAyuda", OtherKey="nImpacto")]
+		public EntitySet<PMB_ActividadesAyuda> PMB_ActividadesAyudas
+		{
+			get
+			{
+				return this._PMB_ActividadesAyudas;
+			}
+			set
+			{
+				this._PMB_ActividadesAyudas.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CTL_ImpactosActividadesAyuda_PMB_ActividadesQC", Storage="_PMB_ActividadesQCs", ThisKey="nImpactoActividadAyuda", OtherKey="nImpacto")]
+		public EntitySet<PMB_ActividadesQC> PMB_ActividadesQCs
+		{
+			get
+			{
+				return this._PMB_ActividadesQCs;
+			}
+			set
+			{
+				this._PMB_ActividadesQCs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_PMB_ActividadesAyudas(PMB_ActividadesAyuda entity)
+		{
+			this.SendPropertyChanging();
+			entity.CTL_ImpactosActividadesAyuda = this;
+		}
+		
+		private void detach_PMB_ActividadesAyudas(PMB_ActividadesAyuda entity)
+		{
+			this.SendPropertyChanging();
+			entity.CTL_ImpactosActividadesAyuda = null;
+		}
+		
+		private void attach_PMB_ActividadesQCs(PMB_ActividadesQC entity)
+		{
+			this.SendPropertyChanging();
+			entity.CTL_ImpactosActividadesAyuda = this;
+		}
+		
+		private void detach_PMB_ActividadesQCs(PMB_ActividadesQC entity)
+		{
+			this.SendPropertyChanging();
+			entity.CTL_ImpactosActividadesAyuda = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PMB_ProyectosRegistrosTrabajo")]
+	public partial class PMB_ProyectosRegistrosTrabajo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _nEmisor;
+		
+		private int _nProyectoAsignacion;
+		
+		private int _nProyectoRegistroTrabajo;
+		
+		private System.Nullable<int> _nProyectoConsultor;
+		
+		private int _nAdsumUsuario;
+		
+		private decimal _nTrabajoRealizadoHoras;
+		
+		private decimal _nTrabajoRestanteHoras;
+		
+		private decimal _nAvancePorcentualEstimado;
+		
+		private string _cComentario;
+		
+		private int _nFechaRegistro;
+		
+		private int _nHoraRegistro;
+		
+		private bool _bAplicado;
+		
+		private string _cUsuario_Registro;
+		
+		private System.DateTime _dFecha_Registro;
+		
+		private string _cMaquina_Registro;
+		
+		private decimal _nHorasGanadas;
+		
+		private System.Nullable<decimal> _nCostoDirecto;
+		
+		private short _nVuelta;
+		
+		private EntityRef<ADSUM_Usuario> _ADSUM_Usuario;
+		
+		private EntityRef<CTL_EmisoresPMBook> _CTL_EmisoresPMBook;
+		
+		private EntityRef<PMB_ProyectosAsignacione> _PMB_ProyectosAsignacione;
+		
+		private EntityRef<PMB_ProyectosConsultore> _PMB_ProyectosConsultore;
+		
+		private EntityRef<PMB_ProyectosConsultore1> _PMB_ProyectosConsultore1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnnEmisorChanging(int value);
+    partial void OnnEmisorChanged();
+    partial void OnnProyectoAsignacionChanging(int value);
+    partial void OnnProyectoAsignacionChanged();
+    partial void OnnProyectoRegistroTrabajoChanging(int value);
+    partial void OnnProyectoRegistroTrabajoChanged();
+    partial void OnnProyectoConsultorChanging(System.Nullable<int> value);
+    partial void OnnProyectoConsultorChanged();
+    partial void OnnAdsumUsuarioChanging(int value);
+    partial void OnnAdsumUsuarioChanged();
+    partial void OnnTrabajoRealizadoHorasChanging(decimal value);
+    partial void OnnTrabajoRealizadoHorasChanged();
+    partial void OnnTrabajoRestanteHorasChanging(decimal value);
+    partial void OnnTrabajoRestanteHorasChanged();
+    partial void OnnAvancePorcentualEstimadoChanging(decimal value);
+    partial void OnnAvancePorcentualEstimadoChanged();
+    partial void OncComentarioChanging(string value);
+    partial void OncComentarioChanged();
+    partial void OnnFechaRegistroChanging(int value);
+    partial void OnnFechaRegistroChanged();
+    partial void OnnHoraRegistroChanging(int value);
+    partial void OnnHoraRegistroChanged();
+    partial void OnbAplicadoChanging(bool value);
+    partial void OnbAplicadoChanged();
+    partial void OncUsuario_RegistroChanging(string value);
+    partial void OncUsuario_RegistroChanged();
+    partial void OndFecha_RegistroChanging(System.DateTime value);
+    partial void OndFecha_RegistroChanged();
+    partial void OncMaquina_RegistroChanging(string value);
+    partial void OncMaquina_RegistroChanged();
+    partial void OnnHorasGanadasChanging(decimal value);
+    partial void OnnHorasGanadasChanged();
+    partial void OnnCostoDirectoChanging(System.Nullable<decimal> value);
+    partial void OnnCostoDirectoChanged();
+    partial void OnnVueltaChanging(short value);
+    partial void OnnVueltaChanged();
+    #endregion
+		
+		public PMB_ProyectosRegistrosTrabajo()
+		{
+			this._ADSUM_Usuario = default(EntityRef<ADSUM_Usuario>);
+			this._CTL_EmisoresPMBook = default(EntityRef<CTL_EmisoresPMBook>);
+			this._PMB_ProyectosAsignacione = default(EntityRef<PMB_ProyectosAsignacione>);
+			this._PMB_ProyectosConsultore = default(EntityRef<PMB_ProyectosConsultore>);
+			this._PMB_ProyectosConsultore1 = default(EntityRef<PMB_ProyectosConsultore1>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nEmisor", DbType="Int NOT NULL")]
+		public int nEmisor
+		{
+			get
+			{
+				return this._nEmisor;
+			}
+			set
+			{
+				if ((this._nEmisor != value))
+				{
+					if (this._CTL_EmisoresPMBook.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnnEmisorChanging(value);
+					this.SendPropertyChanging();
+					this._nEmisor = value;
+					this.SendPropertyChanged("nEmisor");
+					this.OnnEmisorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nProyectoAsignacion", DbType="Int NOT NULL")]
+		public int nProyectoAsignacion
+		{
+			get
+			{
+				return this._nProyectoAsignacion;
+			}
+			set
+			{
+				if ((this._nProyectoAsignacion != value))
+				{
+					if (this._PMB_ProyectosAsignacione.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnnProyectoAsignacionChanging(value);
+					this.SendPropertyChanging();
+					this._nProyectoAsignacion = value;
+					this.SendPropertyChanged("nProyectoAsignacion");
+					this.OnnProyectoAsignacionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nProyectoRegistroTrabajo", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int nProyectoRegistroTrabajo
+		{
+			get
+			{
+				return this._nProyectoRegistroTrabajo;
+			}
+			set
+			{
+				if ((this._nProyectoRegistroTrabajo != value))
+				{
+					this.OnnProyectoRegistroTrabajoChanging(value);
+					this.SendPropertyChanging();
+					this._nProyectoRegistroTrabajo = value;
+					this.SendPropertyChanged("nProyectoRegistroTrabajo");
+					this.OnnProyectoRegistroTrabajoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nProyectoConsultor", DbType="Int")]
+		public System.Nullable<int> nProyectoConsultor
+		{
+			get
+			{
+				return this._nProyectoConsultor;
+			}
+			set
+			{
+				if ((this._nProyectoConsultor != value))
+				{
+					if ((this._PMB_ProyectosConsultore.HasLoadedOrAssignedValue || this._PMB_ProyectosConsultore1.HasLoadedOrAssignedValue))
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnnProyectoConsultorChanging(value);
+					this.SendPropertyChanging();
+					this._nProyectoConsultor = value;
+					this.SendPropertyChanged("nProyectoConsultor");
+					this.OnnProyectoConsultorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nAdsumUsuario", DbType="Int NOT NULL")]
+		public int nAdsumUsuario
+		{
+			get
+			{
+				return this._nAdsumUsuario;
+			}
+			set
+			{
+				if ((this._nAdsumUsuario != value))
+				{
+					if (this._ADSUM_Usuario.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnnAdsumUsuarioChanging(value);
+					this.SendPropertyChanging();
+					this._nAdsumUsuario = value;
+					this.SendPropertyChanged("nAdsumUsuario");
+					this.OnnAdsumUsuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nTrabajoRealizadoHoras", DbType="Decimal(10,2) NOT NULL")]
+		public decimal nTrabajoRealizadoHoras
+		{
+			get
+			{
+				return this._nTrabajoRealizadoHoras;
+			}
+			set
+			{
+				if ((this._nTrabajoRealizadoHoras != value))
+				{
+					this.OnnTrabajoRealizadoHorasChanging(value);
+					this.SendPropertyChanging();
+					this._nTrabajoRealizadoHoras = value;
+					this.SendPropertyChanged("nTrabajoRealizadoHoras");
+					this.OnnTrabajoRealizadoHorasChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nTrabajoRestanteHoras", DbType="Decimal(10,2) NOT NULL")]
+		public decimal nTrabajoRestanteHoras
+		{
+			get
+			{
+				return this._nTrabajoRestanteHoras;
+			}
+			set
+			{
+				if ((this._nTrabajoRestanteHoras != value))
+				{
+					this.OnnTrabajoRestanteHorasChanging(value);
+					this.SendPropertyChanging();
+					this._nTrabajoRestanteHoras = value;
+					this.SendPropertyChanged("nTrabajoRestanteHoras");
+					this.OnnTrabajoRestanteHorasChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nAvancePorcentualEstimado", DbType="Decimal(10,2) NOT NULL")]
+		public decimal nAvancePorcentualEstimado
+		{
+			get
+			{
+				return this._nAvancePorcentualEstimado;
+			}
+			set
+			{
+				if ((this._nAvancePorcentualEstimado != value))
+				{
+					this.OnnAvancePorcentualEstimadoChanging(value);
+					this.SendPropertyChanging();
+					this._nAvancePorcentualEstimado = value;
+					this.SendPropertyChanged("nAvancePorcentualEstimado");
+					this.OnnAvancePorcentualEstimadoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cComentario", DbType="VarChar(1000) NOT NULL", CanBeNull=false)]
+		public string cComentario
+		{
+			get
+			{
+				return this._cComentario;
+			}
+			set
+			{
+				if ((this._cComentario != value))
+				{
+					this.OncComentarioChanging(value);
+					this.SendPropertyChanging();
+					this._cComentario = value;
+					this.SendPropertyChanged("cComentario");
+					this.OncComentarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nFechaRegistro", DbType="Int NOT NULL")]
+		public int nFechaRegistro
+		{
+			get
+			{
+				return this._nFechaRegistro;
+			}
+			set
+			{
+				if ((this._nFechaRegistro != value))
+				{
+					this.OnnFechaRegistroChanging(value);
+					this.SendPropertyChanging();
+					this._nFechaRegistro = value;
+					this.SendPropertyChanged("nFechaRegistro");
+					this.OnnFechaRegistroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nHoraRegistro", DbType="Int NOT NULL")]
+		public int nHoraRegistro
+		{
+			get
+			{
+				return this._nHoraRegistro;
+			}
+			set
+			{
+				if ((this._nHoraRegistro != value))
+				{
+					this.OnnHoraRegistroChanging(value);
+					this.SendPropertyChanging();
+					this._nHoraRegistro = value;
+					this.SendPropertyChanged("nHoraRegistro");
+					this.OnnHoraRegistroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_bAplicado", DbType="Bit NOT NULL")]
+		public bool bAplicado
+		{
+			get
+			{
+				return this._bAplicado;
+			}
+			set
+			{
+				if ((this._bAplicado != value))
+				{
+					this.OnbAplicadoChanging(value);
+					this.SendPropertyChanging();
+					this._bAplicado = value;
+					this.SendPropertyChanged("bAplicado");
+					this.OnbAplicadoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cUsuario_Registro", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string cUsuario_Registro
+		{
+			get
+			{
+				return this._cUsuario_Registro;
+			}
+			set
+			{
+				if ((this._cUsuario_Registro != value))
+				{
+					this.OncUsuario_RegistroChanging(value);
+					this.SendPropertyChanging();
+					this._cUsuario_Registro = value;
+					this.SendPropertyChanged("cUsuario_Registro");
+					this.OncUsuario_RegistroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dFecha_Registro", DbType="DateTime NOT NULL")]
+		public System.DateTime dFecha_Registro
+		{
+			get
+			{
+				return this._dFecha_Registro;
+			}
+			set
+			{
+				if ((this._dFecha_Registro != value))
+				{
+					this.OndFecha_RegistroChanging(value);
+					this.SendPropertyChanging();
+					this._dFecha_Registro = value;
+					this.SendPropertyChanged("dFecha_Registro");
+					this.OndFecha_RegistroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cMaquina_Registro", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string cMaquina_Registro
+		{
+			get
+			{
+				return this._cMaquina_Registro;
+			}
+			set
+			{
+				if ((this._cMaquina_Registro != value))
+				{
+					this.OncMaquina_RegistroChanging(value);
+					this.SendPropertyChanging();
+					this._cMaquina_Registro = value;
+					this.SendPropertyChanged("cMaquina_Registro");
+					this.OncMaquina_RegistroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nHorasGanadas", DbType="Decimal(10,2) NOT NULL")]
+		public decimal nHorasGanadas
+		{
+			get
+			{
+				return this._nHorasGanadas;
+			}
+			set
+			{
+				if ((this._nHorasGanadas != value))
+				{
+					this.OnnHorasGanadasChanging(value);
+					this.SendPropertyChanging();
+					this._nHorasGanadas = value;
+					this.SendPropertyChanged("nHorasGanadas");
+					this.OnnHorasGanadasChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nCostoDirecto", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> nCostoDirecto
+		{
+			get
+			{
+				return this._nCostoDirecto;
+			}
+			set
+			{
+				if ((this._nCostoDirecto != value))
+				{
+					this.OnnCostoDirectoChanging(value);
+					this.SendPropertyChanging();
+					this._nCostoDirecto = value;
+					this.SendPropertyChanged("nCostoDirecto");
+					this.OnnCostoDirectoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nVuelta", DbType="SmallInt NOT NULL")]
+		public short nVuelta
+		{
+			get
+			{
+				return this._nVuelta;
+			}
+			set
+			{
+				if ((this._nVuelta != value))
+				{
+					this.OnnVueltaChanging(value);
+					this.SendPropertyChanging();
+					this._nVuelta = value;
+					this.SendPropertyChanged("nVuelta");
+					this.OnnVueltaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ADSUM_Usuario_PMB_ProyectosRegistrosTrabajo", Storage="_ADSUM_Usuario", ThisKey="nAdsumUsuario", OtherKey="nAdsumUsuario", IsForeignKey=true)]
+		public ADSUM_Usuario ADSUM_Usuario
+		{
+			get
+			{
+				return this._ADSUM_Usuario.Entity;
+			}
+			set
+			{
+				ADSUM_Usuario previousValue = this._ADSUM_Usuario.Entity;
+				if (((previousValue != value) 
+							|| (this._ADSUM_Usuario.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ADSUM_Usuario.Entity = null;
+						previousValue.PMB_ProyectosRegistrosTrabajos.Remove(this);
+					}
+					this._ADSUM_Usuario.Entity = value;
+					if ((value != null))
+					{
+						value.PMB_ProyectosRegistrosTrabajos.Add(this);
+						this._nAdsumUsuario = value.nAdsumUsuario;
+					}
+					else
+					{
+						this._nAdsumUsuario = default(int);
+					}
+					this.SendPropertyChanged("ADSUM_Usuario");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CTL_EmisoresPMBook_PMB_ProyectosRegistrosTrabajo", Storage="_CTL_EmisoresPMBook", ThisKey="nEmisor", OtherKey="nEmisor", IsForeignKey=true)]
+		public CTL_EmisoresPMBook CTL_EmisoresPMBook
+		{
+			get
+			{
+				return this._CTL_EmisoresPMBook.Entity;
+			}
+			set
+			{
+				CTL_EmisoresPMBook previousValue = this._CTL_EmisoresPMBook.Entity;
+				if (((previousValue != value) 
+							|| (this._CTL_EmisoresPMBook.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CTL_EmisoresPMBook.Entity = null;
+						previousValue.PMB_ProyectosRegistrosTrabajos.Remove(this);
+					}
+					this._CTL_EmisoresPMBook.Entity = value;
+					if ((value != null))
+					{
+						value.PMB_ProyectosRegistrosTrabajos.Add(this);
+						this._nEmisor = value.nEmisor;
+					}
+					else
+					{
+						this._nEmisor = default(int);
+					}
+					this.SendPropertyChanged("CTL_EmisoresPMBook");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PMB_ProyectosAsignacione_PMB_ProyectosRegistrosTrabajo", Storage="_PMB_ProyectosAsignacione", ThisKey="nProyectoAsignacion", OtherKey="nProyectoAsignacion", IsForeignKey=true)]
+		public PMB_ProyectosAsignacione PMB_ProyectosAsignacione
+		{
+			get
+			{
+				return this._PMB_ProyectosAsignacione.Entity;
+			}
+			set
+			{
+				PMB_ProyectosAsignacione previousValue = this._PMB_ProyectosAsignacione.Entity;
+				if (((previousValue != value) 
+							|| (this._PMB_ProyectosAsignacione.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PMB_ProyectosAsignacione.Entity = null;
+						previousValue.PMB_ProyectosRegistrosTrabajos.Remove(this);
+					}
+					this._PMB_ProyectosAsignacione.Entity = value;
+					if ((value != null))
+					{
+						value.PMB_ProyectosRegistrosTrabajos.Add(this);
+						this._nProyectoAsignacion = value.nProyectoAsignacion;
+					}
+					else
+					{
+						this._nProyectoAsignacion = default(int);
+					}
+					this.SendPropertyChanged("PMB_ProyectosAsignacione");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PMB_ProyectosConsultore_PMB_ProyectosRegistrosTrabajo", Storage="_PMB_ProyectosConsultore", ThisKey="nProyectoConsultor", OtherKey="nProyectoConsultor", IsForeignKey=true)]
+		public PMB_ProyectosConsultore PMB_ProyectosConsultore
+		{
+			get
+			{
+				return this._PMB_ProyectosConsultore.Entity;
+			}
+			set
+			{
+				PMB_ProyectosConsultore previousValue = this._PMB_ProyectosConsultore.Entity;
+				if (((previousValue != value) 
+							|| (this._PMB_ProyectosConsultore.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PMB_ProyectosConsultore.Entity = null;
+						previousValue.PMB_ProyectosRegistrosTrabajos.Remove(this);
+					}
+					this._PMB_ProyectosConsultore.Entity = value;
+					if ((value != null))
+					{
+						value.PMB_ProyectosRegistrosTrabajos.Add(this);
+						this._nProyectoConsultor = value.nProyectoConsultor;
+					}
+					else
+					{
+						this._nProyectoConsultor = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("PMB_ProyectosConsultore");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PMB_ProyectosConsultore1_PMB_ProyectosRegistrosTrabajo", Storage="_PMB_ProyectosConsultore1", ThisKey="nProyectoConsultor", OtherKey="nProyectoConsultor", IsForeignKey=true)]
+		public PMB_ProyectosConsultore1 PMB_ProyectosConsultore1
+		{
+			get
+			{
+				return this._PMB_ProyectosConsultore1.Entity;
+			}
+			set
+			{
+				PMB_ProyectosConsultore1 previousValue = this._PMB_ProyectosConsultore1.Entity;
+				if (((previousValue != value) 
+							|| (this._PMB_ProyectosConsultore1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._PMB_ProyectosConsultore1.Entity = null;
+						previousValue.PMB_ProyectosRegistrosTrabajos.Remove(this);
+					}
+					this._PMB_ProyectosConsultore1.Entity = value;
+					if ((value != null))
+					{
+						value.PMB_ProyectosRegistrosTrabajos.Add(this);
+						this._nProyectoConsultor = value.nProyectoConsultor;
+					}
+					else
+					{
+						this._nProyectoConsultor = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("PMB_ProyectosConsultore1");
 				}
 			}
 		}

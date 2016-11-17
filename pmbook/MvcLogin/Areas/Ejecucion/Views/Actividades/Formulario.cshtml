@@ -1,4 +1,4 @@
-﻿<div style="color:#00788F" class="modal fade" id="ReporteActividadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+﻿<div style="color:#00788f" class="modal fade" id="ReporteActividadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document" style="width: 80%; left: 0 !important">
         <div class="modal-content">
             <div class="modal-header">
@@ -11,7 +11,7 @@
                     @* proyecto *@
                    <div class="row">
                         <div class="col-sm-8">
-                            <div class="form-group">
+                            <div class="form-group">                        
                                 <div class="control-label col-sm-1" title="Proyecto"><strong>P</strong></div>
                                 <div class="col-sm-11">
                                     <input class="form-control input-sm ng-pristine ng-untouched ng-valid" 
@@ -82,17 +82,18 @@
                                 </div>
                             </div>
                         </div>
+                       @* Eficiencia que no se de donde la saco *@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <div class="control-label col-sm-6"><strong>Eficiencia</strong></div>
                                 <div class="col-sm-6">
                                     <input class="form-control txt-right input-sm ng-pristine ng-untouched ng-valid" 
-                                         ng-disabled="true" disabled="disabled">
+                                         ng-disabled="true" disabled="disabled" value="">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @*  *@
+                    @* Fecha clave que no se donde esta *@
                     <div class="row">
                         <div class="col-sm-8"></div>
                         <div class="col-sm-4">
@@ -100,21 +101,27 @@
                                 <div class="control-label col-sm-6"><strong>Fecha Clave</strong></div>
                                 <div class="col-sm-6">
                                     <input class="form-control txt-right input-sm ng-pristine ng-untouched ng-valid" 
-                                         ng-disabled="true" disabled="disabled">
+                                         ng-disabled="true" disabled="disabled" value="">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @*  *@
+                    @*Fecha y control de calidad *@
                     <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
                           <div class="control-label col-sm-3">
                               <strong>Fecha de Registro</strong>
                           </div>
-                          <div class="col-sm-4">
-                            <input class="datepickerFin form-control ng-pristine ng-valid ng-touched"
-                                ng-model="FILTROACTIVIDADES.dFechaFin"/>
+                          <div class="col-sm-4">                        
+                            <input type='text' class="form-control" id='datetimepicker4'  ng-model="dFecha" aria-describedby="basic-addon2" 
+                                 data-date-format="dd/mm/yyyy" ng-disabled="Act.nUsuario != nUsuarioLogin"/>                        
+                        <script type="text/javascript">
+                            var HOY = new Date();
+                            $(function () {
+                                $('#datetimepicker4').datepicker('update', HOY);
+                            });
+                        </script>                   
                           </div>
                           <div class="col-md-5">
                           <div class="checkbox">
@@ -127,70 +134,79 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <label>Actividad Realizada</label>
-                                <textarea class="form-control ng-pristine ng-valid ng-touched" style="resize:vertical;" rows="6"></textarea>
+                                <textarea class="form-control ng-pristine ng-valid ng-touched" ng-model="Comentario" style="resize:vertical;" rows="6" ng-disabled="Act.nUsuario != nUsuarioLogin"></textarea>
                                 <label class="ng-binding">1000 caracteres restantes.</label>
                             </div>
                         </div>
                      <div class="row">
+                         @* Horas Invertidas *@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <div class="col-sm-12">
                                     <label>Tiempo Invertido</label>
-                                    <table @*ng-model="ACtrl.PRTNuevo.nTrabajoRealizadoHoras"*@ hour-step="1" minute-step="5" show-meridian="0" disabled="disabled" class="ng-isolate-scope ng-valid ng-valid-time">
+                                    <table hour-step="1" minute-step="5" show-meridian="0" disabled="disabled" class="ng-isolate-scope ng-valid ng-valid-time" ng-disabled="Act.nUsuario != nUsuarioLogin">
                                     <tbody>
                                         <tr class="text-center">
-                                            <td><a ng-click="IncrementaHoras()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-up"></span></a></td>
+                                            <td><a ng-click="IncrementaHoras()"ng-disabled="Act.nUsuario != nUsuarioLogin" class="btn btn-link"><span class="glyphicon glyphicon-chevron-up"></span></a></td>
                                             <td>&nbsp;</td>
-                                            <td><a ng-click="IncrementaMinutos()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-up"></span></a></td>
+                                            <td><a ng-click="IncrementaMinutos()"ng-disabled="Act.nUsuario != nUsuarioLogin" class="btn btn-link"><span class="glyphicon glyphicon-chevron-up"></span></a></td>
                                             <td ng-show="showMeridian" class="ng-hide"></td>
                                         </tr>
                                         <tr>
-                                            <td style="width:50px;" class="form-group" @*ng-class="{'has-error': invalidHours}"*@>
-                                                <input type="text" ng-model="Horas" @*ng-change="updateHours()"*@ class="form-control text-center ng-pristine ng-untouched ng-valid ng-valid-maxlength"@* ng-mousewheel="incrementHours()"*@ ng-readonly="readonlyInput" maxlength="2">
+                                            <td style="width:50px;" class="form-group" >
+                                                <input type="text" ng-model="Horas"ng-disabled="Act.nUsuario != nUsuarioLogin" @*ng-change="updateHours()"*@ class="form-control text-center ng-pristine ng-untouched ng-valid ng-valid-maxlength"@* ng-mousewheel="incrementHours()"*@ ng-readonly="readonlyInput" maxlength="2">
                                             </td>
                                             <td>:</td>
-                                            <td style="width:50px;" class="form-group" @*ng-class="{'has-error': invalidMinutes}"*@>
-                                                <input type="text" ng-model="Minutos" @*ng-change="updateMinutes()"*@ class="form-control text-center ng-pristine ng-untouched ng-valid ng-valid-maxlength" ng-readonly="readonlyInput" maxlength="2">
+                                            <td style="width:50px;" class="form-group">
+                                                <input type="text" ng-model="Minutos" ng-disabled="Act.nUsuario != nUsuarioLogin"@*ng-change="updateMinutes()"*@ class="form-control text-center ng-pristine ng-untouched ng-valid ng-valid-maxlength" ng-readonly="readonlyInput" maxlength="2">
                                             </td>
                                             <td ng-show="showMeridian" class="ng-hide"><button type="button" class="btn btn-default text-center ng-binding" ng-click="toggleMeridian()">a.m.</button></td>
                                         </tr>
                                         <tr class="text-center">
-                                            <td><a ng-click="DecrementaHoras()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
+                                            <td><a ng-click="DecrementaHoras()" ng-disabled="Act.nUsuario != nUsuarioLogin"class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
                                             <td>&nbsp;</td>
-                                            <td><a ng-click="DecrementaMinutos()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
+                                            <td><a ng-click="DecrementaMinutos()" ng-disabled="Act.nUsuario != nUsuarioLogin"class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
                                             <td ng-show="showMeridian" class="ng-hide"></td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </table>                                    
+                              <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" class="ng-pristine ng-untouched ng-valid">
+                                    Tiempo Negativo
+                                </label>
+                                <i class="fa fa-question-circle info-glyph ng-scope"></i>
+                            </div>
                                 </div>
                             </div>
                         </div>
+                         @* Horas restantes *@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <div class="col-sm-12">
                                     <label>Tiempo Restante</label>
-                                    <table  hour-step="1" minute-step="5" show-meridian="0" class="ng-isolate-scope ng-valid ng-valid-time">
+                                    <table  hour-step="1" minute-step="5" show-meridian="0" class="ng-isolate-scope ng-valid ng-valid-time" ng-disabled="Act.nUsuario != nUsuarioLogin">
                                     <tbody>
                                         <tr class="text-center">
-                                            <td><a ng-click="IncrementaHorasRes()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-up"></span></a></td>
+                                            <td><a ng-click="IncrementaHorasRes()"ng-disabled="Act.nUsuario != nUsuarioLogin" class="btn btn-link"><span class="glyphicon glyphicon-chevron-up"></span></a></td>
                                             <td>&nbsp;</td>
-                                            <td><a ng-click="IncrementaMinutosRes()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-up"></span></a></td>
+                                            <td><a ng-click="IncrementaMinutosRes()"ng-disabled="Act.nUsuario != nUsuarioLogin" class="btn btn-link"><span class="glyphicon glyphicon-chevron-up"></span></a></td>
                                             <td ng-show="showMeridian" class="ng-hide"></td>
                                         </tr>
                                         <tr>
                                             <td style="width:50px;" class="form-group" >
-                                                <input type="text" ng-model="HorasRes" class="form-control text-center ng-pristine ng-untouched ng-valid ng-valid-maxlength"  ng-readonly="readonlyInput" maxlength="2">
+                                                <input type="text" ng-model="HorasRes"  ng-disabled="Act.nUsuario != nUsuarioLogin"class="form-control text-center ng-pristine ng-untouched ng-valid ng-valid-maxlength"  ng-readonly="readonlyInput" maxlength="2">
                                             </td>
                                             <td>:</td>
                                             <td style="width:50px;" class="form-group" >
-                                                <input type="text" ng-model="MinutosRes"  class="form-control text-center ng-pristine ng-untouched ng-valid ng-valid-maxlength" ng-readonly="readonlyInput" maxlength="2">
+                                                <input type="text" ng-model="MinutosRes"  ng-disabled="Act.nUsuario != nUsuarioLogin" class="form-control text-center ng-pristine ng-untouched ng-valid ng-valid-maxlength" ng-readonly="readonlyInput" maxlength="2">
                                             </td>
                                             <td ng-show="showMeridian" class="ng-hide"><button type="button" class="btn btn-default text-center ng-binding" ng-click="toggleMeridian()">p.m.</button></td>
                                         </tr>
                                         <tr class="text-center">
-                                            <td><a ng-click="DecrementaHorasRes()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
+                                            <td><a ng-click="DecrementaHorasRes()" ng-disabled="Act.nUsuario != nUsuarioLogin"class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
                                             <td>&nbsp;</td>
-                                            <td><a ng-click="DecrementaMinutosRes()" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
+                                            <td><a ng-click="DecrementaMinutosRes()"ng-disabled="Act.nUsuario != nUsuarioLogin" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
                                             <td ng-show="showMeridian" class="ng-hide"></td>
                                         </tr>
                                     </tbody>
@@ -203,38 +219,82 @@
                                 <div class="col-sm-12">
                                     <label>Avance</label>
                                     <div class="input-group" style="margin-top:28px;">
-                                        <input class="form-control txt-right ng-pristine ng-untouched ng-valid" data-ng-model="Act.Avance" placeholder="0">
+                                        <input class="form-control txt-right ng-pristine ng-untouched ng-valid" data-ng-model="Act.Avance" ng-disabled="Act.nUsuario != nUsuarioLogin" placeholder="0">
                                         <div class="input-group-addon">%</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>  
                       </div>
-                      <div class="col-sm-6">
-                       <div>
-                           <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation"  class="active">
-                                        <a href="#Acciones" role="tab" data-toggle="tab">Acciones</a>
-                                    </li>
-                           </ul> 
+                     <div class="col-sm-6">
+                        <div>
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" >
+                                    <a href="#ActividadesQC" role="tab" data-toggle="tab">
+                                        Control de Calidad
+                                        <i class="fa fa-question-circle info-glyph ng-scope"  title="Bitacora de puntos detectados por el tester"></i>
+                                    </a>
+                                </li>
+                                <li role="presentation" class="active ng-scope">
+                                    <a href="#Acciones" role="tab" data-toggle="tab">
+                                        Acciones
+                                        <i class="fa fa-question-circle info-glyph ng-scope"title="Plan personal de acciones a realizar"></i>
+                                    </a>
+                                </li>
+                            </ul>
                             <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane fade in active" id="Acciones">
-                                <div class="row" style="margin-top:15px;">
-                                    <div class="col-sm-12">
-                                        <div class="input-group">
-                                            <tags-input  placeholder="Agregar acción..." class="ng-pristine ng-valid ng-isolate-scope ng-valid-max-tags ng-valid-min-tags ng-valid-leftover-text ng-touched"><span class="input" style="visibility: hidden; width: auto; white-space: pre; display: none;">Agregar acción...</span>
-                                            </tags-input>
-                                            <div class="input-group-btn">
-                                                <span class="btn btn-default" style="border-color: #CCCCCC"><i class="fa fa-plus-circle" style="font-size: 20px;"></i></span>
+                                <div role="tabpanel" class="tab-pane fade" id="ActividadesQC">
+                                    <div>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 10px;"><span><i class="fa fa-check-square-o" title="Marcar como solucionado"></i></span></th>
+                                                    <th>Acción</th>
+                                                    <th style="width: 10px;">Tipo</th>
+                                                    <th style="width: 10px;">#</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody style="overflow-y:auto; height: 280px;">
+                                                <tr  class="ng-scope">
+                                                    <td><input type="checkbox"@* ng-model="ActividadQC.bSolucionado"*@ @*ng-change="ACtrl.ActividadQCChanged(ActividadQC)" ng-disabled="ActividadQC.nEstatus == Ctrl.EstatusActividadQC.Solucionado || ActividadQC.nEstatus == Ctrl.EstatusActividadQC.EnValidacion"*@ class="ng-pristine ng-untouched ng-valid"></td>
+                                                    <td style="border-left: 5px solid #F80404" class="ng-binding"></td>
+                                                    <td class="ng-binding"></td>
+                                                    <td>
+                                                        <span class="fa fa-search-plus btn-default little-btn"@* data-ng-click="Ctrl.verDetalleActividadQC(ActividadQC)"*@ title="Ver detalle"></span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade  in active ng-scope"  id="Acciones">
+                                    <div class="row" style="margin-top:15px;">
+                                        <div class="col-sm-12">
+                                            <div class="input-group">
+                                                <input class="form-control txt-right input-sm ng-pristine ng-untouched ng-valid"ng-model="Accion"  type="text" placeholder="Agregar acción..." />                                                
+                                                <div class="input-group-btn">
+                                                    <span class="btn btn-default" ng-click="GuardarAccion()" style="border-color: #CCCCCC"><i class="fa fa-plus-circle" style="font-size: 20px;"></i></span>
+                                                </div>
+                                                {{Accion}}
                                             </div>
                                         </div>
                                     </div>
+                                    <div style="overflow-y:auto; height: 280px;">
+                                        <div ng-repeat="Accion in lstAcciones">
+                                                <label class="ui-checkbox">
+                                                    <input type="checkbox" ng-model="Accion.bCompletado">
+                                                    <span>{{Accion.Accion}}</span>
+                                                </label>
+                                                <span>@*<i class="fa fa-times-circle-o text-alert pull-right clickeable-element" title="Eliminar" ng-click="ACtrl.eliminarActividadAccion(Accion)"></i>*@</span>
+                                                <br />
+                                            </div>
+                                    </div>
+                                </div>
+                                <!-- ngIf: ACtrl.Actividad.Anexos.length -->
                                 </div>
                             </div>
-                        </div>                   
-                       </div>
-                      </div>
+                        </div>
                     </div>
           
                     <div style="padding-top:20px" id="Diagnostico_msgerr" class="row">
@@ -249,9 +309,16 @@
                 </div>
                </div>
              <div class="modal-footer">
-                <md-button class="md-raised md-primary" style="color:white" ng-click="ValidaGuardaDiagnostico()" ng-disabled="OnServer">Guardar <i class="fa fa-floppy-o" aria-hidden="true" style="color: white;"></i></md-button>
-                <md-button class="md-raised md-warn" style="color:white" data-dismiss="modal" ng-disabled="OnServer">Cancelar <i class="fa fa-times" aria-hidden="true"></i></md-button>
-            </div>
+                  <div class="pull-left">
+                   <button class="btn btn-info" style="color:white" ng-click="MostrarHistorial();CerrarReporteActividad();" ng-disabled="OnServer">Mostrar Historial <i class="fa fa-history ng-scope" aria-hidden="true" style="color: white;"></i></button>
+                   <button class="btn btn-default" ng-disabled="Act.nUsuario != nUsuarioLogin" ng-click="AbrirActividadesAyudaModal()" style="color:black">Solicitar Ayuda <i class="fa fa-question-circle info-glyph" aria-hidden="true"></i></button>
+                  </div>
+                 <div class="pull-right">
+                <button class="btn btn-primary" style="color:white"  ng-click="GuardarReporteAvanceActividad()" ng-disabled="OnServer;Act.nUsuario != nUsuarioLogin">Guardar <i class="fa fa-floppy-o" aria-hidden="true" style="color: white;"></i></button>
+                <button class="btn btn-warning ng-scope" style="color:white"  ng-disabled="OnServer;Act.nUsuario != nUsuarioLogin">Enviar a Validacion <i class="fa fa-floppy-o" aria-hidden="true" style="color: white;"></i></button>
+                <button class="btn btn-default" style="color:black" data-dismiss="modal" ng-click="limpiarreporte()" ng-disabled="OnServer">Cancelar <i class="fa fa-times" aria-hidden="true"></i></button>
+                </div>
+             </div>
             </div>
         </div>
   </div>

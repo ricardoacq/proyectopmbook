@@ -15,11 +15,11 @@ namespace MvcLogin.Areas.Ejecucion.Controllers
             return View("Index", model);
         }
 
-        public ActionResult ObtenerIncidentes(int idCliente)
+        public ActionResult ObtenerIncidentes(int idCliente, int idProducto, int idModulo, int idComponente, int idConsultor)
         {
             PMBookDataContext DB = new PMBookDataContext();
             IncidentesModel model = new IncidentesModel();
-            DTO_Incidente_Result Result = model.ObtenerIncidentes(DB, idCliente);
+            DTO_Incidente_Result Result = model.ObtenerIncidentes(DB, idCliente,idProducto,idModulo,idComponente,idConsultor);
 
             return Json(new
             {
@@ -29,11 +29,11 @@ namespace MvcLogin.Areas.Ejecucion.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult ObtenerIncidentesInactivos(int idCliente)
+        public ActionResult ObtenerIncidentesInactivos(int idCliente, int idProducto, int idModulo, int idComponente, int idConsultor)
         {
             PMBookDataContext DB = new PMBookDataContext();
             IncidentesModel model = new IncidentesModel();
-            DTO_Incidente_Result Result = model.ObtenerIncidentesInactivos(DB, idCliente);
+            DTO_Incidente_Result Result = model.ObtenerIncidentesInactivos(DB, idCliente, idProducto, idModulo, idComponente, idConsultor);
 
             return Json(new
             {
@@ -191,18 +191,18 @@ namespace MvcLogin.Areas.Ejecucion.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GuardarActividad(DTO_Actividad Actividad)
+        public ActionResult GuardarIncidente( int idCliente, int idProducto, int idModulo, int ProductoVersion, int idComponente, int idConsultor, int TipoIncidente, int nIncidente, string cIncidente, bool bCobrable, string tDescripcion, bool bRequiereQC, int THoras, int TMinutos)
         {
             PMBookDataContext DB = new PMBookDataContext();
-            ActividadesModel model = new ActividadesModel();
-            DTO_Actividad_Result Result = model.GuardarActividad(DB, Actividad);
-            int id = Result.Actividad == null ? 0 : Result.Actividad.nActividad;
+            IncidentesModel model = new IncidentesModel();
+            DTO_Incidente_Result Result = model.GuardarIncidente(DB, idCliente, idProducto, idModulo, ProductoVersion,idComponente, idConsultor,  TipoIncidente, nIncidente, cIncidente, bCobrable, tDescripcion,bRequiereQC,THoras,TMinutos);
+            int id = Result.Incidente == null ? 0 : Result.Incidente.nIncidente;
 
             return Json(new
             {
                 bError = Result.bError,
                 msgErr = Result.msgErr,
-                nActividad = id
+                nIncidente = id
             }, JsonRequestBehavior.AllowGet);
         }
     }
