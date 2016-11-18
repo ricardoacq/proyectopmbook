@@ -7,7 +7,9 @@
             </div>
             <div class="modal-body">
                 <div ng-hide="OnServer">
+                    @* Clientes y Prodcutos                     *@
                     <div class="row" style="padding-top:10px;">
+                    @* Cliente *******************              *@
                         <div class='col-md-2' style="text-align:right"><h4>Cliente: </h4></div>
                         <div class="col-md-4">
                             <select class="form-control" ng-model="Inc.Cliente" 
@@ -15,6 +17,8 @@
                              <option value="" ng-hide="true" class="ng-hide">Seleccione</option>
                             </select>
                         </div>
+                    @* ***********************************      *@
+                    @* Producto *****************               *@
                        <div class='col-md-2' style="text-align:right"><h4>Producto: </h4></div>
                         <div class="col-md-4">
                             <select class="form-control" ng-model="Inc.Producto" ng-options="p.idProducto as p.Producto for p in lstProductos"
@@ -22,13 +26,16 @@
                                <option value="" ng-hide="true" class="ng-hide">Seleccione</option>
                             </select>
                         </div>
+                        @* ************************************ *@
                     </div>
-                    
+                    @* Fecha Registro y Producto Version        *@
                     <div class="row">
+                    @* Fecha Registro     ***********************@
                         <div class='col-md-2' style="text-align:right"><h4>Fecha Registro: </h4></div>
                         <div class="col-md-4">
                             <input class="form-control" placeholder="" ng-model="FILTROACTIVIDADES.dFechaFin"  min="0" value="{{FILTROACTIVIDADES.dFechaFin}}" disabled/>
-                        </div>
+                        </div>                       
+                    @* Version del Producto *******             *@
                         <div class='col-md-2' style="text-align:right"><h4>Version: </h4></div>
                         <div class="col-md-4">
                              <select class="form-control" ng-model="Inc.Versiones"
@@ -36,9 +43,12 @@
                              <option value="" ng-hide="true" class="ng-hide">Seleccione</option>
                             </select>
                         </div>
+                    @* ************************************     *@
                     </div>
+                    @* Modulo                                   *@
                     <div class="row">
                         <div class='col-md-6'></div>
+                        
                         <div class='col-md-2' style="text-align:right"><h4>Modulo: </h4></div>
                         <div class="col-md-4">
                              <select class="form-control" ng-model="Inc.Modulo"
@@ -47,28 +57,28 @@
                              <option value="" ng-hide="true" class="ng-hide">Seleccione</option>
                             </select>
                         </div>
-                    </div>
+                    </div> 
+                    @* Componentes                              *@
                     <div class="row">
                         <div class='col-md-2' style="text-align:right"><h4></h4></div>
-                        <div class="col-md-4">
-                         
-                        </div>
+                        <div class="col-md-4"></div>                        
                         <div class='col-md-2' style="text-align:right"><h4>Componente: </h4></div>
                         <div class="col-md-4">
                            <select class="form-control" ng-model="Inc.Componente"
                              ng-options="c.idComponente as c.Componente for c in lstComponentes">
                                <option value="" ng-hide="true" class="ng-hide">Seleccione</option>
                             </select>
-                        </div>
+                        </div>                       
                     </div>
-
-                    <div class="row">
+                    @* Nombre del Incidente                     *@
+                    <div class="row">                       
                         <div class='col-md-2' style="text-align:right"><h4>Incidente: </h4></div>                       
                         <div class="col-md-10">
                             <input class="form-control" ng-model="Inc.cDescripcion" name="cDescripcion"  />
-                        </div>
+                        </div>                       
                     </div>
-                    <div class="row">
+                    @* Elejir Tipo Incidente                    *@
+                    <div class="row">                      
                         <div class='col-md-2' style="text-align:right"><h4>Tipo Incidente: </h4></div>
                         <div class="col-md-4">
                              <select class="form-control" ng-model="Inc.TipoIncidente" placeholder="Seleccione"
@@ -76,16 +86,21 @@
                              <option value="" ng-hide="true" class="ng-hide">Seleccione</option>
                             </select>
                         </div>
+                        @* ***********Check Box************* *@
                         <div class="col-md-3"><input type="checkbox" ng-model="Inc.ControlQC"/><label>Pasa Control de Calidad</label></div>
                         <div class="col-md-3"><input type="checkbox" ng-model="Inc.Cobrable"/><label>Cobrable</label></div>
                     </div>
-                    <div class="row">
+                    @* Descripcion detallada del Incidente      *@
+                    <div class="row">                       
                         <div class="col-md-2"><h4>Descripcion</h4></div>
-                        <div class="col-md-10"><textarea class="form-control ng-pristine ng-valid ng-touched" 
+                        <div class="col-md-10">
+                            <textarea class="form-control ng-pristine ng-valid ng-touched" 
                             style="resize:vertical;"  rows="10" name="tDescripcion" 
-                            ng-model="Inc.tDescripcion"></textarea></div>
+                            ng-model="Inc.tDescripcion"></textarea>
+                        </div>                       
                     </div>
-                    <div class="row">
+                    @* Tiempo Estimado Horas y Asignar Consultor*@
+                    <div class="row">                       
                         <div class="col-md-6">
                             <div class="col-md-4"><h4>Tiempo Estimado</h4></div>
                             <div class="col-md-4"><div class="input-group">
@@ -100,7 +115,8 @@
                                             name="nTiempoMinutos"></input>
                                         <span class="input-group-addon">min.</span>
                                     </div></div>
-                        </div>
+                        </div>                    
+                        @* Asignar a un Consultor******************* *@
                          <div class="col-md-6">
                             <div class="col-md-4"><h4>Asignar a</h4></div>
                             <div class="col-md-8">
@@ -109,8 +125,9 @@
                              <option value="" ng-hide="true" class="ng-hide">Seleccione</option>
                             </select>
                             </div>
-                        </div>
-                        </div>
+                        </div>                       
+                        </div>                   
+                    @* Anexo y manejo de Archivos               *@
                     <div class="row">
                         <div class="col-md-6">
                          <div class="form-group ng-scope">
@@ -134,7 +151,7 @@
                         </div>
 
                     </div>
-
+                    @* **********************************       *@
                     </div>
                  <div ng-show="OnServer">
                     <div layout="row" layout-sm="column" layout-align="space-around">

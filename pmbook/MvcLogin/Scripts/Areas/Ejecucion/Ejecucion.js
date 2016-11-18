@@ -107,7 +107,7 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
     };
     $scope.btnReporte = '<button id="editBtn" type="button" class="btn btn-primary" ng-click="ConsultarReporte(row)"style="border:0; background-color:transparent;" title="Reportar Avance de Actividad"><i class="fa fa-file-text-o" style="color:#616f71"></i></button>';
     $scope.btnFav     = '<button id="Favorito" type="button" class="btn btn-primary" style="border:0; background-color:transparent;" title="Agregar a Favoritos"><i class="fa fa-star" style="color:#616f71"></i></button>';
-    $scope.btnTer = '<button id="Favorito" type="button" class="btn btn-primary" style="border:0; background-color:transparent;" title="Marcar como terminada la actividad"><i class="fa fa-unlock-alt" style="color:#616f71"></i></button>';
+    $scope.btnTer = '<button id="Terminado" type="button" class="btn btn-primary" style="border:0; background-color:transparent;" title="Marcar como terminada la actividad"><i class="fa fa-unlock-alt" style="color:#616f71"></i></button>';
     //***********************************************************************************************************************
     //opciones de Grid
     $scope.gridActividades = {
@@ -230,6 +230,7 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
             else {
                 $scope.lstActividades = response.Actividades_Grid;
                 $scope.nUsuarioLogin = response.nUsuarioLogin;
+                $('.TablaDivResize').trigger('resize');
             }
         }).error(function (response, status, header, config) {
         });
@@ -253,6 +254,8 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
             }
             else {
                 $scope.lstActividades = response.Actividades_Grid;
+                $scope.nUsuarioLogin = response.nUsuarioLogin;
+                $('.TablaDivResize').trigger('resize');
             }
         }).error(function (response, status, header, config) {
         });
@@ -643,7 +646,7 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
         columnDefs: [{ field: 'nIncidente', displayName: 'id' }, { field: 'Incidente', displayName: 'Incidente' }, { field: 'Cliente', displayName: 'Cliente' },
         { field: 'Producto', displayName: 'Producto' }, { field: 'Modulo', displayName: 'Modulo' }, { field: 'Componente', displayName: 'Componente' },
         { field: 'T_Solicitado_UE', displayName: 'T. Solicitado UE' }, { field: 'T_Autorizado', displayName: 'T. Autorizado' }, { field: 'Trab_Realizado', displayName: 'Trab. Realizado' },
-        { field: 'Trab_Restante', displayName: 'Trab Restante' }, { field: 'Avance', displayName: 'Avance' }, { field: 'Vuelta', displayName: 'Vuelta' }, { field: 'Estatus', displayName: 'Estatus' },
+        { field: 'Trab_Restante', displayName: 'Trab Restante' }, { field: 'Avance', displayName: 'Avance' }, { field: 'Estatus', displayName: 'Estatus' },
         { field: 'FechaRegistro', displayName: 'Fecha Registro' }],
         showFooter: true,
         enableFiltering: false,
@@ -668,6 +671,7 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
             }
             else {
                 $scope.lstIncidentes = response.Incidentes;
+                $('.TablaDivResize').trigger('resize');
             }
         }).error(function (response, status, header, config) {
         });
@@ -691,6 +695,7 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
             }
             else {
                 $scope.lstIncidentes = response.Incidentes;
+                $('.TablaDivResize').trigger('resize');
             }
         }).error(function (response, status, header, config) {
         });
@@ -776,7 +781,9 @@ BaseMVC.controller('EjecucionCtrl', ['$http', '$scope', '$timeout', '$mdDialog',
         $http({
             method: 'POST',
             url: '/Ejecucion/Actividades/GuardarReporteAvanceActividad',
-            data: { RegistroTrabajo:$scope.Act,
+            data: {
+                RegistroTrabajo: $scope.Act,
+                dFecha:$scope.dFecha,
                 Comentario:$scope.Comentario, 
                 Horas:$scope.Horas, 
                 Minutos:$scope.Minutos, 

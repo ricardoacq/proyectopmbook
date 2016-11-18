@@ -259,7 +259,6 @@ namespace MvcLogin.Areas.Ejecucion.Models
             return Result;
 
         }
-
        ///TRAE TIPO INCIDNETE 
         public DTO_Incidente_Result ObtenerTipoIncidente(PMBookDataContext DB)
         {
@@ -520,31 +519,26 @@ namespace MvcLogin.Areas.Ejecucion.Models
     public class DTO_Producto_Componente {
         public string Componente { get; set; }
         public int idComponente { get; set; }
-
     }
     public class DTO_Cliente
     {
         public string Cliente { get; set; }
         public int idCliente { get; set; }
-
     }
     public class DTO_Lider
     {
         public string Lider { get; set; }
         public int idLider { get; set; }
-
     }
     public class DTO_Tester
     {
         public string Tester { get; set; }
         public int idTester { get; set; }
-
     }
     public class DTO_Consultor
     {
         public string Consultor { get; set; }
         public int idConsultor { get; set; }
-
     }
     public class DTO_Incidente {
         public int nIncidente { get; set; }
@@ -571,7 +565,6 @@ namespace MvcLogin.Areas.Ejecucion.Models
         public byte Estatus { get; set; }
         public string FechaRegistro { get; set; }
         public string HoraRegistro { get; set; }
-
     }
     public class DTO_Incidente_Result
     {

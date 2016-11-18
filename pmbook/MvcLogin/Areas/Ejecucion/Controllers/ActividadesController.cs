@@ -190,11 +190,11 @@ namespace MvcLogin.Areas.Ejecucion.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GuardarReporteAvanceActividad(DTO_Actividad_Grid RegistroTrabajo, string Comentario, int Horas, double Minutos, int HorasRes, double MinutosRes)
+        public ActionResult GuardarReporteAvanceActividad(DTO_Actividad_Grid RegistroTrabajo,string dFecha, string Comentario, int Horas, double Minutos, int HorasRes, double MinutosRes)
         {
             PMBookDataContext DB = new PMBookDataContext();
             ActividadesModel model = new ActividadesModel();
-            DTO_Actividad_Result Result = model.GuardarReporteAvanceActividad( DB,RegistroTrabajo,Comentario, Horas, Minutos, HorasRes, MinutosRes);           
+            DTO_Actividad_Result Result = model.GuardarReporteAvanceActividad( DB,RegistroTrabajo,dFecha,Comentario, Horas, Minutos, HorasRes, MinutosRes);           
 
             return Json(new
             {

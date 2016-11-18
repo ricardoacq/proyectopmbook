@@ -5,7 +5,7 @@
 
  <div class="panel-collapse in">
   <div class="panel-body md-10">
-      @* Seleccionar Proyectos *@
+    @* Seleccionar Proyectos                 *@
     <div class="col-md-3">
         <div class="form-group">
             <div class="col-md-12">
@@ -17,9 +17,8 @@
                 <option value="" ng-hide="true">Seleccione</option>
             </select>
         </div>
-    </div>
-      
-    @* Seleccionar Modulo Proyecto *@
+    </div>   
+    @* Seleccionar Modulo Proyecto           *@
     <div class="col-md-3">
         <div class="form-group">
             <div class="col-md-12">
@@ -33,7 +32,7 @@
         </div>
 
     </div>
-    @* Seleccionar Componente Proyecto *@
+    @* Seleccionar Componente Proyecto       *@
     <div class="col-md-3">
         <div class="form-group">
             <div class="col-md-12">
@@ -45,11 +44,11 @@
             </select>
         </div>
     </div>
-          @* Seleccionar Consultor *@
+    @* Seleccionar Consultor                 *@
     <div class="col-md-3">
         <div class="form-group">
             <div class="col-md-12">
-                <label>Consultor:  &nbsp;<span aria-label="Campo Obligatorio" style="color:red">*</span></label>       
+                <label>Consultor:  &nbsp;<span aria-label="Campo Obligatorio" style="color:red"></span></label>       
             </div>
             <select class="form-control" ng-model="Select.Consultor" 
                ng-options="c.idConsultor as c.Consultor for c in lstConsultores">
@@ -57,7 +56,7 @@
             </select>
         </div>
     </div>
-    @* Seleccionar Lider *@
+    @* Seleccionar Lider                     *@
     <div class="col-md-3">
         <div class="form-group">
             <div class="col-md-12">
@@ -69,7 +68,7 @@
             </select>
         </div>
     </div>
-      @* Seleccionar Proyecto Inactivos *@
+    @* Seleccionar Proyecto Inactivos        *@
     <div class="col-md-3">
         <div class="form-group">
             <div class="col-md-12">
@@ -81,7 +80,7 @@
             </select>
         </div>
     </div>
-      @* Seleccionar Fecha desde *@
+    @* Seleccionar Fecha desde               *@
     <div class="col-md-6">
         <div class="col-md-2"><h4>Desde: </h4> </div>
         <div class="col-md-10">
@@ -94,7 +93,7 @@
             </div>
         </div>
     </div>
-      @* Seleccionar Fecha hasta *@
+    @* Seleccionar Fecha hasta               *@
     <div class="col-md-6">
         <div class="col-md-2"><h4>Hasta: </h4></div>
         <div class="col-md-10">
@@ -107,8 +106,7 @@
             </div>
         </div>
     </div>
-      
-      @* Botones buscar, pendientes y exportar *@
+    @* Botones buscar, pendientes y exportar *@
     <div class="col-md-12">
     <div class="pull-left">
      <div class="checkbox" style="display: inline-block; margin-right: 10px;">
@@ -120,17 +118,18 @@
     </div>
         @* Buscar *@
     <span  class="btn btn-primary" ng-click="LoadActividades();"><i class="fa fa-search"></i> Buscar</span>
-    @* Filtar pendientes *@
+    
+        @* Filtar pendientes *@
     <span class="btn btn-warning" ng-click="LoadActividadesInActivas();"><i class="fa fa-exclamation-circle"></i>Buscar Solo Pendientes</span>
-    @* Exportar archivos a excel *@
+    
+        @* Exportar archivos a excel *@
     <button class="btn btn-info" ng-csv="lstActividades" lazy-load="true"  filename="Consultar Actividades {{FILTROACTIVIDADES.dFechaFin}}.csv" type="submit"><i class="fa fa-file-excel-o"></i> Exportar a Excel</button>
      </div>
     </div>
-      @* Tabla de Actividades *@
-    <div class="col-md-12" >
-        <div class="row">
-          <div class="gridStyle" ng-grid="gridActividades"></div>
-            
+    @* Tabla de Actividades                  *@
+    <div class="col-md-12 TablaDivResize" >
+        <div class="row TablaDivResize">
+          <div class="gridStyle TablaDivResize" ng-grid="gridActividades"></div>            
         </div>
     </div>
     </div>
@@ -140,6 +139,7 @@
     $(document).ready(function () {
         setTimeout(function () {
             var scope = $('#V_Catalogos').scope();
+            $('.TablaDivResize').trigger('resize');
             scope.LimpiarFiltroActividades();
             scope.limpiarForm();
             scope.LoadImpacto();

@@ -553,20 +553,20 @@ namespace MvcLogin.Areas.Ejecucion.Models
                                     on p.nProyectoAsignacion equals pa.nProyectoAsignacion
                                     join a in DB.ADSUM_Usuarios
                                     on p.nAdsumUsuario equals a.nAdsumUsuario
-                                       where p.nEmisor == DataSesion.nEmisor
-                                       &&pa.nProyectoActividad == idActividad
-                                       && p.nAdsumUsuario==idConsultor
-                                       select new DTO_Historial()
-                                       {
-                                           ProyectoRegistroTrabajo = (p.nProyectoRegistroTrabajo != null) ? p.nProyectoRegistroTrabajo : 0,
-                                           Comentario =p.cComentario?? string.Empty,
-                                           TrabajoRealizado = Math.Floor(p.nTrabajoRealizadoHoras / 60) + " Hr " + p.nTrabajoRealizadoHoras % 60 + " min",
-                                           TrabajoRestante = Math.Floor(p.nTrabajoRestanteHoras / 60) + " Hr " + p.nTrabajoRestanteHoras % 60 + " min",
-                                           Avance=p.nAvancePorcentualEstimado +" %",
-                                           FechaRegistro = (p.dFecha_Registro != null) ? ((DateTime)p.dFecha_Registro).ToShortDateString() : "Sin fecha de cierre",
-                                           Consultor=a.cNombre,
+                                    where p.nEmisor == DataSesion.nEmisor
+                                    &&pa.nProyectoActividad == idActividad
+                                    && p.nAdsumUsuario==idConsultor
+                                    select new DTO_Historial()
+                                    {
+                                        ProyectoRegistroTrabajo = (p.nProyectoRegistroTrabajo != null) ? p.nProyectoRegistroTrabajo : 0,
+                                        Comentario =p.cComentario?? string.Empty,
+                                        TrabajoRealizado = Math.Floor(p.nTrabajoRealizadoHoras / 60) + " Hr " + p.nTrabajoRealizadoHoras % 60 + " min",
+                                        TrabajoRestante = Math.Floor(p.nTrabajoRestanteHoras / 60) + " Hr " + p.nTrabajoRestanteHoras % 60 + " min",
+                                        Avance=p.nAvancePorcentualEstimado +" %",
+                                        FechaRegistro = (p.dFecha_Registro != null) ? ((DateTime)p.dFecha_Registro).ToShortDateString() : "Sin fecha de cierre",
+                                        Consultor=a.cNombre,
     
-                                       }
+                                    }
                                     ).OrderBy(x => x.ProyectoRegistroTrabajo).ToList();
             }
             catch (Exception e)
@@ -579,7 +579,7 @@ namespace MvcLogin.Areas.Ejecucion.Models
 
         
         }
-        public DTO_Actividad_Result GuardarReporteAvanceActividad(PMBookDataContext DB, DTO_Actividad_Grid RegistroTrabajo, string Comentario, int Horas, double Minutos, int HorasRes, double MinutosRes)
+        public DTO_Actividad_Result GuardarReporteAvanceActividad(PMBookDataContext DB, DTO_Actividad_Grid RegistroTrabajo,string dFecha ,string Comentario, int Horas, double Minutos, int HorasRes, double MinutosRes)
         {
             DTO_Actividad_Result Result = new DTO_Actividad_Result()
             {
@@ -592,6 +592,21 @@ namespace MvcLogin.Areas.Ejecucion.Models
             decimal tiempomR = (HorasRes * 60) + (decimal)MinutosRes;
             try
             {
+
+               
+                long FJuliana = 0;
+                try
+                {
+                  
+                    FJuliana = ConvertidorJuliano.aJuliano(DateTime.ParseExact(dFecha, "dd/MM/yyyy", null));
+                }
+                catch (Exception e)
+                {
+
+                    string sFechaFinal = dFecha.Substring(8, 2) + "/" + dFecha.Substring(5, 2) + "/" + dFecha.Substring(0, 4);
+                    
+                    FJuliana = ConvertidorJuliano.aJuliano(DateTime.ParseExact(sFechaFinal, "dd/MM/yyyy", null));
+                }
 
                 PMB_Actividade RegistroActividad = DB.PMB_Actividades.Where(x => x.nActividad == RegistroTrabajo.ID).SingleOrDefault() ?? new PMB_Actividade();
 
@@ -613,7 +628,7 @@ namespace MvcLogin.Areas.Ejecucion.Models
                 prt.nEmisor = DataSesion.nEmisor;
                 prt.cComentario = Comentario != null ? Comentario.Trim() : "";
                 prt.nAvancePorcentualEstimado = RegistroTrabajo.Terminado ? 100 : (decimal)RegistroTrabajo.Avance;
-                //prt.nFechaRegistro = (int)CommonFunctions.NumeroJuliano(RegistroTrabajo.dFechaReporte);
+                prt.nFechaRegistro = (int)FJuliana;
                 //prt.nHoraRegistro = ADDA.HoraMinutoSerial(RegistroTrabajo.dFechaReporte);
                 prt.nHorasGanadas = act.nTrabajoRestanteHoras - tiempomR;
                 prt.nProyectoAsignacion = pa.nProyectoAsignacion;
